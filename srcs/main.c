@@ -1,8 +1,14 @@
 #include "../cub3d.h"
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	(void) ac;
-	(void) av;
+	t_data	data;
+
+	if (argc != 2)
+	{
+		perror(ERR_ARGS);
+		exit(EXIT_FAILURE);
+	}
+	ft_init_map(&data, argv[1]);
 	printf("Hello world\n");
 }
