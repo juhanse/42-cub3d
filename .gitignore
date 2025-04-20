@@ -1,0 +1,6 @@
+**/*.o
+libft/libft.a
+cub3d
+.DS_Store
+.vscode
+**/.DS_Store
