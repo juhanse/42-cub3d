@@ -5,7 +5,7 @@ void	ft_free_map(t_data *data)
 	size_t	i;
 
 	i = -1;
-	while (data->map[++i])
+	while (data->width)
 		free(data->map[i]);
 	free(data->map);
 }
