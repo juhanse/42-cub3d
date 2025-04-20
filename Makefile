@@ -14,7 +14,7 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 PARSING = parsing/check_map.c
-SRC = main.c # $(PARSING)
+SRC = main.c utils.c $(PARSING)
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))
 OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
@@ -22,7 +22,7 @@ OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR)
+	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft
 	@echo "$(COLOUR_GREEN)Cub3d compiled ✅$(COLOUR_END)"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
