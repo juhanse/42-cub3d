@@ -10,5 +10,4 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	ft_init_map(&data, argv[1]);
-	printf("Hello world\n");
 }

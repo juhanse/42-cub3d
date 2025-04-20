@@ -28,12 +28,12 @@ void	ft_allocate_map(t_data *data)
 	int	i;
 
 	i = -1;
-	data->map = (char **)malloc(data->width * sizeof(char *));
+	data->map = (char **)malloc(data->height * sizeof(char *));
 	if (!data->map)
 		exit(EXIT_FAILURE);
 	while (++i < data->height)
 	{
-		data->map[i] = (char *)malloc((data->height + 1) * sizeof(char));
+		data->map[i] = (char *)malloc((data->width) * sizeof(char));
 		if (!data->map[i])
 		{
 			ft_free_map(data);
@@ -48,17 +48,17 @@ void	ft_fill_map(t_data *data)
 	int		fd;
 	char	*line;
 
-	i = -1;
 	fd = open(data->path, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_free_map(data);
 		exit(EXIT_FAILURE);
 	}
+	i = -1;
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_strlcpy(data->map[++i], line, data->width + 1);
+		ft_memcpy(data->map[++i], line, data->width);
 		free(line);
 		line = get_next_line(fd);
 	}
