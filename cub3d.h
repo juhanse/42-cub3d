@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <math.h>
+# include <fcntl.h>
 
 # define ERR_BAD_PATH "Error: Bad format path map\n"
 # define ERR_ARGS "Error: Invalid arguments\n"
@@ -23,6 +24,8 @@ typedef enum e_move
 typedef struct s_data
 {
 	char	*path;
+	int		width;
+	int		height;
 	char	**map;
 }	t_data;
 
