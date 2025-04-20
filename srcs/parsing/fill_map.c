@@ -1,6 +1,6 @@
 #include "../../cub3d.h"
 
-void	ft_get_size(t_data *data)
+void	ft_set_size(t_data *data)
 {
 	int		fd;
 	char	*line;
@@ -51,7 +51,10 @@ void	ft_fill_map(t_data *data)
 	i = -1;
 	fd = open(data->path, O_RDONLY);
 	if (fd < 0)
+	{
+		ft_free_map(data);
 		exit(EXIT_FAILURE);
+	}
 	line = get_next_line(fd);
 	while (line)
 	{

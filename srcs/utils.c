@@ -8,6 +8,7 @@ void	ft_free_map(t_data *data)
 	while (data->width)
 		free(data->map[i]);
 	free(data->map);
+	data->map = NULL;
 }
 
 int	ft_exit_game(t_data *data)

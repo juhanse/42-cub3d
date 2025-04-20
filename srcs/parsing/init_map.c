@@ -42,11 +42,12 @@ void	ft_init_map(t_data *data, char *path)
 		perror(ERR_BAD_PATH);
 		exit(EXIT_FAILURE);
 	}
-	ft_get_size(data);
+	ft_set_size(data);
 	ft_allocate_map(data);
 	ft_fill_map(data);
 	if (ft_check_char(data))
 	{
+		ft_free_map(data);
 		perror(ERR_ARGS);
 		exit(EXIT_FAILURE);
 	}
