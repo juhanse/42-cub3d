@@ -18,11 +18,11 @@ static int	ft_check_char(t_data *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (data->map[i++])
+	i = -1;
+	while (++i < data->height)
 	{
-		j = 0;
-		while (data->map[i][j++])
+		j = -1;
+		while (++j < data->width)
 		{
 			if (data->map[i][j] != '0' && data->map[i][j] != '1' && \
 			data->map[i][j] != 'N' && data->map[i][j] != 'S' && \
@@ -45,6 +45,7 @@ void	ft_init_map(t_data *data, char *path)
 	ft_set_size(data);
 	ft_allocate_map(data);
 	ft_fill_map(data);
+	ft_debug(data);
 	if (ft_check_char(data))
 	{
 		ft_free_map(data);
