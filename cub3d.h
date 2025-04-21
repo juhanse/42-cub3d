@@ -9,8 +9,8 @@
 # include <math.h>
 # include <fcntl.h>
 
-# define ERR_BAD_PATH "Error: Bad path map\n"
-# define ERR_ARGS "Error: Invalid arguments\n"
+# define ERR_BAD_PATH "Error\nBad path map\n"
+# define ERR_ARGS "Error\nInvalid arguments\n"
 
 typedef enum e_move
 {
