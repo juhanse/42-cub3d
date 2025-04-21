@@ -22,12 +22,26 @@ typedef enum e_move
 	ROT_LEFT
 }	t_move;
 
+typedef struct s_player
+{
+	int	x;
+	int	y;
+	int	angle;
+}	t_player;
+
 typedef struct s_data
 {
-	char	*path;
-	int		width;
-	int		height;
-	char	**map;
+	char		*path;
+	int			width;
+	int			height;
+	char		**map;
+	int			floor_color;
+	int			ceiling_color;
+	char		*north_image;
+	char		*south_image;
+	char		*west_image;
+	char		*east_image;
+	t_player	*player;
 }	t_data;
 
 // PARSING
