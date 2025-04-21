@@ -28,10 +28,10 @@ void	ft_free_map(t_data *data)
 	data->map = NULL;
 }
 
-int	ft_exit_game(t_data *data)
+void	ft_exit(char *msg)
 {
-	ft_free_map(data);
-	exit(EXIT_SUCCESS);
+	perror(msg);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_debug(t_data *data)
