@@ -22,7 +22,7 @@ void	ft_debug(t_data *data)
 	int	i;
 
 	i = -1;
-	printf("[%d] - [%d]", data->width, data->height);
+	printf("width [%d] | height [%d]", data->width, data->height);
 	while (++i < data->width - 1)
 		printf("\n[%d] %s", i, data->map[i]);
 }

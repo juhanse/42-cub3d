@@ -7,7 +7,9 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		perror(ERR_ARGS);
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 	ft_init_map(&data, argv[1]);
+	ft_debug(&data);
+	return (0);
 }
