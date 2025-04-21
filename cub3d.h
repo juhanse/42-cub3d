@@ -48,6 +48,7 @@ typedef struct s_data
 
 // PARSING
 void	ft_debug(t_data *data);
+void	ft_free(t_data *data);
 void	ft_free_map(t_data *data);
 void	ft_set_size(t_data *data);
 void	ft_allocate_map(t_data *data);

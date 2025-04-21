@@ -20,6 +20,9 @@ void	ft_init_data(t_data *data, char *path)
 	*data = (t_data){0};
 	data->path = path;
 	if (ft_check_path(data))
+	{
+		ft_free(data);
 		exit(EXIT_FAILURE);
+	}
 	ft_init_map(data);
 }

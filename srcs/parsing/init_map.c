@@ -70,7 +70,7 @@ void	ft_init_map(t_data *data)
 	ft_fill_map(data);
 	if (ft_check_char(data) || ft_check_square(data) || ft_check_walls(data))
 	{
-		ft_free_map(data);
+		ft_free(data);
 		exit(EXIT_FAILURE);
 	}
 }
