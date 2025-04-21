@@ -13,6 +13,8 @@ void	ft_free(t_data *data)
 		free(data->west_image);
 	if (data->east_image)
 		free(data->east_image);
+	if (data->player)
+		free(data->player);
 }
 
 void	ft_free_map(t_data *data)

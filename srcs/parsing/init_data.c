@@ -25,4 +25,5 @@ void	ft_init_data(t_data *data, char *path)
 		exit(EXIT_FAILURE);
 	}
 	ft_init_map(data);
+	data->player = (t_player *)malloc(sizeof(t_player));
 }
