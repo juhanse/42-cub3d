@@ -52,6 +52,7 @@ void	ft_free_map(t_data *data);
 void	ft_set_size(t_data *data);
 void	ft_allocate_map(t_data *data);
 void	ft_fill_map(t_data *data);
-void	ft_init_map(t_data *data, char *path);
+void	ft_init_map(t_data *data);
+void	ft_init_data(t_data *data, char *path);
 
 #endif
