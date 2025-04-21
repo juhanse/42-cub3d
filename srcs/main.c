@@ -5,11 +5,10 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-	{
-		perror(ERR_ARGS);
-		return (1);
-	}
+		return (perror(ERR_ARGS), 1);
+	data = (t_data){0};
+	data.path = argv[1];
 	ft_init_data(&data, argv[1]);
-	ft_debug(&data);
+	//ft_init_map(&data);
 	return (0);
 }

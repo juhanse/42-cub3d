@@ -40,6 +40,6 @@ void	ft_debug(t_data *data)
 
 	i = -1;
 	printf("width [%d] | height [%d]", data->width, data->height);
-	while (++i < data->width - 1)
+	while (++i < data->width)
 		printf("\n[%d] %s", i, data->map[i]);
 }

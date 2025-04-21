@@ -68,6 +68,7 @@ void	ft_init_map(t_data *data)
 	ft_set_size(data);
 	ft_allocate_map(data);
 	ft_fill_map(data);
+	ft_debug(data);
 	if (ft_check_char(data) || ft_check_square(data) || ft_check_walls(data))
 	{
 		ft_free(data);

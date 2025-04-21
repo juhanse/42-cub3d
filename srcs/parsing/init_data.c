@@ -12,11 +12,36 @@ static int	ft_check_path(t_data *data)
 	return (0);
 }
 
+static void	ft_fill_fd(t_data *data)
+{
+	int		fd;
+	char	*line;
+
+	fd = open(data->path, O_RDONLY);
+	if (fd < 0)
+	{
+		perror(ERR_BAD_PATH);
+		exit(EXIT_FAILURE);
+	}
+	line = get_next_line(fd);
+	data->width = ft_strlen(line) - 1;
+	while (line)
+	{
+		ft_strlcpy(data->map[data->height], line, ft_strlen(line) - 1);
+		free(line);
+		line = get_next_line(fd);
+		data->height++;
+	}
+	free(line);
+	close(fd);
+}
+
 void	ft_init_data(t_data *data, char *path)
 {
 	*data = (t_data){0};
 	data->path = path;
 	if (ft_check_path(data))
 		ft_exit(ERR_BAD_PATH);
-	ft_init_map(data);
+	ft_fill_fd(data);
+	//ft_debug(data);
 }
