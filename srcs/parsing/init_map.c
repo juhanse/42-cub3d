@@ -20,7 +20,7 @@ static int	ft_check_square(t_data *data)
 	i = -1;
 	while (++i < data->width)
 	{
-		if (ft_strlen(data->map[i]) != data->width)
+		if (ft_strlen(data->map[i]) != (size_t) data->width)
 		{
 			perror(ERR_SQUARE);
 			return (1);
@@ -50,6 +50,7 @@ static int	ft_check_walls(t_data *data)
 			}
 		}
 	}
+	return (0);
 }
 
 static int	ft_check_char(t_data *data)
