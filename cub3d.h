@@ -34,9 +34,10 @@ typedef struct s_player
 typedef struct s_data
 {
 	char		*path;
+	char		**content;
+	char		**map;
 	int			width;
 	int			height;
-	char		**map;
 	int			floor_color;
 	int			ceiling_color;
 	char		*north_image;
@@ -45,6 +46,15 @@ typedef struct s_data
 	char		*east_image;
 	t_player	*player;
 }	t_data;
+
+// TEMP
+void	ft_parsing(char *filepath, t_data *data);
+void	read_file(char *path, t_data *data);
+void	parse_config(t_data *data);
+void	parse_map(t_data *data);
+void	free_data(t_data *data);
+int		parse_rgb(char *str);
+int		is_map_line(char *line);
 
 // PARSING
 void	ft_debug(t_data *data);

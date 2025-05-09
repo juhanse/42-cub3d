@@ -8,7 +8,6 @@ int	main(int argc, char **argv)
 		return (perror(ERR_ARGS), 1);
 	data = (t_data){0};
 	data.path = argv[1];
-	ft_init_data(&data, argv[1]);
-	//ft_init_map(&data);
+	ft_parsing(argv[1], &data);
 	return (0);
 }
