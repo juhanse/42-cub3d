@@ -8,10 +8,6 @@ void	ft_exit(char *msg)
 
 void	ft_debug(t_data *data)
 {
-	int	i;
-
-	i = -1;
-	printf("width [%d] | height [%d]", data->width, data->height);
-	while (++i < data->width)
-		printf("\n[%d] %s", i, data->map[i]);
+	printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, data->south_image, data->west_image, data->east_image);
+	printf("FLOOR: %d\nCEIL: %d\n", data->floor_color, data->ceiling_color);
 }
