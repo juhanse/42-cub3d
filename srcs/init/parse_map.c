@@ -1,6 +1,18 @@
 #include "../../cub3d.h"
 
-static int	ft_check_square(t_data *data)
+bool	ft_is_map_line(char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i])
+		if (line[i] != '1' || line[i] != '0' || line[i] != 'N' || \
+			line[i] != 'S' || line[i] != 'E' || line[i] != 'W')
+			return (false);
+	return (true);
+}
+
+int	ft_check_square(t_data *data)
 {
 	int	i;
 
@@ -16,7 +28,7 @@ static int	ft_check_square(t_data *data)
 	return (0);
 }
 
-static int	ft_check_walls(t_data *data)
+int	ft_check_walls(t_data *data)
 {
 	int	i;
 	int	j;
@@ -26,21 +38,15 @@ static int	ft_check_walls(t_data *data)
 	{
 		j = -1;
 		while (++j < data->width)
-		{
-			if (i == 0 || i == data->height - 1 || j == 0 || j == data->width - 1)
-			{
+			if (i == 0 || i == data->height - 1 || j == 0 \
+				|| j == data->width - 1)
 				if (data->map[i][j] != '1')
-				{
-					perror(ERR_WALLS);
-					return (1);
-				}
-			}
-		}
+					return (perror(ERR_WALLS), 1);
 	}
 	return (0);
 }
 
-static int	ft_check_char(t_data *data)
+int	ft_check_char(t_data *data)
 {
 	int	i;
 	int	j;
@@ -63,15 +69,8 @@ static int	ft_check_char(t_data *data)
 	return (0);
 }
 
-void	ft_init_map(t_data *data)
+void	ft_parse_map(t_data *data)
 {
-	ft_set_size(data);
-	ft_allocate_map(data);
-	ft_fill_map(data);
-	ft_debug(data);
-	if (ft_check_char(data) || ft_check_square(data) || ft_check_walls(data))
-	{
-		ft_free(data);
-		exit(EXIT_FAILURE);
-	}
+	(void)data;
+	printf("PARSE MAP\n");
 }
