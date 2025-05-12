@@ -35,8 +35,7 @@ typedef struct s_player
 
 typedef struct s_data
 {
-	char		*path;
-	char		**content;
+	char		*map_path;
 	char		**map;
 	int			width;
 	int			height;

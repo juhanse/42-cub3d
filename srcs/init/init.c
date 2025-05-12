@@ -18,7 +18,5 @@ int	ft_initialize(t_data *data, char *path)
 		return (perror(ERR_BAD_PATH), 1);
 	data->path = path;
 	printf("PATH: %s\n", data->path);
-	//ft_parse_config(data);
-	//ft_parse_map(data);
 	return (0);
 }
