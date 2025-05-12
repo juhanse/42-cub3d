@@ -1,6 +1,6 @@
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 COLOUR_GREEN=\033[0;32m
@@ -23,7 +23,7 @@ OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft
+	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft mlx/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 	@echo "$(COLOUR_GREEN)Cub3d compiled ✅$(COLOUR_END)"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
