@@ -1,13 +1,14 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "./libft/libft.h"
-# include "./libft/gnl/gnl.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <math.h>
 # include <fcntl.h>
+# include "./libft/libft.h"
+# include "./libft/gnl/gnl.h"
+#include "./mlx/include/MLX42/MLX42.h"
 
 # define ERR_BAD_PATH 	"Error\nBad path map\n"
 # define ERR_ARGS 		"Error\nInvalid arguments\n"
