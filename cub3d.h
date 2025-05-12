@@ -9,7 +9,7 @@
 # include <fcntl.h>
 # include "./libft/libft.h"
 # include "./libft/gnl/gnl.h"
-//#include "./mlx/include/MLX42/MLX42.h"
+#include "./mlx/include/MLX42/MLX42.h"
 
 # define ERR_BAD_PATH 	"Error\nBad path map\n"
 # define ERR_ARGS 		"Error\nInvalid arguments\n"
@@ -49,8 +49,12 @@ typedef struct s_data
 	t_player	*player;
 }	t_data;
 
+// UTILS
+void	ft_debug(t_data *data);
+
 // PARSING
-void	ft_parse_map(t_data *data);
+void	ft_get_config_color(t_data *data);
+void	ft_get_config_texture(t_data *data);
 int		ft_initialize(t_data *data, char *path);
 
 #endif
