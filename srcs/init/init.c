@@ -17,7 +17,8 @@ int	ft_initialize(t_data *data, char *path)
 	if (ft_check_path(path))
 		return (perror(ERR_BAD_PATH), 1);
 	data->map_path = path;
-	printf("PATH: %s\n", data->map_path);
-	ft_parse_map(data);
+	ft_get_config_texture(data);
+	ft_get_config_color(data);
+	ft_debug(data);
 	return (0);
 }
