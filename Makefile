@@ -13,7 +13,7 @@ OBJDIR = objs/
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-INIT = init/init.c init/parse_config.c init/parse_map.c
+INIT = init/init.c init/parse_map.c
 SRC = main.c utils.c $(INIT)
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))
@@ -22,7 +22,7 @@ OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft mlx/build/libmlx42.a -Iinclude -ldl -lglfw -pthread -lm
+	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft
 	@echo "$(COLOUR_GREEN)Cub3d compiled ✅$(COLOUR_END)"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c

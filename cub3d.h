@@ -9,12 +9,13 @@
 # include <fcntl.h>
 # include "./libft/libft.h"
 # include "./libft/gnl/gnl.h"
-#include "./mlx/include/MLX42/MLX42.h"
+//#include "./mlx/include/MLX42/MLX42.h"
 
 # define ERR_BAD_PATH 	"Error\nBad path map\n"
 # define ERR_ARGS 		"Error\nInvalid arguments\n"
 # define ERR_SQUARE 	"Error\nInvalid square map\n"
 # define ERR_WALLS 		"Error\nMissing walls map\n"
+# define ERR_CHAR_MAP	"Error\nInvalid characters map\n"
 
 typedef enum e_move
 {
@@ -49,9 +50,7 @@ typedef struct s_data
 }	t_data;
 
 // PARSING
-bool	ft_is_map_line(char *line);
 void	ft_parse_map(t_data *data);
-void	ft_parse_config(t_data *data);
 int		ft_initialize(t_data *data, char *path);
 
 #endif
