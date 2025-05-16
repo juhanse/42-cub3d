@@ -16,52 +16,36 @@ static int	ft_parse_rgb(char *str)
 
 void	ft_get_config_texture(t_data *data)
 {
-	int		fd;
-	char	*line;
+	int		i;
 	char	**split;
 
-	fd = open(data->map_path, O_RDONLY);
-	if (fd < 0)
-		exit(EXIT_FAILURE);
-	line = get_next_line(fd);
-	while (line)
+	i = -1;
+	while (++i < data->content_len)
 	{
-		split = ft_split(line, ' ');
+		split = ft_split(data->content[i], ' ');
 		if (!ft_strncmp("NO", split[0], 2))
-			data->north_image = split[1];
+			data->north_image = ft_strdup(split[1]);
 		else if (!ft_strncmp("SO", split[0], 2))
-			data->south_image = split[1];
+			data->south_image = ft_strdup(split[1]);
 		else if (!ft_strncmp("WE", split[0], 2))
-			data->west_image = split[1];
+			data->west_image = ft_strdup(split[1]);
 		else if (!ft_strncmp("EA", split[0], 2))
-			data->east_image = split[1];
-		free(line);
-		line = get_next_line(fd);
+			data->east_image = ft_strdup(split[1]);
 	}
-	free(line);
-	close(fd);
 }
 
 void	ft_get_config_color(t_data *data)
 {
-	int		fd;
-	char	*line;
+	int		i;
 	char	**split;
 
-	fd = open(data->map_path, O_RDONLY);
-	if (fd < 0)
-		exit(EXIT_FAILURE);
-	line = get_next_line(fd);
-	while (line)
+	i = -1;
+	while (++i < data->content_len)
 	{
-		split = ft_split(line, ' ');
+		split = ft_split(data->content[i], ' ');
 		if (!ft_strncmp("F", split[0], 1))
 			data->floor_color = ft_parse_rgb(split[1]);
 		else if (!ft_strncmp("C", split[0], 1))
 			data->ceiling_color = ft_parse_rgb(split[1]);
-		free(line);
-		line = get_next_line(fd);
 	}
-	free(line);
-	close(fd);
 }
