@@ -13,7 +13,7 @@ OBJDIR = objs/
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-INIT = init/init.c init/parse_config.c init/parse_map.c
+INIT = init/init.c init/fill_data.c init/parse_config.c init/parse_map.c
 SRC = main.c utils.c $(INIT)
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))
