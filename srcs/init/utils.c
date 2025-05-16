@@ -16,14 +16,14 @@ void	ft_free_map(t_data *data)
 	free(data->map);
 }
 
-void	ft_print_map(char **map)
+void	ft_print_map(t_data *data)
 {
 	int	i;
 
 	i = -1;
 	printf("\n------ MAP ------\n");
-	while (map[++i])
-		printf("[%2d] %s", i, map[i]);
+	while (++i < data->height)
+		printf("[%2d] %s", i, data->map[i]);
 	printf("\n-----------------\n");
 }
 
@@ -37,5 +37,5 @@ void	ft_debug(t_data *data)
 	printf("INDICATOR: %d\n", data->content_len);
 	printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, data->south_image, data->west_image, data->east_image);
 	printf("FLOOR: %d\nCEIL: %d\n", data->floor_color, data->ceiling_color);
-	ft_print_map(data->map);
+	ft_print_map(data);
 }
