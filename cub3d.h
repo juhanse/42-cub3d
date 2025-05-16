@@ -59,6 +59,8 @@ void	ft_exit(char *msg);
 void	ft_fill_content(t_data *data);
 void	ft_get_config_color(t_data *data);
 void	ft_get_config_texture(t_data *data);
+void	ft_get_map_from_content(t_data *data);
+void	ft_validate_map(char **map);
 int		ft_initialize(t_data *data, char *path);
 
 #endif
