@@ -21,8 +21,8 @@ int	ft_initialize(t_data *data, char *path)
 	ft_get_config_texture(data);
 	ft_get_config_color(data);
 	ft_get_map(data);
-	ft_debug(data);
-	if (!ft_found_player(data) || !ft_check_char(data) \
+	ft_print_map(data);
+	if (!ft_check_char(data) || !ft_found_player(data) \
 	|| !ft_check_walls(data))
 		ft_free_map(data);
 	return (0);

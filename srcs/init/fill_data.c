@@ -58,58 +58,52 @@ static char	*ft_trim_map_line(char *line)
 	j = 0;
 	while (line[i])
 	{
-		if (line[i] != ' ')
-		{
-			buffer[j] = line[i];
-			j++;
-		}
+		if (line[i] != ' ' && line[i] != '\r' && line[i] != '\t')
+			buffer[j++] = line[i];
 		i++;
 	}
 	buffer[j] = '\0';
 	return (buffer);
 }
 
-void	ft_get_map(t_data *data)
+static int	ft_find_map_start(char **content, int end)
 {
-	int		i = data->content_len - 1;
-	int		map_lines = 0;
-	char	**map;
+	int		start;
+	int		k;
 
-	// Rechercher la dernière ligne de la map
-	while (i >= 0 && data->content[i][0] == '\n')
-		i--;
-
-	// Trouver le début de la map
-	int	start = i;
+	start = end;
 	while (start >= 0)
 	{
-		char *line = data->content[start];
-		int	k = 0;
-
-		// Skip whitespaces
-		while (line[k] && (line[k] == ' ' || line[k] == '\t'))
+		k = 0;
+		while (content[start][k] == ' ' || content[start][k] == '\t')
 			k++;
-
-		// Si la ligne est vide, continue
-		if (line[k] == '\0' || line[k] == '\n')
+		if (content[start][k] == '\0' || content[start][k] == '\n')
 			start--;
-		// Si la ligne commence par 0/1/N/S/E/W, c'est une ligne de map
-		else if (ft_strchr("01NSEW", line[k]))
+		else if (ft_strchr("01NSEW", content[start][k]))
 			start--;
 		else
 			break;
 	}
-	start++; // Ajuster après la dernière non-map line
+	return (start + 2);
+}
 
-	// Ignorer la première ligne de la map
-	start++;
+void	ft_get_map(t_data *data)
+{
+	int		i;
+	int		j;
+	int		start;
+	int		map_lines;
+	char	**map;
 
+	i = data->content_len - 1;
+	while (i >= 0 && data->content[i][0] == '\n')
+		i--;
+	start = ft_find_map_start(data->content, i);
 	map_lines = i - start + 1;
 	map = malloc(sizeof(char *) * (map_lines + 1));
 	if (!map)
 		exit(EXIT_FAILURE);
-
-	int j = 0;
+	j = 0;
 	while (j < map_lines)
 	{
 		map[j] = ft_trim_map_line(data->content[start + j]);
@@ -119,4 +113,5 @@ void	ft_get_map(t_data *data)
 	}
 	map[j] = NULL;
 	data->map = map;
+	data->height = map_lines;
 }
