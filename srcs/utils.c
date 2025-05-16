@@ -6,6 +6,16 @@ void	ft_exit(char *msg)
 	exit(EXIT_FAILURE);
 }
 
+void	ft_free_map(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->height)
+		free(data->map[i]);
+	free(data->map);
+}
+
 void	ft_print_map(char **map)
 {
 	int	i;
