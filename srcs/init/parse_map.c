@@ -1,6 +1,23 @@
 #include "../../cub3d.h"
 
-/* static int	ft_check_walls(t_data *data)
+int	ft_found_player(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < data->height)
+	{
+		j = -1;
+		while (++j < data->width)
+			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' \
+			|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
+				return (perror(ERR_PLY_NOT_FOUND), 1);
+	}
+	return (0);
+}
+
+int	ft_check_walls(t_data *data)
 {
 	int	i;
 	int	j;
@@ -18,26 +35,20 @@
 	return (0);
 }
 
-static int	ft_check_line_config(char *line)
+int	ft_check_char(t_data *data)
 {
 	int	i;
+	int	j;
 
 	i = -1;
-	while (line[++i])
-		if (line[i] != '1' || line[i] != '0' || line[i] != 'N' || \
-			line[i] != 'S' || line[i] != 'E' || line[i] != 'W')
-			return (perror(ERR_CHAR_MAP), 1);
-	return (0);
+	while (++i < data->height)
+	{
+		j = -1;
+		while (++j < data->width)
+			if (data->map[i][j] != '0' && data->map[i][j] != '1' \
+			&& data->map[i][j] != 'N' && data->map[i][j] != 'S' \
+			&& data->map[i][j] != 'E' && data->map[i][j] != 'W')
+				return (perror(ERR_CHAR_MAP), 0);
+	}
+	return (1);
 }
-
-static int	ft_check_line_map(char *line)
-{
-	int	i;
-
-	i = -1;
-	while (line[++i])
-		if (line[i] != '1' || line[i] != '0' || line[i] != 'N' || \
-			line[i] != 'S' || line[i] != 'E' || line[i] != 'W')
-			return (perror(ERR_CHAR_MAP), 1);
-	return (0);
-} */
