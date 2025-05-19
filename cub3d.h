@@ -77,6 +77,6 @@ void	ft_get_map(t_data *data);
 int		ft_found_player(t_data *data);
 int		ft_check_walls(t_data *data);
 int		ft_check_char(t_data *data);
-int		ft_init_mlx(t_data *data);
+void	ft_init_mlx(t_data *data);
 
 #endif

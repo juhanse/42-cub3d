@@ -28,7 +28,6 @@ int	ft_initialize(t_data *data, char *path)
 	if (!ft_check_char(data) || !ft_found_player(data) \
 	|| !ft_check_walls(data))
 		ft_free_map(data);
-	if (ft_init_mlx(data))
-		return (perror(ERR_MLX), 1);
+	ft_init_mlx(data);
 	return (0);
 }
