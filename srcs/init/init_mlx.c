@@ -3,6 +3,7 @@
 int	ft_init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->wnd = mlx_new_window(data->mlx, MAP_WIDTH * IMG_PXL, MAP_HEIGHT * IMG_PXL, WND_NAME);
+	data->wnd = mlx_new_window(data->mlx, MAP_WIDTH, MAP_HEIGHT, WND_NAME);
+	mlx_loop(data->mlx);
 	return (0);
 }
