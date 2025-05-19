@@ -50,7 +50,11 @@ static char	*ft_trim_map_line(char *line)
 	int		i;
 	int		j;
 	char	*buffer;
+	size_t	len;
 
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+		line[len - 1] = '\0';
 	buffer = malloc(ft_strlen(line) + 1);
 	if (!buffer)
 		return (NULL);

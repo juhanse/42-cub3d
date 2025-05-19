@@ -24,7 +24,7 @@ void	ft_print_map(t_data *data)
 	i = -1;
 	printf("\n------ MAP ------\n");
 	while (++i < data->height)
-		printf("[%2d] %s", i, data->map[i]);
+		printf("[%2d] %s\n", i, data->map[i]);
 	printf("\n-----------------\n");
 }
 
