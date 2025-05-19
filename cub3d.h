@@ -17,6 +17,7 @@
 # define ERR_WALLS 			"Error\nMissing walls map\n"
 # define ERR_CHAR_MAP		"Error\nInvalid characters map\n"
 # define ERR_PLY_NOT_FOUND	"Error\nPlayer not found\n"
+# define ERR_MALLOC			"Error\nMalloc failed\n"
 
 typedef enum e_move
 {
