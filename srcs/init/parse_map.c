@@ -23,8 +23,8 @@ int	ft_found_player(t_data *data)
 		}
 	}
 	if (!found)
-		return (perror(ERR_PLY_NOT_FOUND), 1);
-	return (0);
+		return (perror(ERR_PLY_NOT_FOUND), 0);
+	return (1);
 }
 
 int	ft_check_walls(t_data *data)
@@ -42,9 +42,9 @@ int	ft_check_walls(t_data *data)
 			if (i == 0 || i == data->height - 1 || j == 0 \
 				|| j == len - 1)
 				if (data->map[i][j] != '1')
-					return (perror(ERR_WALLS), 1);
+					return (perror(ERR_WALLS), 0);
 	}
-	return (0);
+	return (1);
 }
 
 int	ft_check_char(t_data *data)
