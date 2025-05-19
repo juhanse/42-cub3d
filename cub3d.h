@@ -48,11 +48,10 @@ typedef struct s_data
 	void		*mlx;
 	void		*wnd;
 	char		*map_path;
-	char		**content;
 	char		**map;
-	int			content_len;
-	int			width;
-	int			height;
+	char		**map_copy;
+	int			map_copy_height;
+	int			map_height;
 	int			floor_color;
 	int			ceiling_color;
 	char		*north_image;

@@ -13,7 +13,6 @@ static int	ft_check_path(char *path)
 
 int	ft_initialize(t_data *data, char *path)
 {
-	*data = (t_data){0};
 	if (ft_check_path(path))
 		return (perror(ERR_BAD_PATH), 1);
 	data->map_path = path;

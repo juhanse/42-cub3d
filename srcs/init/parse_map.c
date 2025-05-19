@@ -6,7 +6,7 @@ int	ft_found_player(t_data *data)
 	size_t	j;
 
 	i = -1;
-	while (++i < data->height)
+	while (++i < data->map_height)
 	{
 		j = -1;
 		while (++j < ft_strlen(data->map[i]))
@@ -31,12 +31,12 @@ int	ft_check_walls(t_data *data)
 	size_t	len;
 
 	i = -1;
-	while (++i < data->height)
+	while (++i < data->map_height)
 	{
 		len = ft_strlen(data->map[i]);
 		j = -1;
 		while (++j < len)
-			if (i == 0 || i == data->height - 1 || \
+			if (i == 0 || i == data->map_height - 1 || \
 				j == 0 || j == len - 1)
 				if (data->map[i][j] != '1')
 					return (perror(ERR_WALLS), 0);
@@ -50,7 +50,7 @@ int	ft_check_char(t_data *data)
 	size_t	j;
 
 	i = -1;
-	while (++i < data->height)
+	while (++i < data->map_height)
 	{
 		j = -1;
 		while (++j < ft_strlen(data->map[i]))
