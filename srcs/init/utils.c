@@ -25,7 +25,7 @@ void	ft_print_map(t_data *data)
 	printf("\n------ MAP ------\n");
 	while (++i < data->height)
 		printf("[%2d] %s\n", i, data->map[i]);
-	printf("\n-----------------\n");
+	printf("-----------------\n");
 }
 
 void	ft_debug(t_data *data)
@@ -33,11 +33,11 @@ void	ft_debug(t_data *data)
 	int	i;
 
 	i = -1;
+	printf("CONTENT_LEN: %d\n", data->content_len);
 	while (++i < data->content_len)
 		printf("[%d] %s\n", i, data->content[i]);
-	printf("INDICATOR: %d\n", data->content_len);
-	printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, \
+	printf("\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, \
 		data->south_image, data->west_image, data->east_image);
-	printf("FLOOR: %d\nCEIL: %d\n", data->floor_color, data->ceiling_color);
+	printf("\nMAP_HEIGHT: %d", data->height);
 	ft_print_map(data);
 }

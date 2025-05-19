@@ -9,6 +9,12 @@ static void	ft_malloc_content(t_data *data)
 	if (fd < 0)
 		exit(EXIT_FAILURE);
 	line = get_next_line(fd);
+	if (!line)
+	{
+		free(line);
+		perror(ERR_EMPTY_MAP);
+		exit(EXIT_FAILURE);
+	}
 	while (line)
 	{
 		data->content_len++;

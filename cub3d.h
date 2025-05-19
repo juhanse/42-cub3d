@@ -12,6 +12,7 @@
 // #include "./mlx/include/MLX42/MLX42.h"
 
 # define ERR_BAD_PATH 		"Error\nBad path map\n"
+# define ERR_EMPTY_MAP 		"Error\nEmpty map\n"
 # define ERR_ARGS 			"Error\nInvalid arguments\n"
 # define ERR_SQUARE 		"Error\nInvalid square map\n"
 # define ERR_WALLS 			"Error\nMissing walls map\n"
