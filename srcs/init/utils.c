@@ -33,9 +33,10 @@ void	ft_debug(t_data *data)
 
 	i = -1;
 	while (++i < data->content_len)
-		printf("[%d] %s\n", i, data->content[i]);	
+		printf("[%d] %s\n", i, data->content[i]);
 	printf("INDICATOR: %d\n", data->content_len);
-	printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, data->south_image, data->west_image, data->east_image);
+	printf("NO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, \
+		data->south_image, data->west_image, data->east_image);
 	printf("FLOOR: %d\nCEIL: %d\n", data->floor_color, data->ceiling_color);
 	ft_print_map(data);
 }

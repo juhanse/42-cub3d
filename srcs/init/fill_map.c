@@ -82,7 +82,7 @@ static int	ft_find_map_start(char **content, int end)
 		else if (ft_strchr("01NSEW", content[start][k]))
 			start--;
 		else
-			break;
+			break ;
 	}
 	return (start + 2);
 }
