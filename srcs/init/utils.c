@@ -14,6 +14,7 @@ void	ft_free_map(t_data *data)
 	while (++i < data->height)
 		free(data->map[i]);
 	free(data->map);
+	free(data->player);
 }
 
 void	ft_print_map(t_data *data)

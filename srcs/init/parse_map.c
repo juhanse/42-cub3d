@@ -4,27 +4,24 @@ int	ft_found_player(t_data *data)
 {
 	int		i;
 	size_t	j;
-	int		found;
 
 	i = -1;
-	found = 0;
 	while (++i < data->height)
 	{
 		j = -1;
-		while (++j < ft_strlen(data->map[i]))
+		while (++j < ft_strlen(data->map[i]) - 1)
 		{
-			if (ft_strchr("NSEW", data->map[i][j]))
+			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' || \
+				data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
 				data->player->x = j;
 				data->player->y = i;
 				data->player->angle = data->map[i][j];
-				found = 1;
+				return (1);
 			}
 		}
 	}
-	if (!found)
-		return (perror(ERR_PLY_NOT_FOUND), 0);
-	return (1);
+	return (perror(ERR_PLY_NOT_FOUND), 0);
 }
 
 int	ft_check_walls(t_data *data)
@@ -36,7 +33,7 @@ int	ft_check_walls(t_data *data)
 	i = -1;
 	while (++i < data->height)
 	{
-		len = ft_strlen(data->map[i]);
+		len = ft_strlen(data->map[i]) - 1;
 		j = -1;
 		while (++j < len)
 			if (i == 0 || i == data->height - 1 || j == 0 \
@@ -56,11 +53,13 @@ int	ft_check_char(t_data *data)
 	while (++i < data->height)
 	{
 		j = -1;
-		while (++j < ft_strlen(data->map[i]))
+		while (++j < ft_strlen(data->map[i]) - 1)
+		{
 			if (data->map[i][j] != '0' && data->map[i][j] != '1' \
 			&& data->map[i][j] != 'N' && data->map[i][j] != 'S' \
 			&& data->map[i][j] != 'E' && data->map[i][j] != 'W')
 				return (perror(ERR_CHAR_MAP), 0);
+		}
 	}
 	return (1);
 }
