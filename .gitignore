@@ -6,3 +6,5 @@ cub3d
 .vscode
 **/.DS_Store
 mlx/
+mlx2/
+Makefile_mac
