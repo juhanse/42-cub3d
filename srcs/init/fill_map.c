@@ -13,7 +13,7 @@ static void	ft_malloc_content(t_data *data)
 	{
 		free(line);
 		perror(ERR_EMPTY_MAP);
-		exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE); //leak de la struct player
 	}
 	while (line)
 	{
@@ -34,10 +34,10 @@ void	ft_fill_content(t_data *data)
 	int		i;
 	char	*line;
 
-	ft_malloc_content(data);
+	ft_malloc_content(data); //calcul lignes pour malloc
 	fd = open(data->map_path, O_RDONLY);
 	if (fd < 0)
-		exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE); //leak player
 	i = -1;
 	line = get_next_line(fd);
 	while (line)
@@ -76,7 +76,7 @@ static char	*ft_trim_map_line(char *line)
 	return (buffer);
 }
 
-static int	ft_find_map_start(char **content, int end)
+static int	ft_find_map_start(char **content, int end) //quid si je mets plusieurs lignes vides entre F&C config et le debut de map
 {
 	int		start;
 	int		k;
@@ -108,17 +108,17 @@ void	ft_get_map(t_data *data)
 	i = data->map_copy_height - 1;
 	while (i >= 0 && data->map_copy[i][0] == '\n')
 		i--;
-	start = ft_find_map_start(data->map_copy, i);
+	start = ft_find_map_start(data->map_copy, i); //trouve la ligne de debut de map
 	map_lines = i - start + 1;
 	map = malloc(sizeof(char *) * (map_lines + 1));
 	if (!map)
-		exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE); //leak player
 	j = 0;
 	while (j < map_lines)
 	{
 		map[j] = ft_trim_map_line(data->map_copy[start + j]);
 		if (!map[j])
-			exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE); //leak
 		j++;
 	}
 	map[j] = NULL;

@@ -33,14 +33,14 @@ $(NAME): $(OBJS)
 	@echo "$(COLOUR_GREEN)Libft compiled ✅$(COLOUR_END)"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 	@echo "$(COLOUR_RED)Libft cleaned 🧹$(COLOUR_END)"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 	@echo "$(COLOUR_RED)Libft cleaned all 🧹$(COLOUR_END)"
 
 re: fclean all
