@@ -1,5 +1,13 @@
 #include "../cub3d.h"
 
+void	get_pxls_data(t_data *data) //should be proctected ?
+{
+	data->north.pxl_data = mlx_get_data_addr(data->north.img, &data->north.bpp, &data->north.size_line, &data->north.endian);
+	data->south.pxl_data = mlx_get_data_addr(data->south.img, &data->south.bpp, &data->south.size_line, &data->south.endian);
+	data->west.pxl_data = mlx_get_data_addr(data->west.img, &data->west.bpp, &data->west.size_line, &data->west.endian);
+	data->east.pxl_data = mlx_get_data_addr(data->east.img, &data->east.bpp, &data->east.size_line, &data->east.endian);
+}
+
 void	load_fail(t_data *data)
 {
 	printf("Texture load failed.\n");
@@ -54,14 +62,6 @@ void	load_textures(t_data *data)
 	printf("Getting pixel data...\n");
 	get_pxls_data(data);
 	printf("✅ All textures loaded successfully!\n");
-}
-
-void	get_pxls_data(t_data *data) //should be proctected ?
-{
-	data->north.pxl_data = mlx_get_data_addr(data->north.img, &data->north.bpp, &data->north.size_line, &data->north.endian);
-	data->south.pxl_data = mlx_get_data_addr(data->south.img, &data->south.bpp, &data->south.size_line, &data->south.endian);
-	data->west.pxl_data = mlx_get_data_addr(data->west.img, &data->west.bpp, &data->west.size_line, &data->west.endian);
-	data->east.pxl_data = mlx_get_data_addr(data->east.img, &data->east.bpp, &data->east.size_line, &data->east.endian);
 }
 
 // void	load_textures(t_data *data) //voir pour refactor avec une boucle ?
