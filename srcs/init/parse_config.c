@@ -17,6 +17,7 @@ static int	ft_parse_rgb(char *str)
 void	ft_get_config_texture(t_data *data)
 {
 	int		i;
+	int		j;
 	int		len;
 	char	**split;
 
@@ -24,6 +25,17 @@ void	ft_get_config_texture(t_data *data)
 	while (++i < data->map_cpy_height)
 	{
 		split = ft_split(data->map_cpy[i], ' ');
+		if (!split || !split[0] || !split[1])
+		{
+			if (split)
+			{
+				j = 0;
+				while (split[j])
+					free(split[j++]);
+				free(split);
+			}
+			continue ;
+		}
 		len = ft_strlen(split[1]);
 		if (len > 0 && split[1][len - 1] == '\n')
 			split[1][len - 1] = '\0';
@@ -36,7 +48,7 @@ void	ft_get_config_texture(t_data *data)
 		else if (!ft_strncmp("EA", split[0], 2))
 			data->east.path = ft_strdup(split[1]);
 	}
-	//free_split
+	//free split
 }
 
 void	ft_get_config_color(t_data *data)
