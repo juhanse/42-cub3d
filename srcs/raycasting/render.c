@@ -151,24 +151,28 @@ void	draw_pxl_col(t_data *data, int x, t_wall wall)
 	int	wall_start;
 	int	wall_end;
 
+	if (wall.distance < 0.001f)
+		wall.distance = 0.001f;
 	wall_height = SCREEN_HEIGHT / wall.distance;
 	wall_start = (SCREEN_HEIGHT - wall_height) / 2;
 	wall_end = wall_start + wall_height;
 	draw_ceiling(data, x, 0, wall_start);
 	draw_wall(data, wall, x, wall_start, wall_end);
-	draw_floor(data, x , wall_end, SCREEN_WIDTH);
+	draw_floor(data, x , wall_end, SCREEN_HEIGHT);
 }
 
 void	render_3d(t_data *data)
 {
 	int		x;
 	float	ray_angle;
+	float	fov_rad;
 	t_wall	wall;
 
+	fov_rad = FOV * M_PI / 180.0f;
 	x = -1;
 	while (++x < SCREEN_WIDTH)
 	{
-		ray_angle = data->player->p_angle + (x - SCREEN_WIDTH / 2) * (FOV / SCREEN_WIDTH);
+		ray_angle = data->player->p_angle + (x - SCREEN_WIDTH / 2.0f) * (fov_rad / SCREEN_WIDTH);
 		wall = cast_ray(data, ray_angle);
 		draw_pxl_col(data, x, wall);
 	}
