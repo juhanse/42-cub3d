@@ -4,11 +4,11 @@ char	*get_direction(t_data *data, t_wall wall)
 {
 	char *direction;
 
-	if (wall.orientation == 'NORTH')
+	if (wall.orientation == NORTH)
 		direction = data->north.pxl_data;
-	else if (wall.orientation == 'SOUTH')
+	else if (wall.orientation == SOUTH)
 		direction = data->south.pxl_data;
-	else if (wall.orientation == 'WEST')
+	else if (wall.orientation == WEST)
 		direction = data->west.pxl_data;
 	else
 		direction = data->east.pxl_data;
@@ -50,6 +50,7 @@ void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw)
 {
 	int i;
 
+	(void)start_draw;
 	i = -1;
 	while (++i < end_draw)
 		put_pixel(data, x, i, data->ceiling_color);
@@ -80,6 +81,7 @@ void	draw_floor(t_data *data, int x, int start_draw, int end_draw)
 {
 	int i;
 
+	(void)start_draw;
 	i = end_draw;
 	while (i < SCREEN_HEIGHT)
 	{
