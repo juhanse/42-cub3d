@@ -17,7 +17,6 @@ void	get_pxls_data(t_data *data) //should be proctected ?
 
 void	load_textures(t_data *data) //voir pour refactor avec une boucle ?
 {
-	printf("%s\n", data->north_path);
 	data->north.img = mlx_xpm_to_image(data->mlx, &data->north.path, &data->north.width, &data->north.height);
 	if (!data->north.img)
 		return (load_fail(data));
