@@ -181,5 +181,6 @@ int	render_loop(void *param)
 	data = param;
 	mlx_clear_window(data->mlx, data->wnd);
 	render_3d(data);
+	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
 	return (0);
 }
