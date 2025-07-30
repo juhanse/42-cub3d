@@ -25,7 +25,7 @@ void	ft_init_mlx(t_data *data)
 	data->wnd = mlx_new_window(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, WND_NAME);
 	data->mlx_img.img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	data->mlx_img.pxl_data = mlx_get_data_addr(data->mlx_img.img, &data->mlx_img.bpp, &data->mlx_img.size_line, &data->mlx_img.endian);
-	loads_textures(data);
+	load_textures(data);
 	ft_hooks(data);
 	mlx_loop(data->mlx);
 }
