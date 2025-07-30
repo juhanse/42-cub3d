@@ -8,3 +8,4 @@ cub3d
 mlx/
 mlx2/
 Makefile_mac
+**/draft.c

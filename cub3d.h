@@ -11,10 +11,15 @@
 # include "./libft/libft.h"
 # include "./libft/gnl/gnl.h"
 
-# define MAP_WIDTH	1080
-# define MAP_HEIGHT	720
+# define SCREEN_WIDTH	800
+# define SCREEN_HEIGHT	600
 # define IMG_PXL 64
 # define WND_NAME "Cub3d"
+# define FOV 60.0f
+
+# ifndef M_PI
+    #  define M_PI 3.14159265358979323846
+# endif
 
 # define ERR_BAD_PATH 		"Error\nBad path map\n"
 # define ERR_EMPTY_MAP 		"Error\nEmpty map\n"
@@ -26,7 +31,15 @@
 # define ERR_MALLOC			"Error\nMalloc failed\n"
 # define ERR_MLX			"Error\nMinilibx failed\n"
 
-typedef enum e_move
+typedef enum	e_cardinals
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST
+}	t_cardinals;
+
+typedef enum	e_move
 {
 	RIGHT,
 	LEFT,
@@ -36,11 +49,32 @@ typedef enum e_move
 	ROT_LEFT
 }	t_move;
 
+typedef struct	s_wall
+{
+	float		distance;
+	t_cardinals	orientation;
+	float		hit_x;
+	float		hit_y;
+	float		texture_x;
+}	t_wall;
+
+typedef struct s_img
+{
+	char	*path;
+	void	*img;
+	char	*pxl_data;
+	int		width;
+	int		height;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}	t_img;
+
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	angle;
+	float	p_x;
+	float	p_y;
+	float	p_angle;
 }	t_player;
 
 typedef struct s_data
@@ -49,15 +83,20 @@ typedef struct s_data
 	void		*wnd;
 	char		*map_path;
 	char		**map;
-	char		**map_copy;
-	int			map_copy_height;
+	char		**map_cpy;
+	int			map_cpy_height;
 	int			map_height;
 	int			floor_color;
 	int			ceiling_color;
-	char		*north_image;
-	char		*south_image;
-	char		*west_image;
-	char		*east_image;
+	char		*north_path;
+	char		*south_path;
+	char		*west_path;
+	char		*east_path;
+	t_img		mlx_img;
+	t_img		north;
+	t_img		south;
+	t_img		west;
+	t_img		east;
 	t_player	*player;
 }	t_data;
 
@@ -77,5 +116,13 @@ int		ft_found_player(t_data *data);
 int		ft_check_walls(t_data *data);
 int		ft_check_char(t_data *data);
 void	ft_init_mlx(t_data *data);
+
+// RAYCASTING
+
+void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw);
+void	draw_floor(t_data *data, int x, int start_draw, int end_draw);
+void	draw_wall(t_data *data, t_wall wall, int x, int start_draw, int end_draw);
+void	load_textures(t_data *data);
+int		render_loop(t_data *data);
 
 #endif

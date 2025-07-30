@@ -33,11 +33,11 @@ void	ft_debug(t_data *data)
 	int	i;
 
 	i = -1;
-	printf("MAP COPY LEN: %d\n", data->map_copy_height);
-	while (++i < data->map_copy_height)
-		printf("[%d] %s\n", i, data->map_copy[i]);
-	printf("\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, \
-		data->south_image, data->west_image, data->east_image);
+	printf("MAP COPY LEN: %d\n", data->map_cpy_height);
+	while (++i < data->map_cpy_height)
+		printf("[%d] %s\n", i, data->map_cpy[i]);
+	printf("\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_path, \
+		data->south_path, data->west_path, data->east_path);
 	printf("\nMAP_HEIGHT: %d", data->map_height);
 	ft_print_map(data);
 }

@@ -20,17 +20,17 @@ void	ft_get_config_texture(t_data *data)
 	char	**split;
 
 	i = -1;
-	while (++i < data->map_copy_height)
+	while (++i < data->map_cpy_height)
 	{
-		split = ft_split(data->map_copy[i], ' ');
+		split = ft_split(data->map_cpy[i], ' ');
 		if (!ft_strncmp("NO", split[0], 2))
-			data->north_image = ft_strdup(split[1]);
+			data->north.path = ft_strdup(split[1]);
 		else if (!ft_strncmp("SO", split[0], 2))
-			data->south_image = ft_strdup(split[1]);
+			data->south.path = ft_strdup(split[1]);
 		else if (!ft_strncmp("WE", split[0], 2))
-			data->west_image = ft_strdup(split[1]);
+			data->west.path = ft_strdup(split[1]);
 		else if (!ft_strncmp("EA", split[0], 2))
-			data->east_image = ft_strdup(split[1]);
+			data->east.path = ft_strdup(split[1]);
 	}
 }
 
@@ -40,9 +40,9 @@ void	ft_get_config_color(t_data *data)
 	char	**split;
 
 	i = -1;
-	while (++i < data->map_copy_height)
+	while (++i < data->map_cpy_height)
 	{
-		split = ft_split(data->map_copy[i], ' ');
+		split = ft_split(data->map_cpy[i], ' ');
 		if (!ft_strncmp("F", split[0], 1))
 			data->floor_color = ft_parse_rgb(split[1]);
 		else if (!ft_strncmp("C", split[0], 1))

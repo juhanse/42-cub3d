@@ -1,0 +1,132 @@
+#include "../../cub3d.h"
+
+void	load_fail(t_data *data)
+{
+	printf("Texture load failed.\n");
+	//free all
+	exit (1);
+}
+
+void	get_pxls_data(t_data *data) //should be proctected ?
+{
+	data->north.pxl_data = mlx_get_data_addr(data->north.img, &data->north.bpp, &data->north.size_line, &data->north.endian);
+	data->south.pxl_data = mlx_get_data_addr(data->south.img, &data->south.bpp, &data->south.size_line, &data->south.endian);
+	data->west.pxl_data = mlx_get_data_addr(data->west.img, &data->west.bpp, &data->west.size_line, &data->west.endian);
+	data->east.pxl_data = mlx_get_data_addr(data->east.img, &data->east.bpp, &data->east.size_line, &data->east.endian);
+}
+
+void	load_textures(t_data *data) //voir pour refactor avec une boucle ?
+{
+	data->north.img = mlx_xpm_to_image(data->mlx, data->north.path, &data->north.width, &data->north.height);
+	if (!data->north.img)
+		return (load_fail(data));
+	data->south.img = mlx_xpm_to_image(data->mlx, data->south.path, &data->south.width, &data->south.height);
+	if (!data->south.img)
+		return (load_fail(data));
+	data->west.img = mlx_xpm_to_image(data->mlx, data->west.path, &data->west.width, &data->west.height);
+	if (!data->west.img)
+		return (load_fail(data));
+	data->east.img = mlx_xpm_to_image(data->mlx, data->east.path, &data->east.width, &data->east.height);
+	if (!data->east.img)
+		return (load_fail(data));
+	get_pxls_data(data);
+}
+
+bool	is_wall(t_data *data, int map_x, int map_y)
+{
+	bool	hit;
+	
+	hit = false;
+	if (data->map[map_y][map_x] == '1')
+		hit = true;
+	return (hit);
+}
+
+void inspect_wall(t_wall *wall, float current_x, float current_y, float distance, float ray_dir_x, float ray_dir_y, float step)
+{
+	const float	prev_x = current_x - ray_dir_x * step;
+	const float prev_y = current_y - ray_dir_y * step;
+
+	wall->distance = distance;
+	wall->hit_x = current_x;
+	wall->hit_y = current_y;
+	if ((int)prev_x != current_x)
+	{
+		wall->texture_x = current_y - (int)current_y;
+		if (ray_dir_x > 0)
+			wall->orientation = WEST;
+		else
+			wall->orientation = EAST;
+	}
+	else
+	{
+		wall->texture_x = current_x - (int)current_x;
+		if (ray_dir_y > 0)
+			wall->orientation = NORTH;
+		else
+			wall->orientation = SOUTH;
+	}
+}
+
+t_wall	cast_ray(t_data *data, int x, float ray_angle)
+{
+	t_wall		wall;
+	float		current_x;
+	float		current_y;
+	float		distance;
+	const float	ray_dir_x = cos(ray_angle);
+	const float	ray_dir_y = sin(ray_angle);
+	const float	step = 0.01f;
+
+	wall = (t_wall){0};
+	current_x = data->player->p_x;
+	current_y = data->player->p_y;
+	distance = 0.0f;
+	while (1)
+	{
+		current_x = ray_dir_x * step;
+		current_y = ray_dir_y * step;
+		distance += step;
+		if (is_wall(data, current_x, current_y))
+		{
+			inspect_wall(&wall, current_x, current_y, distance, ray_dir_x, ray_dir_y, step);
+			break ;
+		}
+	}
+	return (wall);
+}
+
+void	draw_pxl_col(t_data *data, int x, t_wall wall)
+{
+	int	wall_height;
+	int	wall_start;
+	int	wall_end;
+
+	wall_height = SCREEN_HEIGHT / wall.distance;
+	wall_start = (SCREEN_HEIGHT - wall_height) / 2;
+	wall_end = wall_start + wall_height;
+	draw_ceiling(data, x, 0, wall_start);
+	draw_wall(data, wall, x, wall_start, wall_end);
+	draw_floor(data, x , wall_end, SCREEN_WIDTH);
+}
+
+void	render_3d(t_data *data)
+{
+	int		x;
+	float	ray_angle;
+	t_wall	wall;
+
+	x = -1;
+	while (++x < SCREEN_WIDTH)
+	{
+		ray_angle = data->player->p_angle + (x - SCREEN_WIDTH / 2) * (FOV / SCREEN_WIDTH);
+		wall = cast_ray(data, x, ray_angle);
+		draw_pxl_col(data, x, wall);
+	}
+}
+
+int	render_loop(t_data *data)
+{
+	mlx_clear_window(data->mlx, data->wnd);
+	render_3d(data);
+}
