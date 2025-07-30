@@ -123,6 +123,6 @@ void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw);
 void	draw_floor(t_data *data, int x, int start_draw, int end_draw);
 void	draw_wall(t_data *data, t_wall wall, int x, int start_draw, int end_draw);
 void	load_textures(t_data *data);
-void	render_loop(t_data *data);
+int		render_loop(void *param);
 
 #endif

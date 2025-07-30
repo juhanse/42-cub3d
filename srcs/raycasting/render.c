@@ -1,4 +1,4 @@
-#include "../../cub3d.h"
+#include "../cub3d.h"
 
 void	load_fail(t_data *data)
 {
@@ -126,8 +126,12 @@ void	render_3d(t_data *data)
 	}
 }
 
-void	render_loop(t_data *data)
+int	render_loop(void *param)
 {
+	t_data	*data;
+
+	data = param;
 	mlx_clear_window(data->mlx, data->wnd);
 	render_3d(data);
+	return (0);
 }
