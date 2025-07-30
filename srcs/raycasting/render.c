@@ -3,7 +3,7 @@
 void	load_fail(t_data *data)
 {
 	printf("Texture load failed.\n");
-	//free all
+	ft_free_map(data); //better free needed
 	exit (1);
 }
 
@@ -17,16 +17,16 @@ void	get_pxls_data(t_data *data) //should be proctected ?
 
 void	load_textures(t_data *data) //voir pour refactor avec une boucle ?
 {
-	data->north.img = mlx_xpm_to_image(data->mlx, data->north.path, &data->north.width, &data->north.height);
+	data->north.img = mlx_xpm_to_image(data->mlx, &data->north.path, &data->north.width, &data->north.height);
 	if (!data->north.img)
 		return (load_fail(data));
-	data->south.img = mlx_xpm_to_image(data->mlx, data->south.path, &data->south.width, &data->south.height);
+	data->south.img = mlx_xpm_to_image(data->mlx, &data->south.path, &data->south.width, &data->south.height);
 	if (!data->south.img)
 		return (load_fail(data));
-	data->west.img = mlx_xpm_to_image(data->mlx, data->west.path, &data->west.width, &data->west.height);
+	data->west.img = mlx_xpm_to_image(data->mlx, &data->west.path, &data->west.width, &data->west.height);
 	if (!data->west.img)
 		return (load_fail(data));
-	data->east.img = mlx_xpm_to_image(data->mlx, data->east.path, &data->east.width, &data->east.height);
+	data->east.img = mlx_xpm_to_image(data->mlx, &data->east.path, &data->east.width, &data->east.height);
 	if (!data->east.img)
 		return (load_fail(data));
 	get_pxls_data(data);
@@ -45,7 +45,7 @@ bool	is_wall(t_data *data, int map_x, int map_y)
 void inspect_wall(t_wall *wall, float current_x, float current_y, float distance, float ray_dir_x, float ray_dir_y, float step)
 {
 	const float	prev_x = current_x - ray_dir_x * step;
-	const float prev_y = current_y - ray_dir_y * step;
+	//const float prev_y = current_y - ray_dir_y * step;
 
 	wall->distance = distance;
 	wall->hit_x = current_x;
@@ -68,7 +68,7 @@ void inspect_wall(t_wall *wall, float current_x, float current_y, float distance
 	}
 }
 
-t_wall	cast_ray(t_data *data, int x, float ray_angle)
+t_wall	cast_ray(t_data *data, float ray_angle)
 {
 	t_wall		wall;
 	float		current_x;
@@ -120,12 +120,12 @@ void	render_3d(t_data *data)
 	while (++x < SCREEN_WIDTH)
 	{
 		ray_angle = data->player->p_angle + (x - SCREEN_WIDTH / 2) * (FOV / SCREEN_WIDTH);
-		wall = cast_ray(data, x, ray_angle);
+		wall = cast_ray(data, ray_angle);
 		draw_pxl_col(data, x, wall);
 	}
 }
 
-int	render_loop(t_data *data)
+void	render_loop(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->wnd);
 	render_3d(data);
