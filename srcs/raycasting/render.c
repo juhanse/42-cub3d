@@ -18,43 +18,43 @@ void	load_fail(t_data *data)
 void	load_textures(t_data *data)
 {
 	printf("=== DEBUGGING TEXTURE LOADING ===\n");
-	printf("North path: '%s'\n", data->north_path ? data->north_path : "NULL");
-	printf("South path: '%s'\n", data->south_path ? data->south_path : "NULL");
-	printf("West path: '%s'\n", data->west_path ? data->west_path : "NULL");
-	printf("East path: '%s'\n", data->east_path ? data->east_path : "NULL");
+	printf("North path: '%s'\n", data->north.path ? data->north.path : "NULL");
+	printf("South path: '%s'\n", data->south.path ? data->south.path : "NULL");
+	printf("West path: '%s'\n", data->west.path ? data->west.path : "NULL");
+	printf("East path: '%s'\n", data->east.path ? data->east.path : "NULL");
 	
 	printf("Loading north texture...\n");
-	data->north.img = mlx_xpm_file_to_image(data->mlx, data->north_path, &data->north.width, &data->north.height);
+	data->north.img = mlx_xpm_file_to_image(data->mlx, data->north.path, &data->north.width, &data->north.height);
 	if (!data->north.img)
 	{
-		printf("❌ FAILED: North texture failed to load: %s\n", data->north_path);
+		printf("❌ FAILED: North texture failed to load: %s\n", data->north.path);
 		return (load_fail(data));
 	}
 	printf("✅ North texture loaded successfully\n");
 	
 	printf("Loading south texture...\n");
-	data->south.img = mlx_xpm_file_to_image(data->mlx, data->south_path, &data->south.width, &data->south.height);
+	data->south.img = mlx_xpm_file_to_image(data->mlx, data->south.path, &data->south.width, &data->south.height);
 	if (!data->south.img)
 	{
-		printf("❌ FAILED: South texture failed to load: %s\n", data->south_path);
+		printf("❌ FAILED: South texture failed to load: %s\n", data->south.path);
 		return (load_fail(data));
 	}
 	printf("✅ South texture loaded successfully\n");
 	
 	printf("Loading west texture...\n");
-	data->west.img = mlx_xpm_file_to_image(data->mlx, data->west_path, &data->west.width, &data->west.height);
+	data->west.img = mlx_xpm_file_to_image(data->mlx, data->west.path, &data->west.width, &data->west.height);
 	if (!data->west.img)
 	{
-		printf("❌ FAILED: West texture failed to load: %s\n", data->west_path);
+		printf("❌ FAILED: West texture failed to load: %s\n", data->west.path);
 		return (load_fail(data));
 	}
 	printf("✅ West texture loaded successfully\n");
 	
 	printf("Loading east texture...\n");
-	data->east.img = mlx_xpm_file_to_image(data->mlx, data->east_path, &data->east.width, &data->east.height);
+	data->east.img = mlx_xpm_file_to_image(data->mlx, data->east.path, &data->east.width, &data->east.height);
 	if (!data->east.img)
 	{
-		printf("❌ FAILED: East texture failed to load: %s\n", data->east_path);
+		printf("❌ FAILED: East texture failed to load: %s\n", data->east.path);
 		return (load_fail(data));
 	}
 	printf("✅ East texture loaded successfully\n");

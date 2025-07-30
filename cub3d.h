@@ -88,10 +88,6 @@ typedef struct s_data
 	int			map_height;
 	int			floor_color;
 	int			ceiling_color;
-	char		*north_path;
-	char		*south_path;
-	char		*west_path;
-	char		*east_path;
 	t_img		mlx_img;
 	t_img		north;
 	t_img		south;
