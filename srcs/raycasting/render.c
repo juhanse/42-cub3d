@@ -1,10 +1,59 @@
 #include "../cub3d.h"
 
-void	load_fail(t_data *data)
+// void	load_fail(t_data *data)
+// {
+// 	printf("Texture load failed.\n");
+// 	ft_free_map(data); //better free needed
+// 	exit (1);
+// }
+
+void	load_textures(t_data *data)
 {
-	printf("Texture load failed.\n");
-	ft_free_map(data); //better free needed
-	exit (1);
+	printf("=== DEBUGGING TEXTURE LOADING ===\n");
+	printf("North path: '%s'\n", data->north_path ? data->north_path : "NULL");
+	printf("South path: '%s'\n", data->south_path ? data->south_path : "NULL");
+	printf("West path: '%s'\n", data->west_path ? data->west_path : "NULL");
+	printf("East path: '%s'\n", data->east_path ? data->east_path : "NULL");
+	
+	printf("Loading north texture...\n");
+	data->north.img = mlx_xpm_file_to_image(data->mlx, data->north_path, &data->north.width, &data->north.height);
+	if (!data->north.img)
+	{
+		printf("❌ FAILED: North texture failed to load: %s\n", data->north_path);
+		return (load_fail(data));
+	}
+	printf("✅ North texture loaded successfully\n");
+	
+	printf("Loading south texture...\n");
+	data->south.img = mlx_xpm_file_to_image(data->mlx, data->south_path, &data->south.width, &data->south.height);
+	if (!data->south.img)
+	{
+		printf("❌ FAILED: South texture failed to load: %s\n", data->south_path);
+		return (load_fail(data));
+	}
+	printf("✅ South texture loaded successfully\n");
+	
+	printf("Loading west texture...\n");
+	data->west.img = mlx_xpm_file_to_image(data->mlx, data->west_path, &data->west.width, &data->west.height);
+	if (!data->west.img)
+	{
+		printf("❌ FAILED: West texture failed to load: %s\n", data->west_path);
+		return (load_fail(data));
+	}
+	printf("✅ West texture loaded successfully\n");
+	
+	printf("Loading east texture...\n");
+	data->east.img = mlx_xpm_file_to_image(data->mlx, data->east_path, &data->east.width, &data->east.height);
+	if (!data->east.img)
+	{
+		printf("❌ FAILED: East texture failed to load: %s\n", data->east_path);
+		return (load_fail(data));
+	}
+	printf("✅ East texture loaded successfully\n");
+	
+	printf("Getting pixel data...\n");
+	get_pxls_data(data);
+	printf("✅ All textures loaded successfully!\n");
 }
 
 void	get_pxls_data(t_data *data) //should be proctected ?
