@@ -39,9 +39,9 @@ int	get_text_pxl(char *texture_data, int text_width, int text_x, int text_y)
 	if (text_x < 0 || text_x >= text_width)
 		return (0);
 	pxl_index = (text_y * text_width + text_x) * 4;
-	blue = texture_data[pxl_index + 0] && 0xFF;
-	green = texture_data[pxl_index + 1] && 0xFF;
-	red = texture_data[pxl_index + 2] && 0xFF;
+	blue = texture_data[pxl_index + 0] & 0xFF;
+	green = texture_data[pxl_index + 1] & 0xFF;
+	red = texture_data[pxl_index + 2] & 0xFF;
 
 	return (red << 16) | (green << 8) | blue;
 }
