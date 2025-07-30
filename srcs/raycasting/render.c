@@ -1,11 +1,11 @@
 #include "../cub3d.h"
 
-// void	load_fail(t_data *data)
-// {
-// 	printf("Texture load failed.\n");
-// 	ft_free_map(data); //better free needed
-// 	exit (1);
-// }
+void	load_fail(t_data *data)
+{
+	printf("Texture load failed.\n");
+	ft_free_map(data); //better free needed
+	exit (1);
+}
 
 void	load_textures(t_data *data)
 {
@@ -64,22 +64,22 @@ void	get_pxls_data(t_data *data) //should be proctected ?
 	data->east.pxl_data = mlx_get_data_addr(data->east.img, &data->east.bpp, &data->east.size_line, &data->east.endian);
 }
 
-void	load_textures(t_data *data) //voir pour refactor avec une boucle ?
-{
-	data->north.img = mlx_xpm_file_to_image(data->mlx, data->north.path, &data->north.width, &data->north.height);
-	if (!data->north.img)
-		return (load_fail(data));
-	data->south.img = mlx_xpm_file_to_image(data->mlx, data->south.path, &data->south.width, &data->south.height);
-	if (!data->south.img)
-		return (load_fail(data));
-	data->west.img = mlx_xpm_file_to_image(data->mlx, data->west.path, &data->west.width, &data->west.height);
-	if (!data->west.img)
-		return (load_fail(data));
-	data->east.img = mlx_xpm_file_to_image(data->mlx, data->east.path, &data->east.width, &data->east.height);
-	if (!data->east.img)
-		return (load_fail(data));
-	get_pxls_data(data);
-}
+// void	load_textures(t_data *data) //voir pour refactor avec une boucle ?
+// {
+// 	data->north.img = mlx_xpm_file_to_image(data->mlx, data->north.path, &data->north.width, &data->north.height);
+// 	if (!data->north.img)
+// 		return (load_fail(data));
+// 	data->south.img = mlx_xpm_file_to_image(data->mlx, data->south.path, &data->south.width, &data->south.height);
+// 	if (!data->south.img)
+// 		return (load_fail(data));
+// 	data->west.img = mlx_xpm_file_to_image(data->mlx, data->west.path, &data->west.width, &data->west.height);
+// 	if (!data->west.img)
+// 		return (load_fail(data));
+// 	data->east.img = mlx_xpm_file_to_image(data->mlx, data->east.path, &data->east.width, &data->east.height);
+// 	if (!data->east.img)
+// 		return (load_fail(data));
+// 	get_pxls_data(data);
+// }
 
 bool	is_wall(t_data *data, int map_x, int map_y)
 {
