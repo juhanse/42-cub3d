@@ -17,7 +17,6 @@ void	ft_free_map(t_data *data)
 	free(data->player);
 }
 
-
 void	ft_free_split(char **s)
 {
 	int	i;
