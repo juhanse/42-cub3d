@@ -17,6 +17,17 @@ void	ft_free_map(t_data *data)
 	free(data->player);
 }
 
+
+void	ft_free_split(char **s)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		free(s[i]);
+	free(s);
+}
+
 void	ft_print_map(t_data *data)
 {
 	int	i;

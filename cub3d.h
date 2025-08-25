@@ -66,6 +66,7 @@ void	ft_debug(t_data *data);
 void	ft_exit(char *msg);
 void	ft_free_map(t_data *data);
 void	ft_print_map(t_data *data);
+void	ft_free_split(char **s);
 
 // INIT
 int		ft_initialize(t_data *data, char *path);

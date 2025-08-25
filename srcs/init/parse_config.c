@@ -31,6 +31,7 @@ void	ft_get_config_texture(t_data *data)
 			data->west_image = ft_strdup(split[1]);
 		else if (!ft_strncmp("EA", split[0], 2))
 			data->east_image = ft_strdup(split[1]);
+		ft_free_split(split);
 	}
 }
 
