@@ -57,7 +57,8 @@ int	ft_check_char(t_data *data)
 		{
 			if (data->map[i][j] != '0' && data->map[i][j] != '1' \
 			&& data->map[i][j] != 'N' && data->map[i][j] != 'S' \
-			&& data->map[i][j] != 'E' && data->map[i][j] != 'W')
+			&& data->map[i][j] != 'E' && data->map[i][j] != 'W' \
+			&& data->map[i][j] != 9)
 				return (perror(ERR_CHAR_MAP), 0);
 		}
 	}
