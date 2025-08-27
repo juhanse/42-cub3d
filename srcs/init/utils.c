@@ -12,7 +12,11 @@ void	ft_free_map(t_data *data)
 
 	i = -1;
 	while (++i < data->map_height)
+	{
+		free(data->content[i]);
 		free(data->map[i]);
+	}
+	free(data->content);
 	free(data->map);
 	free(data->player);
 }
