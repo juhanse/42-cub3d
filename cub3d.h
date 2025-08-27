@@ -49,8 +49,6 @@ typedef struct s_data
 	void		*wnd;
 	char		*map_path;
 	char		**map;
-	char		**map_copy;
-	int			map_copy_height;
 	int			map_height;
 	int			floor_color;
 	int			ceiling_color;
@@ -65,12 +63,11 @@ typedef struct s_data
 void	ft_debug(t_data *data);
 void	ft_exit(char *msg);
 void	ft_free_map(t_data *data);
-void	ft_print_map(t_data *data);
 void	ft_free_split(char **s);
 
 // INIT
 int		ft_initialize(t_data *data, char *path);
-void	ft_fill_content(t_data *data);
+int		ft_fill_content(t_data *data);
 void	ft_get_config_color(t_data *data);
 void	ft_get_config_texture(t_data *data);
 void	ft_get_map(t_data *data);
