@@ -17,14 +17,14 @@ static int	ft_malloc_content(t_data *data)
 	}
 	while (line)
 	{
-		data->map_height++;
+		data->content_height++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	free(line);
 	close(fd);
-	data->map = malloc(sizeof(char *) * (data->map_height + 1));
-	if (!data->map)
+	data->content = malloc(sizeof(char *) * (data->content_height + 1));
+	if (!data->content)
 		return (0);
 	return (1);
 }
@@ -44,11 +44,11 @@ int	ft_fill_content(t_data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
-		data->map[++i] = ft_strdup(line);
+		data->content[++i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	data->map[i + 1] = NULL;
+	data->content[i + 1] = NULL;
 	free(line);
 	close(fd);
 	return (1);
@@ -108,10 +108,10 @@ void	ft_get_map(t_data *data)
 	int		map_lines;
 	char	**map;
 
-	i = data->map_height - 1;
-	while (i >= 0 && data->map[i][0] == '\n')
+	i = data->content_height - 1;
+	while (i >= 0 && data->content[i][0] == '\n')
 		i--;
-	start = ft_find_map_start(data->map, i);
+	start = ft_find_map_start(data->content, i);
 	map_lines = i - start + 1;
 	map = malloc(sizeof(char *) * (map_lines + 1));
 	if (!map)
@@ -119,7 +119,7 @@ void	ft_get_map(t_data *data)
 	j = 0;
 	while (j < map_lines)
 	{
-		map[j] = ft_trim_map_line(data->map[start + j]);
+		map[j] = ft_trim_map_line(data->content[start + j]);
 		if (!map[j])
 			exit(EXIT_FAILURE);
 		j++;
