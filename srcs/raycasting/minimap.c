@@ -27,7 +27,7 @@ void	draw_square(t_data *data, int x, int y, int size, int color)
 		j = x;
 		while (j < x + size)
 		{
-			put_pixel(data, x + i, y, color);
+			put_pixel(data, j, i, color);
 			j++;
 		}
 		i++;

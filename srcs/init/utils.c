@@ -40,4 +40,5 @@ void	ft_debug(t_data *data)
 		data->south.path, data->west.path, data->east.path);
 	printf("\nMAP_HEIGHT: %d", data->map_height);
 	ft_print_map(data);
+	printf("Player position is (%f, %f).\n", data->player->p_x, data->player->p_y);
 }
