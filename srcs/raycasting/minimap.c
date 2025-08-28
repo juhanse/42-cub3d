@@ -34,10 +34,10 @@ void	draw_square(t_data *data, int x, int y, int size, int color)
 	}
 }
 
-void	render(t_data *data)
-{
-	//draw_square(data, 0, 0, )
-}
+// void	render(t_data *data)
+// {
+// 	//draw_square(data, 0, 0, )
+// }
 
 void	minimap(t_data *data)
 {
