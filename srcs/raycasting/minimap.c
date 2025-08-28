@@ -42,7 +42,7 @@ void	draw_map(t_data *data)
 	while (++y < data->map_height)
 	{
 		x = -1;
-		while (data->map[y][x])
+		while (data->map[y][++x])
 		{
 			if (data->map[y][x] == '1')
 				draw_square(data, x * SIZE, y * SIZE, SIZE, 0xD327F5);
