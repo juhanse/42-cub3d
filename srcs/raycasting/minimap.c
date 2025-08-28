@@ -33,16 +33,28 @@ void	draw_square(t_data *data, int x, int y, int size, int color)
 		i++;
 	}
 }
+void	draw_map(t_data *data)
+{
+	int	x;
+	int	y;
 
-// void	render(t_data *data)
-// {
-// 	//draw_square(data, 0, 0, )
-// }
+	y = -1;
+	while (++y < data->map_height)
+	{
+		x = -1;
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] == '1')
+				draw_square(data, x * SIZE, y * SIZE, SIZE, 0xD327F5);
+		}
+	}
+}
 
 void	minimap(t_data *data)
 {
 	//render(&data);
-	draw_square(data, data->player->p_x * SIZE, data->player->p_y * SIZE, SIZE, 0x2768F5); //player
+	draw_map(data);
+	draw_square(data, data->player->p_x * SIZE, data->player->p_y * SIZE, 10, 0x2768F5); //player
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
 	mlx_loop(data->mlx);
 }
