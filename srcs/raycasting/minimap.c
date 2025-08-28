@@ -42,7 +42,7 @@ void	draw_square(t_data *data, int x, int y, int size, int color)
 void	minimap(t_data *data)
 {
 	//render(&data);
-	draw_square(data, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 5, 0x2768F5);
+	draw_square(data, data->player->p_x * SIZE, data->player->p_y * SIZE, SIZE, 0x2768F5); //player
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
 	mlx_loop(data->mlx);
 }
