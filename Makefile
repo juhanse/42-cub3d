@@ -14,7 +14,7 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 INIT = init/init.c init/fill_map.c init/parse_config.c init/parse_map.c init/utils.c init/init_mlx.c
-RAYCASTING = raycasting/render.c raycasting/draw.c
+RAYCASTING = raycasting/minimap.c
 SRC = main.c $(INIT) $(RAYCASTING)
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))

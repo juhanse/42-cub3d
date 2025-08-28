@@ -11,11 +11,21 @@
 # include "./libft/libft.h"
 # include "./libft/gnl/gnl.h"
 
-# define SCREEN_WIDTH	800
-# define SCREEN_HEIGHT	600
-# define IMG_PXL 64
+# define SCREEN_WIDTH	1280
+# define SCREEN_HEIGHT	720
+# define SIZE 64
 # define WND_NAME "Cub3d"
 # define FOV 60.0f
+
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
+# define ESC 65307
 
 # ifndef M_PI
     #  define M_PI 3.14159265358979323846
@@ -39,15 +49,15 @@ typedef enum	e_cardinals
 	EAST
 }	t_cardinals;
 
-typedef enum	e_move
-{
-	RIGHT,
-	LEFT,
-	UP,
-	DOWN,
-	ROT_RIGHT,
-	ROT_LEFT
-}	t_move;
+// typedef enum	e_move
+// {
+// 	RIGHT,
+// 	LEFT,
+// 	UP,
+// 	DOWN,
+// 	ROT_RIGHT,
+// 	ROT_LEFT
+// }	t_move;
 
 typedef struct	s_wall
 {
@@ -62,7 +72,7 @@ typedef struct s_img
 {
 	char	*path;
 	void	*img;
-	char	*pxl_data;
+	char	*data;
 	int		width;
 	int		height;
 	int		bpp;
@@ -75,6 +85,10 @@ typedef struct s_player
 	float	p_x;
 	float	p_y;
 	float	p_angle;
+	bool	up;
+	bool	down;
+	bool	left;
+	bool	right;
 }	t_player;
 
 typedef struct s_data
@@ -119,6 +133,7 @@ void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw);
 void	draw_floor(t_data *data, int x, int start_draw, int end_draw);
 void	draw_wall(t_data *data, t_wall wall, int x, int start_draw, int end_draw);
 void	load_textures(t_data *data);
+void	minimap(t_data *data);
 int		render_loop(void *param);
 
 #endif

@@ -5,27 +5,27 @@ char	*get_direction(t_data *data, t_wall wall)
 	char *direction;
 
 	if (wall.orientation == NORTH)
-		direction = data->north.pxl_data;
+		direction = data->north.data;
 	else if (wall.orientation == SOUTH)
-		direction = data->south.pxl_data;
+		direction = data->south.data;
 	else if (wall.orientation == WEST)
-		direction = data->west.pxl_data;
+		direction = data->west.data;
 	else
-		direction = data->east.pxl_data;
+		direction = data->east.data;
 	return (direction);
 }
 
-void	put_pixel(t_data *data, int x, int i, int color)
+void	put_pixel(t_data *data, int x, int y, int color)
 {
 	int	pxl_index;
 
-	if (x >=0 && x < SCREEN_WIDTH && i >= 0 && i < SCREEN_HEIGHT)
+	if (x >=0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
 	{
-		pxl_index = (i * SCREEN_WIDTH + x) * 4;
-		data->mlx_img.pxl_data[pxl_index + 0] = (color >> 0) & 0xFF;
-		data->mlx_img.pxl_data[pxl_index + 1] = (color >> 8) & 0xFF;
-		data->mlx_img.pxl_data[pxl_index + 2] = (color >> 16) & 0xFF;
-		data->mlx_img.pxl_data[pxl_index + 3] = 255;
+		pxl_index = (y * SCREEN_WIDTH + x) * 4;
+		data->mlx_img.data[pxl_index + 0] = (color >> 0) & 0xFF;
+		data->mlx_img.data[pxl_index + 1] = (color >> 8) & 0xFF;
+		data->mlx_img.data[pxl_index + 2] = (color >> 16) & 0xFF;
+		data->mlx_img.data[pxl_index + 3] = 255;
 	}
 }
 

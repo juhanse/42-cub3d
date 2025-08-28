@@ -5,5 +5,5 @@ libft/*.o
 cub3d
 .vscode
 **/.DS_Store
-**/draft.c
 mlx/
+drafts/

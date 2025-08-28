@@ -22,10 +22,12 @@ void	ft_init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(EXIT_FAILURE);
-	data->wnd = mlx_new_window(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, WND_NAME);
-	data->mlx_img.img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	data->mlx_img.pxl_data = mlx_get_data_addr(data->mlx_img.img, &data->mlx_img.bpp, &data->mlx_img.size_line, &data->mlx_img.endian);
-	load_textures(data);
-	ft_hooks(data);
-	mlx_loop(data->mlx);
+	data->wnd = mlx_new_window(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, WND_NAME); //protect if NULL?
+	data->mlx_img.img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT); //protect if NULL?
+	data->mlx_img.data = mlx_get_data_addr(data->mlx_img.img, &data->mlx_img.bpp, &data->mlx_img.size_line, &data->mlx_img.endian);
+	mlx_hook(data->wnd, 17, 0, &quit_game, data);
+	//mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
+	//load_textures(data);
+	//ft_hooks(data);
+	//mlx_loop(data->mlx);
 }
