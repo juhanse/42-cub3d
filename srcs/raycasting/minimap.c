@@ -33,6 +33,28 @@ void	draw_square(t_data *data, int x, int y, int size, int color)
 		i++;
 	}
 }
+
+void	draw_grid(t_data *data, int x, int y, int size, int color)
+{
+	int	i;
+	int	j;
+
+	i = x;
+	while (i < x + size)
+	{
+		put_pixel(data, i, y, color);
+		put_pixel(data, i, y + size - 1, color);
+		i++;
+	}
+	j = y;
+	while (j < y + size)
+	{
+		put_pixel(data, x, j, color);
+		put_pixel(data, x + size - 1, j, color);
+		j++;
+	}
+}
+
 void	draw_map(t_data *data)
 {
 	int	x;
@@ -46,6 +68,9 @@ void	draw_map(t_data *data)
 		{
 			if (data->map[y][x] == '1')
 				draw_square(data, x * SIZE, y * SIZE, SIZE, 0xD327F5);
+			else
+				draw_square(data, x * SIZE, y * SIZE, SIZE, 0xFFFFFF);
+			draw_grid(data, x * SIZE, y * SIZE, SIZE, 0x000000);
 		}
 	}
 }
