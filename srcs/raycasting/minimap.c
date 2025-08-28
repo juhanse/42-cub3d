@@ -82,8 +82,8 @@ void	draw_player(t_data *data)
 	int	p_size;
 
 	p_size = 10;
-	centered_x = (int)(data->player->p_x * SIZE - (p_size / 2));
-	centered_y = (int)(data->player->p_y * SIZE - (p_size / 2));
+	centered_x = (int)((data->player->p_x * SIZE) - (p_size / 2));
+	centered_y = (int)((data->player->p_y * SIZE) - (p_size / 2));
 	draw_square(data, centered_x, centered_y, p_size, 0x2768F5);
 }
 
