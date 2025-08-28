@@ -11,11 +11,11 @@ int	quit_game(t_data *data)
 	return (0);
 }
 
-void	ft_hooks(t_data *data)
-{
-	mlx_hook(data->wnd, 17, 0, &quit_game, data);
-	mlx_loop_hook(data->mlx, render_loop, data);
-}
+// void	ft_hooks(t_data *data)
+// {
+// 	mlx_hook(data->wnd, 17, 0, &quit_game, data);
+// 	mlx_loop_hook(data->mlx, render_loop, data);
+// }
 
 void	ft_init_mlx(t_data *data)
 {
