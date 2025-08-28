@@ -75,11 +75,23 @@ void	draw_map(t_data *data)
 	}
 }
 
+void	draw_player(t_data *data)
+{
+	int	centered_x;
+	int	centered_y;
+	int	p_size;
+
+	p_size = 10;
+	centered_x = (int)(data->player->p_x * SIZE - (p_size / 2));
+	centered_y = (int)(data->player->p_y * SIZE - (p_size / 2));
+	draw_square(data, centered_x, centered_y, p_size, 0x2768F5);
+}
+
 void	minimap(t_data *data)
 {
 	//render(&data);
 	draw_map(data);
-	draw_square(data, data->player->p_x * SIZE, data->player->p_y * SIZE, 10, 0x2768F5); //player
+	draw_player(data);
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
 	mlx_loop(data->mlx);
 }
