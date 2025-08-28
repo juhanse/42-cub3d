@@ -82,10 +82,10 @@ void	draw_player(t_data *data)
 	int	p_size;
 
 	p_size = 10;
-	printf("Player position: x=%.2f, y=%.2f\n", data->player->p_x, data->player->p_y);
+	//printf("Player position: x=%.2f, y=%.2f\n", data->player->p_x, data->player->p_y);
 	centered_x = (int)((data->player->p_x * SIZE) + (SIZE / 2) - (p_size / 2));
 	centered_y = (int)((data->player->p_y * SIZE) + (SIZE / 2) - (p_size / 2));
-	printf("Drawing at: x=%d, y=%d\n", centered_x, centered_y);
+	//printf("Drawing at: x=%d, y=%d\n", centered_x, centered_y);
 	draw_square(data, centered_x, centered_y, p_size, 0x2768F5);
 }
 
