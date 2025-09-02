@@ -78,14 +78,6 @@ void	reset_black_img(t_data *data)
 	}
 }
 
-void	render_screen(t_data *data)
-{
-	reset_black_img(data);
-	draw_map(data);
-	draw_player(data);
-	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
-}
-
 int	render_loop(t_data *data)
 {
 	t_player	*player;

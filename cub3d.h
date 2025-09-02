@@ -136,11 +136,11 @@ int		ft_check_char(t_data *data);
 void	ft_init_mlx(t_data *data);
 
 // RAYCASTING
-void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw);
-void	draw_floor(t_data *data, int x, int start_draw, int end_draw);
-void	draw_wall(t_data *data, t_wall wall, int x, int start_draw, int end_draw);
-void	load_textures(t_data *data);
-void	minimap(t_data *data);
+//void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw);
+//void	draw_floor(t_data *data, int x, int start_draw, int end_draw);
+//void	draw_wall(t_data *data, t_wall wall, int x, int start_draw, int end_draw);
+//void	load_textures(t_data *data);
+//void	minimap(t_data *data);
 int		render_loop(t_data *data);
 
 #endif
