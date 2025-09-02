@@ -174,6 +174,14 @@ void	draw_player(t_data *data)
 	draw_square(data, centered_x, centered_y, p_size, 0x2768F5);
 }
 
+void	render_screen(t_data *data)
+{
+	reset_black_img(data);
+	draw_map(data);
+	draw_player(data);
+	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
+}
+
 // void	minimap(t_data *data)
 // {
 // 	draw_map(data);
