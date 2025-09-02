@@ -53,6 +53,7 @@ void	set_hooks(t_data *data)
 
 void	ft_init_mlx(t_data *data)
 {
+	data->map_width = 8; //TEMP
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		exit(EXIT_FAILURE);

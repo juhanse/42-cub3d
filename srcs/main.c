@@ -7,7 +7,6 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (perror(ERR_ARGS), 1);
 	data = (t_data){0};
-	data.map_width = 8; //TEMP
 	if (ft_initialize(&data, argv[1]))
 		return (1);
 //	minimap(&data);
