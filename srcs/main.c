@@ -6,6 +6,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (perror(ERR_ARGS), 1);
+	printf("Test1");
 	data = (t_data){0};
 	printf("Test");
 	if (ft_initialize(&data, argv[1]))
