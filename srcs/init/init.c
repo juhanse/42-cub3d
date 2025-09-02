@@ -13,14 +13,12 @@ static int	ft_check_path(char *path)
 
 int	ft_initialize(t_data *data, char *path)
 {
-	printf("OK1");
 	if (ft_check_path(path)) //check .cub file
 		return (perror(ERR_BAD_PATH), 1);
 	data->map_path = path;
-	data->player = calloc(1, sizeof(t_player));
+	data->player = ft_calloc(1, sizeof(t_player));
 	if (!data->player)
 		return (perror(ERR_MALLOC), 1);
-	printf("OK2");
 	ft_fill_content(data); //malloc le char** copy du fichier et rempli
 	ft_get_config_texture(data); //recup des path vers les textures NO SO WE EA
 	ft_get_config_color(data); //recup les couleurs du F&C avec application du bitshift
@@ -29,7 +27,6 @@ int	ft_initialize(t_data *data, char *path)
 	|| !ft_check_walls(data)) //verif les char, presence du player et les murs qui entourent
 		ft_free_map(data);
 	ft_debug(data);
-	printf("OK3");
 	ft_init_mlx(data);
 	return (0);
 }
