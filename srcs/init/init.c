@@ -16,7 +16,7 @@ int	ft_initialize(t_data *data, char *path)
 	if (ft_check_path(path)) //check .cub file
 		return (perror(ERR_BAD_PATH), 1);
 	data->map_path = path;
-	data->player = malloc(sizeof(t_player));
+	data->player = ft_calloc(1, sizeof(t_player));
 	if (!data->player)
 		return (perror(ERR_MALLOC), 1);
 	ft_fill_content(data); //malloc le char** copy du fichier et rempli

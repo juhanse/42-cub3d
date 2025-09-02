@@ -68,10 +68,10 @@ void	reset_black_img(t_data *data)
 	int	y;
 
 	y = 0;
-	while (y < data->map_height)
+	while (y < SCREEN_HEIGHT)
 	{
 		x = 0;
-		while (x < data->map_width)
+		while (x < SCREEN_WIDTH)
 		{
 			put_pixel(data, x, y, 0x000000);
 			x++;
