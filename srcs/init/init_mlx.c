@@ -17,13 +17,13 @@ int	key_press(int keycode, t_data *data)
 
 	player = data->player;
 	if (keycode == W)
-		player->moves->w_pressed = true;
+		player->moves.w_pressed = true;
 	else if (keycode == A)
-		player->moves->a_pressed = true;
+		player->moves.a_pressed = true;
 	else if (keycode == S)
-		player->moves->s_pressed = true;
+		player->moves.s_pressed = true;
 	else if (keycode == D)
-		player->moves->d_pressed = true;
+		player->moves.d_pressed = true;
 	else if (keycode == ESC)
 		quit_game(data);
 	return (0);
@@ -32,13 +32,13 @@ int	key_press(int keycode, t_data *data)
 int	key_release(int keycode, t_player *player)
 {
 	if (keycode == W)
-		player->moves->w_pressed = false;
+		player->moves.w_pressed = false;
 	else if (keycode == A)
-		player->moves->a_pressed = false;
+		player->moves.a_pressed = false;
 	else if (keycode == S)
-		player->moves->s_pressed = false;
+		player->moves.s_pressed = false;
 	else if (keycode == D)
-		player->moves->d_pressed = false;
+		player->moves.d_pressed = false;
 	return (0);
 }
 

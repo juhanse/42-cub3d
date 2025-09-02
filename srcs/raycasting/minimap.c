@@ -85,13 +85,13 @@ int	render_loop(t_data *data)
 	t_player	*player;
 
 	player = data->player;
-	if (player->moves->w_pressed)
+	if (player->moves.w_pressed)
 		update_player(data, 0, -1);
-	if (player->moves->a_pressed)
+	if (player->moves.a_pressed)
 		update_player(data, -1, 0);
-	if (player->moves->s_pressed)
+	if (player->moves.s_pressed)
 		update_player(data, 0, 1);
-	if (player->moves->d_pressed)
+	if (player->moves.d_pressed)
 		update_player(data, 1, 0);
 	render_screen(data);
 	return (0);

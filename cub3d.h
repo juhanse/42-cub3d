@@ -95,7 +95,7 @@ typedef struct s_player
 	float	p_x;
 	float	p_y;
 	float	p_angle;
-	t_keys	*moves;
+	t_keys	moves;
 }	t_player;
 
 typedef struct s_data
