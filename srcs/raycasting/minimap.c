@@ -1,5 +1,7 @@
 #include "../cub3d.h"
 
+void	render_screen(t_data *data);
+
 void	put_pixel(t_data *data, int x, int y, int color)
 {
 	int	index;
