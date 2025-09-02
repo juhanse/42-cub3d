@@ -16,6 +16,93 @@ void	put_pixel(t_data *data, int x, int y, int color)
 		return ;
 }
 
+int	out_of_map(t_data *data, int x, int y)
+{
+	if (x < 0 || x >= data->map_width || y < 0 || y >= data->map_height)
+		return (1);
+	else
+		return (0);
+}
+
+int	is_wall(t_data *data, int x, int y)
+{
+	if (data->map[y][x] == '1')
+		return (1);
+	else
+		return (0);
+}
+
+int	valid_move(t_data *data, float x, float y)
+{
+	int	map_x;
+	int	map_y;
+
+	map_x = (int)x;
+	map_y = (int)y;
+	if (out_of_map(data, map_x, map_y) || is_wall(data, map_x, map_y))
+		return (0);
+	else
+		return (1);
+}
+
+void	update_player(t_data *data, float dx, float dy)
+{
+	float	new_x;
+	float	new_y;
+
+	new_x = data->player->p_x + (dx * SPEED);
+	new_y = data->player->p_y + (dy * SPEED);
+
+	if (valid_move(data, new_x, new_y))
+	{
+		data->player->p_x = new_x;
+		data->player->p_y = new_y;
+	}
+}
+
+void	reset_black_img(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < data->map_height)
+	{
+		x = 0;
+		while (x < data->map_width)
+		{
+			put_pixel(data, x, y, 0x000000);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	render_screen(t_data *data)
+{
+	reset_black_img(data);
+	draw_map(data);
+	draw_player(data);
+	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
+}
+
+int	render_loop(t_data *data)
+{
+	t_player	*player;
+
+	player = data->player;
+	if (player->moves->w_pressed)
+		update_player(data, 0, -1);
+	if (player->moves->a_pressed)
+		update_player(data, -1, 0);
+	if (player->moves->s_pressed)
+		update_player(data, 0, 1);
+	if (player->moves->d_pressed)
+		update_player(data, 1, 0);
+	render_screen(data);
+	return (0);
+}
+
 void	draw_square(t_data *data, int x, int y, int size, int color)
 {
 	int	i;
@@ -82,20 +169,18 @@ void	draw_player(t_data *data)
 	int	p_size;
 
 	p_size = 10;
-	//printf("Player position: x=%.2f, y=%.2f\n", data->player->p_x, data->player->p_y);
 	centered_x = (int)((data->player->p_x * SIZE) - (p_size / 2));
 	centered_y = (int)((data->player->p_y * SIZE) - (p_size / 2));
-	//printf("Drawing at: x=%d, y=%d\n", centered_x, centered_y);
 	draw_square(data, centered_x, centered_y, p_size, 0x2768F5);
 }
 
-void	minimap(t_data *data)
-{
-	draw_map(data);
-	draw_player(data);
-	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
-	mlx_loop(data->mlx);
-}
+// void	minimap(t_data *data)
+// {
+// 	draw_map(data);
+// 	draw_player(data);
+// 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
+// 	mlx_loop(data->mlx);
+// }
 
 /* MLX_GET_DATA_ADDR */
 /* rend un ptr vers le debut du buffer de donnees brutes en memoire pour stocker l'image ; */

@@ -16,6 +16,7 @@
 # define SIZE 64
 # define WND_NAME "Cub3d"
 # define FOV 60.0f
+# define SPEED 0.05f
 
 # define W 119
 # define A 97
@@ -80,15 +81,21 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_keys
+{
+	bool	w_pressed;
+	bool	a_pressed;
+	bool	s_pressed;
+	bool	d_pressed;
+}	t_keys;
+
+
 typedef struct s_player
 {
 	float	p_x;
 	float	p_y;
 	float	p_angle;
-	bool	up;
-	bool	down;
-	bool	left;
-	bool	right;
+	t_keys	*moves;
 }	t_player;
 
 typedef struct s_data
@@ -100,6 +107,7 @@ typedef struct s_data
 	char		**map_cpy;
 	int			map_cpy_height;
 	int			map_height;
+	int			map_width;
 	int			floor_color;
 	int			ceiling_color;
 	t_img		mlx_img;
@@ -128,12 +136,11 @@ int		ft_check_char(t_data *data);
 void	ft_init_mlx(t_data *data);
 
 // RAYCASTING
-
 void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw);
 void	draw_floor(t_data *data, int x, int start_draw, int end_draw);
 void	draw_wall(t_data *data, t_wall wall, int x, int start_draw, int end_draw);
 void	load_textures(t_data *data);
 void	minimap(t_data *data);
-int		render_loop(void *param);
+int		render_loop(t_data *data);
 
 #endif

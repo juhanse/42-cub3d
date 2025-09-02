@@ -11,11 +11,45 @@ int	quit_game(t_data *data)
 	return (0);
 }
 
-// void	ft_hooks(t_data *data)
-// {
-// 	mlx_hook(data->wnd, 17, 0, &quit_game, data);
-// 	mlx_loop_hook(data->mlx, render_loop, data);
-// }
+int	key_press(int keycode, t_data *data)
+{
+	t_player	*player;
+
+	player = data->player;
+	if (keycode == W)
+		player->moves->w_pressed = true;
+	else if (keycode == A)
+		player->moves->a_pressed = true;
+	else if (keycode == S)
+		player->moves->s_pressed = true;
+	else if (keycode == D)
+		player->moves->d_pressed = true;
+	else if (keycode == ESC)
+		quit_game(data);
+	return (0);
+}
+
+int	key_release(int keycode, t_player *player)
+{
+	if (keycode == W)
+		player->moves->w_pressed = false;
+	else if (keycode == A)
+		player->moves->a_pressed = false;
+	else if (keycode == S)
+		player->moves->s_pressed = false;
+	else if (keycode == D)
+		player->moves->d_pressed = false;
+	return (0);
+}
+
+void	set_hooks(t_data *data)
+{
+	mlx_hook(data->wnd, 2, 1L<<0, &key_press, data);
+	mlx_hook(data->wnd, 3, 1L<<1, &key_release, data->player);
+	mlx_hook(data->wnd, 17, 0, &quit_game, data);
+	mlx_loop_hook(data->mlx, &render_loop, data);
+	mlx_loop(data->mlx);
+}
 
 void	ft_init_mlx(t_data *data)
 {
@@ -26,8 +60,6 @@ void	ft_init_mlx(t_data *data)
 	data->mlx_img.img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT); //protect if NULL?
 	data->mlx_img.data = mlx_get_data_addr(data->mlx_img.img, &data->mlx_img.bpp, &data->mlx_img.size_line, &data->mlx_img.endian);
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
-	mlx_hook(data->wnd, 17, 0, &quit_game, data);
+	set_hooks(data);
 	//load_textures(data);
-	//ft_hooks(data);
-	//mlx_loop(data->mlx);
 }
