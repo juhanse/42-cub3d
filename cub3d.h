@@ -50,6 +50,7 @@ typedef struct s_data
 	char		*map_path;
 	char		**content;
 	char		**map;
+	int			*map_max_width;
 	int			content_height;
 	int			map_height;
 	int			floor_color;
