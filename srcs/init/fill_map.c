@@ -1,5 +1,21 @@
 #include "../../cub3d.h"
 
+static void	ft_get_max_width(t_data *data)
+{
+	int	i;
+	int	len;
+
+	i = -1;
+	len = 0;
+	data->map_max_width = ft_strlen(data->map[0]);
+	while (data->map[++i])
+	{
+		len = ft_strlen(data->map[i]);
+		if (len > data->map_max_width)
+			data->map_max_width = len;
+	}
+}
+
 static int	ft_malloc_content(t_data *data)
 {
 	int		fd;
@@ -116,15 +132,15 @@ void	ft_get_map(t_data *data)
 	map = malloc(sizeof(char *) * (map_lines + 1));
 	if (!map)
 		exit(EXIT_FAILURE);
-	j = 0;
-	while (j < map_lines)
+	j = -1;
+	while (++j < map_lines)
 	{
 		map[j] = ft_trim_map_line(data->content[start + j]);
 		if (!map[j])
 			exit(EXIT_FAILURE);
-		j++;
 	}
 	map[j] = NULL;
 	data->map = map;
 	data->map_height = map_lines;
+	ft_get_max_width(data);
 }
