@@ -36,10 +36,8 @@ void	ft_get_config_texture(t_data *data)
 
 static char	*ft_join_color(char **split)
 {
-	int		i;
 	char	*buffer;
 
-	i = 0;
 	buffer = ft_strjoin(split[1], split[2]);
 	if (split[3])
 		buffer = ft_strjoin(buffer, split[3]);
