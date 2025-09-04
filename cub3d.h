@@ -19,7 +19,7 @@
 # define SPEED 0.05f
 # define ROT_SPEED 0.05f
 # define STEP 0.5f
-# define MAX_DIST 300.0f
+# define MAX_DIST 600.0f
 
 # define W 119
 # define A 97
