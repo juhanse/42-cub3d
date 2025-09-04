@@ -245,24 +245,24 @@ void	draw_vision(t_data *data)
 {
 	int		pxl_x;
 	int		pxl_y;
+	int		current_pxl_x;
+	int		current_pxl_y;
 	float	x_dir;
 	float	y_dir;
 	float	distance;
 	float	current_x;
 	float	current_y;
-	float	current_pxl_x;
-	float	current_pxl_y;
 
 	distance = 0.0f;
-	pxl_x = (int)data->player->p_x * SIZE;
-	pxl_y = (int)data->player->p_y * SIZE;
+	pxl_x = (int)(data->player->p_x * SIZE);
+	pxl_y = (int)(data->player->p_y * SIZE);
 	x_dir = data->player->x_dir;
 	y_dir = data->player->y_dir;
 	while (distance < MAX_DIST)
 	{
-		current_pxl_x = pxl_x + ((int)x_dir * distance);
-		current_pxl_y = pxl_y + ((int)y_dir * distance);
-		put_pixel(data, current_pxl_x, current_pxl_y, 0x00FF00);
+		current_pxl_x = pxl_x + (int)(x_dir * distance);
+		current_pxl_y = pxl_y + (int)(y_dir * distance);
+		put_pixel(data, current_pxl_x, current_pxl_y, 0xDB0404);
 		current_x = data->player->p_x + (x_dir * distance / SIZE);
 		current_y = data->player->p_y + (y_dir * distance / SIZE);
 		if (!valid_move(data, current_x, current_y))
