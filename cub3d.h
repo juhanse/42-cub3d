@@ -17,6 +17,9 @@
 # define WND_NAME "Cub3d"
 # define FOV 60.0f
 # define SPEED 0.05f
+# define ROT_SPEED 0.05f
+# define STEP 0.5f
+# define MAX_DIST 300.0f
 
 # define W 119
 # define A 97
@@ -87,6 +90,8 @@ typedef struct s_keys
 	bool	a_pressed;
 	bool	s_pressed;
 	bool	d_pressed;
+	bool	left_rot;
+	bool	right_rot;
 }	t_keys;
 
 
@@ -95,6 +100,10 @@ typedef struct s_player
 	float	p_x;
 	float	p_y;
 	float	p_angle;
+	float	x_dir;
+	float	y_dir;
+	float	x_perp;
+	float	y_perp;
 	t_keys	moves;
 }	t_player;
 
@@ -133,14 +142,10 @@ void	ft_get_map(t_data *data);
 int		ft_found_player(t_data *data);
 int		ft_check_walls(t_data *data);
 int		ft_check_char(t_data *data);
-void	ft_init_mlx(t_data *data);
 
 // RAYCASTING
-//void	draw_ceiling(t_data *data, int x, int start_draw, int end_draw);
-//void	draw_floor(t_data *data, int x, int start_draw, int end_draw);
-//void	draw_wall(t_data *data, t_wall wall, int x, int start_draw, int end_draw);
-//void	load_textures(t_data *data);
-//void	minimap(t_data *data);
+void	play_game(t_data *data);
 int		render_loop(t_data *data);
+void	update_player_dir(t_player *player);
 
 #endif

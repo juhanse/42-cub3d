@@ -33,6 +33,7 @@ int	ft_found_player(t_data *data)
 				data->player->p_x = j + 0.5f;
 				data->player->p_y = i + 0.5f;
 				data->player->p_angle = find_angle(data->map[i][j]);
+				update_player_dir(data->player);
 				return (1);
 			}
 		}
