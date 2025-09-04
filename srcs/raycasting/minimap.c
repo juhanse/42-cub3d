@@ -262,7 +262,7 @@ void	draw_vision(t_data *data)
 	{
 		current_pxl_x = pxl_x + ((int)x_dir * distance);
 		current_pxl_y = pxl_y + ((int)y_dir * distance);
-		put_pixel(data, current_x, current_y, 0x00FF00);
+		put_pixel(data, current_pxl_x, current_pxl_y, 0x00FF00);
 		current_x = data->player->p_x + (x_dir * distance / SIZE);
 		current_y = data->player->p_y + (y_dir * distance / SIZE);
 		if (!valid_move(data, current_x, current_y))
