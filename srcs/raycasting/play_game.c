@@ -43,7 +43,7 @@ int	key_release(int keycode, t_player *player)
 		player->moves.s_pressed = false;
 	if (keycode == D)
 		player->moves.d_pressed = false;
-		if (keycode == LEFT)
+	if (keycode == LEFT)
 		player->moves.left_rot = false;
 	if (keycode == RIGHT)
 		player->moves.right_rot = false;
