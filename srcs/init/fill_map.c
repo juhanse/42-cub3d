@@ -7,10 +7,10 @@ static void	ft_get_max_width(t_data *data)
 
 	i = -1;
 	len = 0;
-	data->map_max_width = ft_strlen(data->map[0]);
+	data->map_max_width = (int)ft_strlen(data->map[0]);
 	while (data->map[++i])
 	{
-		len = ft_strlen(data->map[i]);
+		len = (int)ft_strlen(data->map[i]);
 		if (len > data->map_max_width)
 			data->map_max_width = len;
 	}

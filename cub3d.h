@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "mlx/mlx.h"
+/* # include "mlx/mlx.h" */
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -50,9 +50,9 @@ typedef struct s_data
 	char		*map_path;
 	char		**content;
 	char		**map;
-	int			*map_max_width;
 	int			content_height;
 	int			map_height;
+	int			map_max_width;
 	int			floor_color;
 	int			ceiling_color;
 	char		*north_image;
