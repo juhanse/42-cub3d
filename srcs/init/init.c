@@ -27,6 +27,6 @@ int	ft_initialize(t_data *data, char *path)
 	|| !ft_check_walls(data)) //verif les char, presence du player et les murs qui entourent
 		ft_free_map(data);
 	ft_debug(data);
-	ft_init_mlx(data);
+	//ft_init_mlx(data);
 	return (0);
 }
