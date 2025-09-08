@@ -1,8 +1,5 @@
 #include "../../cub3d.h"
 
-/* Digital Differential Analyzer */
-/* Testing for walls at each map intersection directly */
-
 float	set_delta_dist(float ray_dir)
 {
 	if (ray_dir == 0)
@@ -77,6 +74,8 @@ void	get_wall_data(t_ray *ray, t_wall *wall)
 		wall->wall_col = ray->start_x + wall->wall_dist * ray->dir_x;
 		wall->texture_id = get_texture_id(1, ray->y_side);
 	}
+	printf("Wall side: %d, axis_side: %d, texture_id: %d\n", 
+       ray->wall_side, ray->x_side, wall->texture_id);
 	wall->wall_col -= floor(wall->wall_col);
 }
 

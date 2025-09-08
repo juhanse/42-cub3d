@@ -5,8 +5,8 @@ int	get_color(int texture_id)
 	int base_colors[] = {
 		0xFF0000,  // NORTH - Rouge
 		0x0000FF,  // SOUTH - Bleu
-		0x00FF00,  // EAST - Vert
-		0xFFFF00   // WEST - Jaune
+		0x00FF00,  // WEST - Vert
+		0xFFFF00   // EAST - Jaune
 	};
 	int color = base_colors[texture_id];
 	return (color);
