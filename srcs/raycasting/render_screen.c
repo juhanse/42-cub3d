@@ -54,7 +54,7 @@ int	get_texture_id(int wall_side, int axis_side)
 		else
 			return (WEST);
 	}
-	else if (wall_side == 1)
+	else
 	{
 		if (axis_side > 0)
 			return (SOUTH);
