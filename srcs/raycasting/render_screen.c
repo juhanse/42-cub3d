@@ -54,9 +54,9 @@ int	get_texture_id(int wall_side, int axis_side)
 	else
 	{
 		if (axis_side > 0)
-			return (SOUTH);
-		else
 			return (NORTH);
+		else
+			return (SOUTH);
 	}
 }
 
@@ -67,16 +67,12 @@ void	get_wall_data(t_ray *ray, t_wall *wall)
 		wall->wall_dist = (ray->map_x - ray->start_x + (1 - ray->x_side) / 2) / ray->dir_x;
 		wall->wall_col = ray->start_y + wall->wall_dist * ray->dir_y;
 		wall->texture_id = get_texture_id(0, ray->x_side);
-		printf("Wall side: %d, axis_side: %d, texture_id: %d\n", 
-		       ray->wall_side, ray->x_side, wall->texture_id);
 	}
 	else
 	{
 		wall->wall_dist = (ray->map_y - ray->start_y + (1 - ray->y_side) / 2) / ray->dir_y;	
 		wall->wall_col = ray->start_x + wall->wall_dist * ray->dir_x;
 		wall->texture_id = get_texture_id(1, ray->y_side);
-		printf("Wall side: %d, axis_side: %d, texture_id: %d\n", 
-		       ray->wall_side, ray->y_side, wall->texture_id);
 	}
 	wall->wall_col -= floor(wall->wall_col);
 }
