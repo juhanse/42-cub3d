@@ -11,7 +11,7 @@ int	quit_game(t_data *data)
 	return (0);
 }
 
-int	key_press(int keycode, t_data *data)
+static int	key_press(int keycode, t_data *data)
 {
 	t_player	*player;
 
@@ -33,7 +33,7 @@ int	key_press(int keycode, t_data *data)
 	return (0);
 }
 
-int	key_release(int keycode, t_player *player)
+static int	key_release(int keycode, t_player *player)
 {
 	if (keycode == W)
 		player->moves.w_pressed = false;
@@ -50,7 +50,7 @@ int	key_release(int keycode, t_player *player)
 	return (0);
 }
 
-void	set_hooks(t_data *data)
+static void	set_hooks(t_data *data)
 {
 	mlx_hook(data->wnd, 2, 1L<<0, &key_press, data);
 	mlx_hook(data->wnd, 3, 1L<<1, &key_release, data->player);
@@ -58,7 +58,7 @@ void	set_hooks(t_data *data)
 	mlx_loop_hook(data->mlx, &render_loop, data);
 }
 
-void	init_mlx(t_data *data)
+static void	init_mlx(t_data *data)
 {
 	data->map_width = 8; //TEMP
 	data->mlx = mlx_init();
@@ -72,7 +72,6 @@ void	init_mlx(t_data *data)
 		exit(EXIT_FAILURE);
 	data->mlx_img.data = mlx_get_data_addr(data->mlx_img.img, &data->mlx_img.bpp, &data->mlx_img.size_line, &data->mlx_img.endian);
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
-	set_hooks(data);
 }
 
 void	play_game(t_data *data)
