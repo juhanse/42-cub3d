@@ -130,8 +130,8 @@ void	draw_wall_col(t_data *data, t_ray *ray, int x)
 	if (wall_end >= SCREEN_HEIGHT)
 		wall_end = SCREEN_HEIGHT - 1;
 	wall_color = get_color(ray->wall.texture_id);
-	y = 0;
-	while (y < SCREEN_HEIGHT)
+	y = -1;
+	while (++y < SCREEN_HEIGHT)
 	{
 		if (y < wall_start)
 			put_pixel(data, x, y, data->ceiling_color);
