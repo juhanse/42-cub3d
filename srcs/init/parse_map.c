@@ -6,9 +6,9 @@ static float	find_angle(char cardinal)
 	
 	angle = 0;
 	if (cardinal == 'N')
-		angle = M_PI/2.0f;
-	else if (cardinal == 'S')
 		angle = (3.0f*M_PI)/2.0f;
+	else if (cardinal == 'S')
+		angle = M_PI/2.0f;
 	else if (cardinal == 'W')
 		angle = M_PI;
 	else if (cardinal == 'E')
