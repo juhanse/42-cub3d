@@ -5,10 +5,10 @@ void	draw_background(t_data *data)
 	int	x;
 	int	y;
 
-	x = MINI_X;
 	y = MINI_Y;
 	while (y < MINI_Y + MINI_SIZE)
 	{
+		x = MINI_X;
 		while (x < MINI_X + MINI_SIZE)
 		{
 			put_pixel(data, x, y, 0);
