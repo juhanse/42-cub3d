@@ -11,7 +11,7 @@ void	draw_background(t_data *data)
 		x = MINI_X;
 		while (x < MINI_X + MINI_SIZE)
 		{
-			put_pixel(data, x, y, 0);
+			put_pixel(data, x, y, 0x333333);
 			x++;
 		}
 		y++;
@@ -68,16 +68,16 @@ void	draw_map(t_data *data)
 	mini.scale = set_scale(data);
 	mini.width_pxl = data->map_width * mini.scale;
 	mini.height_pxl = data->map_height * mini.scale;
-	mini.offset_x = (MINI_SIZE - mini.width_pxl / 2);
-	mini.offset_y = (MINI_SIZE - mini.height_pxl / 2);
+	mini.offset_x = (MINI_SIZE - mini.width_pxl) / 2;
+	mini.offset_y = (MINI_SIZE - mini.height_pxl)/ 2;
 	y = -1;
 	while (++y < data->map_height)
 	{
 		x = -1;
 		while (++x < data->map_width)
 		{
-			mini.pxl_x = MINI_X + mini.offset_x * mini.scale;
-			mini.pxl_y = MINI_Y + mini.offset_y * mini.scale;
+			mini.pxl_x = MINI_X + mini.offset_x + x * mini.scale;
+			mini.pxl_y = MINI_Y + mini.offset_y + y * mini.scale;
 			draw_cell(data, &mini, x, y);
 		}
 	}
