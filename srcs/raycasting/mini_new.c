@@ -18,47 +18,47 @@ void	draw_background(t_data *data)
 	}
 }
 
-// int	set_scale(t_data *data)
-// {
-// 	int scale;
-// 	int	scale_x;
-// 	int	scale_y;
+int	set_scale(t_data *data)
+{
+	int scale;
+	int	scale_x;
+	int	scale_y;
 
-// 	scale_x = MINI_SIZE / data->map_width;
-// 	scale_y = MINI_SIZE / data->map_height;
-// 	if (scale_x < scale_y)
-// 		scale = scale_x;
-// 	else
-// 		scale = scale_y;
-// 	if (scale < 1)
-// 		scale = 1;
-// 	return (scale);
-// }
+	scale_x = MINI_SIZE / data->map_width;
+	scale_y = MINI_SIZE / data->map_height;
+	if (scale_x < scale_y)
+		scale = scale_x;
+	else
+		scale = scale_y;
+	if (scale < 1)
+		scale = 1;
+	return (scale);
+}
 
-// void	draw_cell(t_data *data, int m_x, int m_y)
-// {
-// 	int	x;
-// 	int	y;
-// 	int	dx;
-// 	int	dy;
-// 	t_mini	*mini;
+void	draw_cell(t_data *data, int m_x, int m_y)
+{
+	int	x;
+	int	y;
+	int	dx;
+	int	dy;
+	t_mini	*mini;
 
-// 	mini = &data->minimap;
-// 	dy = -1;
-// 	while (++dy < mini->scale)
-// 	{
-// 		dx = -1;
-// 		while (++dx < mini->scale)
-// 		{
-// 			x = mini->pxl_x + dx;
-// 			y = mini->pxl_y + dy;
-// 			if (data->map[m_y][m_x] == '1')
-// 				put_mini_pixel(data, x, y, 0x8431D6);
-// 			else
-// 				put_mini_pixel(data, x, y, 0xD1C5D9);
-// 		}
-// 	}
-// }
+	mini = data->minimap;
+	dy = -1;
+	while (++dy < mini->scale)
+	{
+		dx = -1;
+		while (++dx < mini->scale)
+		{
+			x = mini->pxl_x + dx;
+			y = mini->pxl_y + dy;
+			if (data->map[m_y][m_x] == '1')
+				put_mini_pixel(data, x, y, 0x8431D6);
+			else
+				put_mini_pixel(data, x, y, 0xD1C5D9);
+		}
+	}
+}
 
 void	draw_map(t_data *data)
 {
