@@ -77,8 +77,6 @@ void	draw_map(t_data *data)
     // Test d'écriture via pointeur
     mini->scale = 84;
     printf("DEBUG: Écriture via pointeur OK, mini->scale = %d\n", mini->scale);
-    
-    return; // Sortir ici pour le test
 }
 	// int	x;
 	// int	y;
@@ -110,7 +108,19 @@ void	draw_map(t_data *data)
 
 void	render_minimap(t_data *data)
 {
-	draw_background(data);
-	draw_map(data);
-	//draw_player(data);
+
+	printf("DEBUG: Début render_minimap\n");
+    
+    printf("DEBUG: Appel draw_background...\n");
+    draw_background(data);
+    printf("DEBUG: draw_background OK\n");
+    
+    printf("DEBUG: Appel draw_map...\n");
+    draw_map(data);
+    printf("DEBUG: draw_map OK\n");
+    
+    printf("DEBUG: Fin render_minimap\n");
+	// draw_background(data);
+	// draw_map(data);
+	// //draw_player(data);
 }
