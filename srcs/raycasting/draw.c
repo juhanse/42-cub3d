@@ -45,3 +45,21 @@ void	put_pixel(t_data *data, int x, int y, int color)
 	else
 		return ;
 }
+
+void	put_mini_pixel(t_data *data, int x, int y, int color)
+{
+	int	index;
+
+	if (x >= MINI_X && x < MINI_X + MINI_SIZE &&
+		y >= MINI_Y && y < MINI_Y + MINI_SIZE &&
+		x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
+	{
+		index = y * data->mlx_img.size_line + x * (data->mlx_img.bpp / 8);
+		data->mlx_img.data[index + 0] = (color >> 0) & 0xFF;
+		data->mlx_img.data[index + 1] = (color >> 8) & 0xFF;
+		data->mlx_img.data[index + 2] = (color >> 16) & 0xFF;
+		data->mlx_img.data[index + 3] = 255;
+	}
+	else
+		return ;
+}
