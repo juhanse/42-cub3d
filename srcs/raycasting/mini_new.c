@@ -85,14 +85,35 @@ void	draw_map(t_data *data)
 	}
 }
 
-// void	draw_player(t_data *data)
-// {
+void	draw_player(t_data *data)
+{
+	int	x;
+	int	y;
+	int	dx;
+	int	dy;
+	t_mini	*mini;
 
-// }
+	mini = data->minimap;
+	mini->px = MINI_X + mini->offset_x + (int)data->player->p_x * mini->scale;
+	mini->py = MINI_Y + mini->offset_y + (int)data->player->p_y * mini->scale;
+	dy = -P_SIZE;
+	while (dy <= P_SIZE)
+	{
+		dx = -P_SIZE;
+		while (dx <= P_SIZE)
+		{
+			x = mini->px + dx;
+			y = mini->py + dy;
+			put_mini_pixel(data, x, y, 0xDB0D0D);
+			dx++;
+		}
+		dy++;
+	}
+}
 
 void	render_minimap(t_data *data)
 {
 	draw_background(data);
 	draw_map(data);
-	// //draw_player(data);
+	draw_player(data);
 }

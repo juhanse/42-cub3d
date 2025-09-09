@@ -46,6 +46,7 @@
 # define MINI_MARGIN 10
 # define MINI_X (SCREEN_WIDTH - MINI_SIZE - MINI_MARGIN)
 # define MINI_Y MINI_MARGIN
+# define P_SIZE 2
 
 # define ERR_BAD_PATH 		"Error\nBad path map\n"
 # define ERR_EMPTY_MAP 		"Error\nEmpty map\n"
@@ -74,6 +75,8 @@ typedef struct s_mini
 	int offset_y;
 	int	pxl_x;
 	int	pxl_y;
+	int	px;
+	int py;
 }	t_mini;
 
 
