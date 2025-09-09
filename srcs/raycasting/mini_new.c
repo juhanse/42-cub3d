@@ -96,7 +96,7 @@ void	draw_vision_ray(t_data *data)
 	t_mini	*mini;
 
 	mini = data->minimap;
-	length = P_SIZE * 3;
+	length = P_SIZE * 10;
 	end_x = mini->px + (int)(cos(data->player->p_angle) * length); 
 	end_y = mini->py + (int)(sin(data->player->p_angle) * length);
 	i = -1;
@@ -104,7 +104,7 @@ void	draw_vision_ray(t_data *data)
 	{
 		x = mini->px + (end_x - mini->px) * i / length;
 		y = mini->py + (end_y - mini->py) * i / length;
-		put_mini_pixel(data, x, y, 0x2DFC49);
+		put_mini_pixel(data, x, y, 0x2BA13C);
 	}
 }
 
