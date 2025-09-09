@@ -152,12 +152,12 @@ typedef struct s_data
 	int			map_width;
 	int			floor_color;
 	int			ceiling_color;
-	t_mini		mini;
 	t_img		mlx_img;
 	t_img		north;
 	t_img		south;
 	t_img		west;
 	t_img		east;
+	t_mini		minimap;
 	t_player	*player;
 }	t_data;
 

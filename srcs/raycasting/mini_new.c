@@ -35,13 +35,15 @@ int	set_scale(t_data *data)
 	return (scale);
 }
 
-void	draw_cell(t_data *data, t_mini *mini, int m_x, int m_y)
+void	draw_cell(t_data *data, int m_x, int m_y)
 {
 	int	x;
 	int	y;
 	int	dx;
 	int	dy;
+	t_mini	*mini;
 
+	mini = &data->minimap;
 	dy = -1;
 	while (++dy < mini->scale)
 	{
@@ -64,12 +66,12 @@ void	draw_map(t_data *data)
 	int	y;
 	t_mini	*mini;
 
-	mini = &data->mini;
+	mini = &data->minimap;
 	mini->scale = set_scale(data);
 	mini->width_pxl = data->map_width * mini->scale;
 	mini->height_pxl = data->map_height * mini->scale;
 	mini->offset_x = (MINI_SIZE - mini->width_pxl) / 2;
-	mini->offset_y = (MINI_SIZE - mini->height_pxl)/ 2;
+	mini->offset_y = (MINI_SIZE - mini->height_pxl) / 2;
 	y = -1;
 	while (++y < data->map_height)
 	{
@@ -77,8 +79,8 @@ void	draw_map(t_data *data)
 		while (++x < data->map_width)
 		{
 			mini->pxl_x = MINI_X + mini->offset_x + x * mini->scale;
-			mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;
-			draw_cell(data, mini, x, y);
+            mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;
+			draw_cell(data, x, y);
 		}
 	}
 }
