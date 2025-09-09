@@ -85,6 +85,29 @@ void	draw_map(t_data *data)
 	}
 }
 
+void	draw_vision_ray(t_data *data)
+{
+	int	i;
+	int	x;
+	int	y;
+	int	steps;
+	int	end_x;
+	int	end_y;
+	t_mini	*mini;
+
+	mini = data->minimap;
+	steps = mini->scale * 3;
+	end_x = mini->px + (int)(cos(data->player->p_angle) * steps); 
+	end_y = mini->py + (int)(sin(data->player->p_angle) * steps);
+	i = -1;
+	while (++i <= steps)
+	{
+		x = mini->px + (end_x - mini->px) * i / steps;
+		y = mini->py + (end_y - mini->py) * i / steps;
+		put_mini_pixel(data, x, y, 0x2DFC49);
+	}
+}
+
 void	draw_player(t_data *data)
 {
 	int	x;
@@ -109,6 +132,7 @@ void	draw_player(t_data *data)
 		}
 		dy++;
 	}
+	draw_vision_ray(data);
 }
 
 void	render_minimap(t_data *data)
