@@ -101,7 +101,7 @@ void	draw_vision(t_data *data)
 	}
 }
 
-void	render_minimap(t_data *data)
+void	render_minimap2(t_data *data)
 {
 	reset_black(data);
 	draw_map(data);
