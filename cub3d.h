@@ -65,6 +65,18 @@
 // 	EAST
 // }	t_cardinals;
 
+typedef struct s_mini
+{
+	int scale;
+	int	width_pxl;
+	int	height_pxl;
+	int offset_x;
+	int offset_y;
+	int	pxl_x;
+	int	pxl_y;
+}	t_mini;
+
+
 typedef struct	s_wall
 {
 	int		wall_map_x;
@@ -171,7 +183,7 @@ int		ft_check_char(t_data *data);
 int		get_color(int texture_id);
 void	normalize_angle(t_player *player);
 void	play_game(t_data *data);
-//void	put_mini_pixel(t_data *data, int x, int y, int color);
+void	put_mini_pixel(t_data *data, int x, int y, int color);
 void	put_pixel(t_data *data, int x, int y, int color);
 void	reset_black(t_data *data);
 int		render_loop(t_data *data);
