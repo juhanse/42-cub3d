@@ -19,6 +19,9 @@ int	ft_initialize(t_data *data, char *path)
 	data->player = ft_calloc(1, sizeof(t_player));
 	if (!data->player)
 		return (perror(ERR_MALLOC), 1);
+	data->minimap = ft_calloc(1, sizeof(t_mini));
+	if (!data->minimap)
+		return (perror(ERR_MALLOC), 1);	
 	ft_fill_content(data); //malloc le char** copy du fichier et rempli
 	ft_get_config_texture(data); //recup des path vers les textures NO SO WE EA
 	ft_get_config_color(data); //recup les couleurs du F&C avec application du bitshift

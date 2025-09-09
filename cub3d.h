@@ -157,7 +157,7 @@ typedef struct s_data
 	t_img		south;
 	t_img		west;
 	t_img		east;
-	t_mini		minimap;
+	t_mini		*minimap;
 	t_player	*player;
 }	t_data;
 

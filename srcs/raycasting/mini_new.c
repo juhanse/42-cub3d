@@ -62,44 +62,28 @@ void	draw_background(t_data *data)
 
 void	draw_map(t_data *data)
 {
-    printf("DEBUG: Adresse de data: %p\n", (void*)data);
-    printf("DEBUG: Adresse de &data->minimap: %p\n", (void*)&data->minimap);
-    
-    // Test d'écriture directe
-    data->minimap.scale = 42;
-    printf("DEBUG: Écriture directe OK, scale = %d\n", data->minimap.scale);
-    
-    // Test du pointeur
-    t_mini *mini = &data->minimap;
-    printf("DEBUG: Pointeur mini: %p\n", (void*)mini);
-    printf("DEBUG: mini->scale = %d\n", mini->scale);
-    
-    // Test d'écriture via pointeur
-    mini->scale = 84;
-    printf("DEBUG: Écriture via pointeur OK, mini->scale = %d\n", mini->scale);
-}
-	// int	x;
-	// int	y;
-	// t_mini	*mini;
+	int	x;
+	int	y;
+	t_mini	*mini;
 
-	// mini = &data->minimap;
-	// mini->scale = set_scale(data);
-	// mini->width_pxl = data->map_width * mini->scale;
-	// mini->height_pxl = data->map_height * mini->scale;
-	// mini->offset_x = (MINI_SIZE - mini->width_pxl) / 2;
-	// mini->offset_y = (MINI_SIZE - mini->height_pxl) / 2;
-	// y = -1;
-	// while (++y < data->map_height)
-	// {
-	// 	x = -1;
-	// 	while (++x < data->map_width)
-	// 	{
-	// 		mini->pxl_x = MINI_X + mini->offset_x + x * mini->scale;
-    //         mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;
-	// 		draw_cell(data, x, y);
-	// 	}
-// 	}
-// }
+	mini = data->minimap;
+	mini->scale = set_scale(data);
+	mini->width_pxl = data->map_width * mini->scale;
+	mini->height_pxl = data->map_height * mini->scale;
+	mini->offset_x = (MINI_SIZE - mini->width_pxl) / 2;
+	mini->offset_y = (MINI_SIZE - mini->height_pxl) / 2;
+	y = -1;
+	while (++y < data->map_height)
+	{
+		x = -1;
+		while (++x < data->map_width)
+		{
+			mini->pxl_x = MINI_X + mini->offset_x + x * mini->scale;
+            mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;
+			draw_cell(data, x, y);
+		}
+	}
+}
 
 // void	draw_player(t_data *data)
 // {
@@ -108,19 +92,7 @@ void	draw_map(t_data *data)
 
 void	render_minimap(t_data *data)
 {
-
-	printf("DEBUG: Début render_minimap\n");
-    
-    printf("DEBUG: Appel draw_background...\n");
-    draw_background(data);
-    printf("DEBUG: draw_background OK\n");
-    
-    printf("DEBUG: Appel draw_map...\n");
-    draw_map(data);
-    printf("DEBUG: draw_map OK\n");
-    
-    printf("DEBUG: Fin render_minimap\n");
-	// draw_background(data);
-	// draw_map(data);
+	draw_background(data);
+	draw_map(data);
 	// //draw_player(data);
 }

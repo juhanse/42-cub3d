@@ -162,22 +162,7 @@ static void	render_3d(t_data *data)
 void	render_screen(t_data *data)
 {
 	reset_black(data);
-	printf("DEBUG: Début render_screen\n");
-    
-    // Votre rendu 3D
-    render_3d(data);
-    printf("DEBUG: render_3d_scene OK\n");
-    
-    // Minimap
-    render_minimap(data);
-    printf("DEBUG: render_minimap OK\n");
-    
-    // Affichage
-    mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
-    printf("DEBUG: mlx_put_image_to_window OK\n");
-    
-    printf("DEBUG: Fin render_screen\n");
-	// render_3d(data);
-	// render_minimap(data);
-	// mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
+	render_3d(data);
+	render_minimap(data);
+	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
 }
