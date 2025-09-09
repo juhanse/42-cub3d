@@ -26,11 +26,11 @@ int	set_scale(t_data *data)
 
 	scale_x = MINI_SIZE / data->map_width;
 	scale_y = MINI_SIZE / data->map_height;
-	scale = min(scale_x, scale_y);
-	// if (scale_x < scale_y)
-	// 	scale = scale_x;
-	// else
-	// 	scale = scale_y;
+	//scale = min(scale_x, scale_y);
+	if (scale_x < scale_y)
+		scale = scale_x;
+	else
+		scale = scale_y;
 	if (scale < 1)
 		scale = 1;
 	return (scale);
