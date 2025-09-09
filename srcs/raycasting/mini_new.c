@@ -90,20 +90,20 @@ void	draw_vision_ray(t_data *data)
 	int	i;
 	int	x;
 	int	y;
-	int	steps;
+	int	length;
 	int	end_x;
 	int	end_y;
 	t_mini	*mini;
 
 	mini = data->minimap;
-	steps = mini->scale * 3;
-	end_x = mini->px + (int)(cos(data->player->p_angle) * steps); 
-	end_y = mini->py + (int)(sin(data->player->p_angle) * steps);
+	length = P_SIZE * 3;
+	end_x = mini->px + (int)(cos(data->player->p_angle) * length); 
+	end_y = mini->py + (int)(sin(data->player->p_angle) * length);
 	i = -1;
-	while (++i <= steps)
+	while (++i <= length)
 	{
-		x = mini->px + (end_x - mini->px) * i / steps;
-		y = mini->py + (end_y - mini->py) * i / steps;
+		x = mini->px + (end_x - mini->px) * i / length;
+		y = mini->py + (end_y - mini->py) * i / length;
 		put_mini_pixel(data, x, y, 0x2DFC49);
 	}
 }
