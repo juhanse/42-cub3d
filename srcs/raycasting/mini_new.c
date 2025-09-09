@@ -88,25 +88,25 @@ void	draw_map(t_data *data)
 		{
 			mini.pxl_x = MINI_X + mini.offset_x + x * mini.scale;
 			mini.pxl_y = MINI_Y + mini.offset_y + y * mini.scale;
-			//draw_cell(data, &mini, x, y);
-			int color;
-            if (x >= (int)strlen(data->map[y]))
-                color = 0xFF00FF;  // Magenta = zone invalide
-            else if (data->map[y][x] == '1')
-                color = 0xFF0000;  // Rouge = mur
-            else if (data->map[y][x] == '0')
-                color = 0x00FF00;  // Vert = sol
-            else
-                color = 0x0000FF;  // Bleu = autre caractère
+			draw_cell(data, &mini, x, y);
+			// int color;
+            // if (x >= (int)strlen(data->map[y]))
+            //     color = 0xFF00FF;  // Magenta = zone invalide
+            // else if (data->map[y][x] == '1')
+            //     color = 0xFF0000;  // Rouge = mur
+            // else if (data->map[y][x] == '0')
+            //     color = 0x00FF00;  // Vert = sol
+            // else
+            //     color = 0x0000FF;  // Bleu = autre caractère
             
-            // Dessiner la case avec la couleur debug
-            for (int dy = 0; dy < mini.scale; dy++)
-            {
-                for (int dx = 0; dx < mini.scale; dx++)
-                {
-                    put_mini_pixel(data, mini.pxl_x + dx, mini.pxl_y + dy, color);
-                }
-			}
+            // // Dessiner la case avec la couleur debug
+            // for (int dy = 0; dy < mini.scale; dy++)
+            // {
+            //     for (int dx = 0; dx < mini.scale; dx++)
+            //     {
+            //         put_mini_pixel(data, mini.pxl_x + dx, mini.pxl_y + dy, color);
+            //     }
+			// }
 		}
 	}
 }
