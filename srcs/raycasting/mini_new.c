@@ -117,8 +117,8 @@ void	draw_player(t_data *data)
 	t_mini	*mini;
 
 	mini = data->minimap;
-	mini->px = MINI_X + mini->offset_x + (int)data->player->p_x * mini->scale;
-	mini->py = MINI_Y + mini->offset_y + (int)data->player->p_y * mini->scale;
+	mini->px = MINI_X + mini->offset_x + (int)(data->player->p_x * mini->scale);
+	mini->py = MINI_Y + mini->offset_y + (int)(data->player->p_y * mini->scale);
 	dy = -P_SIZE;
 	while (dy <= P_SIZE)
 	{
