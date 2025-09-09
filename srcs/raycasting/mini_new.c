@@ -26,23 +26,23 @@ int	set_scale(t_data *data)
 
 	scale_x = MINI_SIZE / data->map_width;
 	scale_y = MINI_SIZE / data->map_height;
-    printf("=== CALCUL ÉCHELLE ===\n");
-    printf("MINI_SIZE: %d\n", MINI_SIZE);
-    printf("Map dimensions: %d×%d\n", data->map_width, data->map_height);
-    printf("scale_x = %d / %d = %d\n", MINI_SIZE, data->map_width, scale_x);
-    printf("scale_y = %d / %d = %d\n", MINI_SIZE, data->map_height, scale_y);
+    // printf("=== CALCUL ÉCHELLE ===\n");
+    // printf("MINI_SIZE: %d\n", MINI_SIZE);
+    // printf("Map dimensions: %d×%d\n", data->map_width, data->map_height);
+    // printf("scale_x = %d / %d = %d\n", MINI_SIZE, data->map_width, scale_x);
+    // printf("scale_y = %d / %d = %d\n", MINI_SIZE, data->map_height, scale_y);
 	if (scale_x < scale_y)
 		scale = scale_x;
 	else
 		scale = scale_y;
 	if (scale < 1)
 		scale = 1;
-	if (scale > 12)
-		scale = 12;
-	printf("Échelle finale: %d pixels/case\n", scale);
-    printf("Taille finale carte: %d×%d pixels\n", 
-           data->map_width * scale, data->map_height * scale);
-    printf("=====================\n");
+	// if (scale > 12)
+	// 	scale = 12;
+	// printf("Échelle finale: %d pixels/case\n", scale);
+    // printf("Taille finale carte: %d×%d pixels\n", 
+    //        data->map_width * scale, data->map_height * scale);
+    // printf("=====================\n");
 	return (scale);
 }
 
