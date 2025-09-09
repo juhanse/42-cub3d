@@ -37,6 +37,8 @@ int	set_scale(t_data *data)
 		scale = scale_y;
 	if (scale < 1)
 		scale = 1;
+	if (scale > 12)
+		scale = 12;
 	printf("Échelle finale: %d pixels/case\n", scale);
     printf("Taille finale carte: %d×%d pixels\n", 
            data->map_width * scale, data->map_height * scale);
