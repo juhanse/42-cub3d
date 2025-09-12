@@ -13,7 +13,7 @@ OBJDIR = objs/
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-INIT = init/init.c init/fill_map.c init/parse_config.c init/parse_map.c init/utils.c
+INIT = init/init.c init/fill_map.c init/parse_config.c init/parse_map.c init/flood_fill.c init/utils.c
 RAYCASTING = raycasting/play_game.c raycasting/render_loop.c raycasting/utils.c raycasting/render_screen.c raycasting/draw.c raycasting/mini_new.c
 SRC = main.c $(INIT) $(RAYCASTING)
 
@@ -23,12 +23,12 @@ OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz
+	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz
 	@echo "$(COLOUR_GREEN)Cub3d compiled ✅$(COLOUR_END)"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -I$(LIBFTDIR) -c $< -o $@
+	@$(CC) -I$(LIBFTDIR) -c $< -o $@
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR)

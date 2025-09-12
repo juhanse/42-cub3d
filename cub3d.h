@@ -49,6 +49,7 @@
 # define P_SIZE 2
 
 # define ERR_BAD_PATH 		"Error\nBad path map\n"
+# define ERR_MAP 			"Error\nInvalid map\n"
 # define ERR_EMPTY_MAP 		"Error\nEmpty map\n"
 # define ERR_ARGS 			"Error\nInvalid arguments\n"
 # define ERR_SQUARE 		"Error\nInvalid square map\n"
@@ -178,10 +179,11 @@ int		ft_initialize(t_data *data, char *path);
 int		ft_fill_content(t_data *data);
 void	ft_get_config_color(t_data *data);
 void	ft_get_config_texture(t_data *data);
-void	ft_get_map(t_data *data);
+int		ft_get_map(t_data *data);
 int		ft_found_player(t_data *data);
 int		ft_check_walls(t_data *data);
 int		ft_check_char(t_data *data);
+void	ft_flood_fill(t_data *data, int x, int y);
 
 // RAYCASTING
 int		get_color(int texture_id);
