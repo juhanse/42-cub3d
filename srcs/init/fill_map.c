@@ -87,7 +87,9 @@ static char	*ft_trim_map_line(char *line)
 	j = 0;
 	while (line[i])
 	{
-		if (line[i] != ' ' && line[i] != '\r' && line[i] != '\t')
+		if (line[i] == ' ' || line[i] == '\r' || line[i] == '\t')
+			buffer[j++] = '.';
+		else
 			buffer[j++] = line[i];
 		i++;
 	}
@@ -116,7 +118,7 @@ static int	ft_find_map_start(char **content, int end)
 	return (start + 2);
 }
 
-void	ft_get_map(t_data *data)
+int	ft_get_map(t_data *data)
 {
 	int		i;
 	int		j;
@@ -131,16 +133,17 @@ void	ft_get_map(t_data *data)
 	map_lines = i - start + 1;
 	map = malloc(sizeof(char *) * (map_lines + 1));
 	if (!map)
-		exit(EXIT_FAILURE);
+		return (0);
 	j = -1;
 	while (++j < map_lines)
 	{
 		map[j] = ft_trim_map_line(data->content[start + j]);
 		if (!map[j])
-			exit(EXIT_FAILURE);
+			return (free(map), 0);
 	}
 	map[j] = NULL;
 	data->map = map;
 	data->map_height = map_lines;
 	ft_get_max_width(data);
+	return (1);
 }

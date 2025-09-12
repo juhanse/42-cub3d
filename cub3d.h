@@ -134,6 +134,8 @@ typedef struct s_keys
 
 typedef struct s_player
 {
+	int		pos_x;
+	int		pos_y;
 	float	p_x;
 	float	p_y;
 	float	p_angle;
@@ -150,6 +152,7 @@ typedef struct s_data
 	void		*wnd;
 	char		*map_path;
 	char		**content;
+	char		**map_tmp;
 	char		**map;
 	int			content_height;
 	int			map_height;

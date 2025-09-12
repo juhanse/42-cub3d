@@ -26,10 +26,14 @@ int	ft_initialize(t_data *data, char *path)
 		return (ft_free_map(data), 1);
 	ft_get_config_texture(data);
 	ft_get_config_color(data);
-	ft_get_map(data);
+	if (!ft_get_map(data))
+		return (perror(ERR_MAP), 1);
 	ft_debug(data);
-	if (!ft_check_char(data) || !ft_found_player(data) \
-	|| !ft_check_walls(data))
-		return (ft_free_map(data), 1);
+	// if (!ft_check_char(data))
+	// 	return (1);
+	// if (!ft_found_player(data))
+	// 	return (1);
+	ft_flood_fill(data, 0, 0);
+	ft_debug(data);
 	return (0);
 }

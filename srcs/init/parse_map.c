@@ -30,6 +30,8 @@ int	ft_found_player(t_data *data)
 			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' || \
 				data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
+				data->player->pos_x = j;
+				data->player->pos_y = i;
 				data->player->p_x = j + 0.5f;
 				data->player->p_y = i + 0.5f;
 				data->player->p_angle = find_angle(data->map[i][j]);
