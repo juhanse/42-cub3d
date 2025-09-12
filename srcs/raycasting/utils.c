@@ -18,7 +18,7 @@ void	update_player_dir(t_player *player)
 
 int	out_of_map(t_data *data, int x, int y)
 {
-	if (x < 0 || x >= data->map_width || y < 0 || y >= data->map_height)
+	if (x < 0 || x >= data->map_max_width || y < 0 || y >= data->map_height)
 		return (1);
 	else
 		return (0);

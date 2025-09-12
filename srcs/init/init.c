@@ -13,11 +13,14 @@ static int	ft_check_path(char *path)
 
 int	ft_initialize(t_data *data, char *path)
 {
-	if (ft_check_path(path)) //check .cub file
+	if (ft_check_path(path))
 		return (perror(ERR_BAD_PATH), 1);
 	data->map_path = path;
 	data->player = ft_calloc(1, sizeof(t_player));
 	if (!data->player)
+		return (perror(ERR_MALLOC), 1);
+	data->minimap = ft_calloc(1, sizeof(t_mini));
+	if (!data->minimap)
 		return (perror(ERR_MALLOC), 1);
 	if (!ft_fill_content(data))
 		return (ft_free_map(data), 1);
@@ -28,6 +31,5 @@ int	ft_initialize(t_data *data, char *path)
 	if (!ft_check_char(data) || !ft_found_player(data) \
 	|| !ft_check_walls(data))
 		return (ft_free_map(data), 1);
-	ft_init_mlx(data);
 	return (0);
 }

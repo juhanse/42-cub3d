@@ -24,7 +24,7 @@ int	set_scale(t_data *data)
 	int	scale_x;
 	int	scale_y;
 
-	scale_x = MINI_SIZE / data->map_width;
+	scale_x = MINI_SIZE / data->map_max_width;
 	scale_y = MINI_SIZE / data->map_height;
 	if (scale_x < scale_y)
 		scale = scale_x;
@@ -68,7 +68,7 @@ void	draw_map(t_data *data)
 
 	mini = data->minimap;
 	mini->scale = set_scale(data);
-	mini->width_pxl = data->map_width * mini->scale;
+	mini->width_pxl = data->map_max_width * mini->scale;
 	mini->height_pxl = data->map_height * mini->scale;
 	mini->offset_x = (MINI_SIZE - mini->width_pxl) / 2;
 	mini->offset_y = (MINI_SIZE - mini->height_pxl) / 2;
@@ -76,7 +76,7 @@ void	draw_map(t_data *data)
 	while (++y < data->map_height)
 	{
 		x = -1;
-		while (++x < data->map_width)
+		while (++x < data->map_max_width)
 		{
 			mini->pxl_x = MINI_X + mini->offset_x + x * mini->scale;
             mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;

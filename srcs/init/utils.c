@@ -37,10 +37,11 @@ void	ft_debug(t_data *data)
 
 	i = -1;
 	printf("MAP HEIGHT: %d\n", data->map_height);
+	printf("MAP WIDTH: %d\n", data->map_max_width);
 	while (++i < data->map_height)
 		printf("[%d] %s\n", i, data->map[i]);
-	printf("\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, \
-		data->south_image, data->west_image, data->east_image);
+	// printf("\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, \
+	// 	data->south_image, data->west_image, data->east_image);
 	printf("\nFLOOR: [%d]\nCEILING: [%d]\n", data->floor_color, \
 		data->ceiling_color);
 }

@@ -95,7 +95,7 @@ static char	*ft_trim_map_line(char *line)
 	return (buffer);
 }
 
-static int	ft_find_map_start(char **content, int end) //quid si je mets plusieurs lignes vides entre F&C config et le debut de map
+static int	ft_find_map_start(char **content, int end)
 {
 	int		start;
 	int		k;
