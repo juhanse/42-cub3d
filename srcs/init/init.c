@@ -13,10 +13,10 @@ static int	ft_check_path(char *path)
 
 int	ft_initialize(t_data *data, char *path)
 {
-	if (ft_check_path(path))
+	if (ft_check_path(path)) //check .cub file
 		return (perror(ERR_BAD_PATH), 1);
 	data->map_path = path;
-	data->player = malloc(sizeof(t_player));
+	data->player = ft_calloc(1, sizeof(t_player));
 	if (!data->player)
 		return (perror(ERR_MALLOC), 1);
 	if (!ft_fill_content(data))
