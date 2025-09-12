@@ -1,54 +1,73 @@
 #include "../../cub3d.h"
 
-static void	ft_malloc_content(t_data *data)
+static void	ft_get_max_width(t_data *data)
+{
+	int	i;
+	int	len;
+
+	i = -1;
+	len = 0;
+	data->map_max_width = (int)ft_strlen(data->map[0]);
+	while (data->map[++i])
+	{
+		len = (int)ft_strlen(data->map[i]);
+		if (len > data->map_max_width)
+			data->map_max_width = len;
+	}
+}
+
+static int	ft_malloc_content(t_data *data)
 {
 	int		fd;
 	char	*line;
 
 	fd = open(data->map_path, O_RDONLY);
 	if (fd < 0)
-		exit(EXIT_FAILURE);
+		return (0);
 	line = get_next_line(fd);
 	if (!line)
 	{
 		free(line);
 		perror(ERR_EMPTY_MAP);
-		exit(EXIT_FAILURE); //leak de la struct player
+		return (0);
 	}
 	while (line)
 	{
-		data->map_cpy_height++;
+		data->content_height++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	free(line);
 	close(fd);
-	data->map_cpy = malloc(sizeof(char *) * (data->map_cpy_height + 1));
-	if (!data->map_cpy)
-		exit(EXIT_FAILURE);
+	data->content = malloc(sizeof(char *) * (data->content_height + 1));
+	if (!data->content)
+		return (0);
+	return (1);
 }
 
-void	ft_fill_content(t_data *data)
+int	ft_fill_content(t_data *data)
 {
 	int		fd;
 	int		i;
 	char	*line;
 
-	ft_malloc_content(data); //calcul lignes pour malloc
+	if (!ft_malloc_content(data))
+		return (0);
 	fd = open(data->map_path, O_RDONLY);
 	if (fd < 0)
-		exit(EXIT_FAILURE); //leak player
+		return (0);
 	i = -1;
 	line = get_next_line(fd);
 	while (line)
 	{
-		data->map_cpy[++i] = ft_strdup(line);
+		data->content[++i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	data->map_cpy[i + 1] = NULL;
+	data->content[i + 1] = NULL;
 	free(line);
 	close(fd);
+	return (1);
 }
 
 static char	*ft_trim_map_line(char *line)
@@ -105,23 +124,23 @@ void	ft_get_map(t_data *data)
 	int		map_lines;
 	char	**map;
 
-	i = data->map_cpy_height - 1;
-	while (i >= 0 && data->map_cpy[i][0] == '\n')
+	i = data->content_height - 1;
+	while (i >= 0 && data->content[i][0] == '\n')
 		i--;
-	start = ft_find_map_start(data->map_cpy, i); //trouve la ligne de debut de map
+	start = ft_find_map_start(data->content, i);
 	map_lines = i - start + 1;
 	map = malloc(sizeof(char *) * (map_lines + 1));
 	if (!map)
-		exit(EXIT_FAILURE); //leak player
-	j = 0;
-	while (j < map_lines)
+		exit(EXIT_FAILURE);
+	j = -1;
+	while (++j < map_lines)
 	{
-		map[j] = ft_trim_map_line(data->map_cpy[start + j]);
+		map[j] = ft_trim_map_line(data->content[start + j]);
 		if (!map[j])
-			exit(EXIT_FAILURE); //leak
-		j++;
+			exit(EXIT_FAILURE);
 	}
 	map[j] = NULL;
 	data->map = map;
 	data->map_height = map_lines;
+	ft_get_max_width(data);
 }

@@ -22,23 +22,9 @@ void	ft_get_config_texture(t_data *data)
 	char	**split;
 
 	i = -1;
-	while (++i < data->map_cpy_height)
+	while (++i < data->content_height)
 	{
-		split = ft_split(data->map_cpy[i], ' ');
-		if (!split || !split[0] || !split[1])
-		{
-			if (split)
-			{
-				j = 0;
-				while (split[j])
-					free(split[j++]);
-				free(split);
-			}
-			continue ;
-		}
-		len = ft_strlen(split[1]);
-		if (len > 0 && split[1][len - 1] == '\n')
-			split[1][len - 1] = '\0';
+		split = ft_split(data->content[i], ' ');
 		if (!ft_strncmp("NO", split[0], 2))
 			data->north.path = ft_strdup(split[1]);
 		else if (!ft_strncmp("SO", split[0], 2))
@@ -51,18 +37,36 @@ void	ft_get_config_texture(t_data *data)
 	//free split
 }
 
+static char	*ft_join_color(char **split)
+{
+	char	*buffer;
+
+	buffer = ft_strjoin(split[1], split[2]);
+	if (split[3])
+		buffer = ft_strjoin(buffer, split[3]);
+	return (buffer);
+}
+
 void	ft_get_config_color(t_data *data)
 {
 	int		i;
 	char	**split;
 
 	i = -1;
-	while (++i < data->map_cpy_height)
+	while (++i < data->content_height)
 	{
-		split = ft_split(data->map_cpy[i], ' ');
+		split = ft_split(data->content[i], ' ');
 		if (!ft_strncmp("F", split[0], 1))
+		{
+			if (split[2])
+				split[1] = ft_join_color(split);
 			data->floor_color = ft_parse_rgb(split[1]);
+		}
 		else if (!ft_strncmp("C", split[0], 1))
+		{
+			if (split[2])
+				split[1] = ft_join_color(split);
 			data->ceiling_color = ft_parse_rgb(split[1]);
+		}
 	}
 }

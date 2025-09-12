@@ -12,20 +12,23 @@ void	ft_free_map(t_data *data)
 
 	i = -1;
 	while (++i < data->map_height)
+	{
+		free(data->content[i]);
 		free(data->map[i]);
+	}
+	free(data->content);
 	free(data->map);
 	free(data->player);
 }
 
-void	ft_print_map(t_data *data)
+void	ft_free_split(char **s)
 {
 	int	i;
 
 	i = -1;
-	printf("\n------ MAP ------\n");
-	while (++i < data->map_height)
-		printf("[%2d] %s\n", i, data->map[i]);
-	printf("-----------------\n");
+	while (s[++i])
+		free(s[i]);
+	free(s);
 }
 
 void	ft_debug(t_data *data)
@@ -33,12 +36,11 @@ void	ft_debug(t_data *data)
 	int	i;
 
 	i = -1;
-	printf("MAP COPY LEN: %d\n", data->map_cpy_height);
-	while (++i < data->map_cpy_height)
-		printf("[%d] %s\n", i, data->map_cpy[i]);
-	printf("\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north.path, \
-		data->south.path, data->west.path, data->east.path);
-	printf("\nMAP_HEIGHT: %d", data->map_height);
-	ft_print_map(data);
-	printf("Player position is (%f, %f).\n", data->player->p_x, data->player->p_y);
+	printf("MAP HEIGHT: %d\n", data->map_height);
+	while (++i < data->map_height)
+		printf("[%d] %s\n", i, data->map[i]);
+	printf("\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data->north_image, \
+		data->south_image, data->west_image, data->east_image);
+	printf("\nFLOOR: [%d]\nCEILING: [%d]\n", data->floor_color, \
+		data->ceiling_color);
 }

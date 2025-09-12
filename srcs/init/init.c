@@ -19,17 +19,15 @@ int	ft_initialize(t_data *data, char *path)
 	data->player = ft_calloc(1, sizeof(t_player));
 	if (!data->player)
 		return (perror(ERR_MALLOC), 1);
-	data->minimap = ft_calloc(1, sizeof(t_mini));
-	if (!data->minimap)
-		return (perror(ERR_MALLOC), 1);	
-	ft_fill_content(data); //malloc le char** copy du fichier et rempli
-	ft_get_config_texture(data); //recup des path vers les textures NO SO WE EA
-	ft_get_config_color(data); //recup les couleurs du F&C avec application du bitshift
-	ft_get_map(data); //recup seulement la map de jeu nettoyee
-	if (!ft_check_char(data) || !ft_found_player(data) \
-	|| !ft_check_walls(data)) //verif les char, presence du player et les murs qui entourent
-		ft_free_map(data);
+	if (!ft_fill_content(data))
+		return (ft_free_map(data), 1);
+	ft_get_config_texture(data);
+	ft_get_config_color(data);
+	ft_get_map(data);
 	ft_debug(data);
-	//ft_init_mlx(data);
+	if (!ft_check_char(data) || !ft_found_player(data) \
+	|| !ft_check_walls(data))
+		return (ft_free_map(data), 1);
+	ft_init_mlx(data);
 	return (0);
 }

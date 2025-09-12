@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "mlx/mlx.h"
+/* # include "mlx/mlx.h" */
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -148,11 +148,11 @@ typedef struct s_data
 	void		*mlx;
 	void		*wnd;
 	char		*map_path;
+	char		**content;
 	char		**map;
-	char		**map_cpy;
-	int			map_cpy_height;
+	int			content_height;
 	int			map_height;
-	int			map_width;
+	int			map_max_width;
 	int			floor_color;
 	int			ceiling_color;
 	t_img		mlx_img;
@@ -168,14 +168,14 @@ typedef struct s_data
 void	ft_debug(t_data *data);
 void	ft_exit(char *msg);
 void	ft_free_map(t_data *data);
-void	ft_print_map(t_data *data);
+void	ft_free_split(char **s);
 
 // EXIT & FREE
 int		quit_game(t_data *data);
 
 // INIT
 int		ft_initialize(t_data *data, char *path);
-void	ft_fill_content(t_data *data);
+int		ft_fill_content(t_data *data);
 void	ft_get_config_color(t_data *data);
 void	ft_get_config_texture(t_data *data);
 void	ft_get_map(t_data *data);
