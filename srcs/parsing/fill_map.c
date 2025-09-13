@@ -1,5 +1,24 @@
 #include "../../cub3d.h"
 
+static char	*ft_malloc_line(char *s)
+{
+	int		i;
+	int		len;
+	char	*buffer;
+
+	len = ft_strlen(s);
+	if (s[len] == '\n')
+		len -= 1;
+	buffer = malloc(sizeof(char) * len);
+	if (!buffer)
+		return (NULL);
+	i = -1;
+	while (++i < len - 1)
+		buffer[i] = s[i];
+	buffer[i] = '\0';
+	return (buffer);
+}
+
 static void	ft_get_max_width(t_data *data)
 {
 	int	i;
@@ -37,7 +56,7 @@ static int	ft_find_start(char **content, int end)
 	return (start + 2);
 }
 
-int	ft_get_map(t_data *data)
+int	ft_fill_map(t_data *data)
 {
 	int		i;
 	int		start;
@@ -54,7 +73,7 @@ int	ft_get_map(t_data *data)
 	i = -1;
 	while (++i < height)
 	{
-		data->map[i] = ft_strdup(data->content[start + i]);
+		data->map[i] = ft_malloc_line(data->content[start + i]);
 		if (!data->map[i])
 			return (0);
 	}
