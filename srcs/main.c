@@ -9,6 +9,6 @@ int	main(int argc, char **argv)
 	data = (t_data){0};
 	if (ft_initialize(&data, argv[1]))
 		return (1);
-	//play_game(&data);
+	play_game(&data);
 	return (0);
 }
