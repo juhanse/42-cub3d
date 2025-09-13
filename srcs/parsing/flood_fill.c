@@ -1,40 +1,45 @@
 #include "../../cub3d.h"
 
-static int	ft_get_tmp_map(t_data *data)
+static char	*ft_fill_line(char *s, int max_width)
 {
 	int		i;
-	int		j;
+	int		len;
+	char	*buffer;
 
-	data->map_tmp = malloc(sizeof(char *) * (data->map_height));
+	buffer = malloc(sizeof(char) * (max_width + 1));
+	if (!buffer)
+		return (NULL);
+	len = ft_strlen(s);
+	if (len > max_width)
+		len = max_width;
+	i = -1;
+	while (++i < len)
+		buffer[i] = s[i];
+	while (i < max_width)
+	{
+		buffer[i] = '.';
+		i++;
+	}
+	buffer[max_width] = '\0';
+	return (buffer);
+}
+
+static int	ft_fill_tmp_map(t_data *data)
+{
+	int	i;
+
+	data->map_tmp = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!data->map_tmp)
-		return (0);
+		return (1);
 	i = -1;
 	while (++i < data->map_height)
 	{
-		data->map_tmp[i] = malloc(data->map_max_width);
+		data->map_tmp[i] = ft_fill_line(data->map[i], data->map_max_width);
 		if (!data->map_tmp[i])
-			return (0);
-		j = -1;
-		while (data->map[i][++j])
-			data->map_tmp[i][j] = data->map[i][j];
+			return (1);
 	}
-	return (1);
-}
-
-static void	ft_fill_line(t_data *data)
-{
-	int	i;
-	int	len;
-	int	start;
-
-	i = -1;
-	while (data->map_tmp[++i])
-	{
-		len = ft_strlen(&data->map_path[i]);
-		start = data->map_max_width - len;
-		while (start < data->map_max_width)
-			data->map_tmp[i][start++] = '.';
-	}
+	data->map_tmp[i] = NULL;
+	return (0);
 }
 
 void	ft_flood_fill(t_data *data, int x, int y)
@@ -59,15 +64,12 @@ int	ft_test_map(t_data *data)
 	int	i;
 
 	i = -1;
-	if (!ft_get_tmp_map(data))
+	if (!ft_fill_tmp_map(data))
 		return (1);
-	ft_fill_line(data);
-	ft_flood_fill(data, data->player->pos_x, data->player->pos_y);
-	while (++i < data->map_height)
-		printf("%s\n", data->map_tmp[i]);
-	i = -1;
-	while (++i < data->map_height)
-		free(data->map_tmp[i]);
-	free(data->map_tmp);
+	//ft_flood_fill(data, data->player->pos_x, data->player->pos_y);
+	// i = -1;
+	// while (++i < data->map_height)
+	// 	free(data->map_tmp[i]);
+	// free(data->map_tmp);
 	return (0);
 }
