@@ -17,7 +17,7 @@ static char	*ft_fill_line(char *s, int max_width)
 		buffer[i] = s[i];
 	while (i < max_width)
 	{
-		buffer[i] = '.';
+		buffer[i] = ' ';
 		i++;
 	}
 	buffer[max_width] = '\0';
@@ -30,29 +30,39 @@ static int	ft_fill_tmp_map(t_data *data)
 
 	data->map_tmp = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!data->map_tmp)
-		return (1);
+		return (0);
 	i = -1;
 	while (++i < data->map_height)
 	{
 		data->map_tmp[i] = ft_fill_line(data->map[i], data->map_max_width);
 		if (!data->map_tmp[i])
-			return (1);
+			return (0);
 	}
 	data->map_tmp[i] = NULL;
-	return (0);
+	return (1);
 }
 
 void	ft_flood_fill(t_data *data, int x, int y)
 {
-	if (x < 0 || x >= data->map_height || y < 0 || y >= data->map_max_width || data->map[x][y] == '.')
+	if (x < 0 || x >= data->map_height || y < 0 || y >= data->map_max_width)
 	{
-		if (data->map[x][y] == ' ')
-			perror("TEST");
-		perror(ERR_MAP);
-	}
-	if (data->map[x][y] == '1' || data->map[x][y] == '2')
+		data->map_error = 1;
 		return ;
-	data->map[x][y] = '2';
+	}
+	if (x == 0 || x == data->map_height - 1 || y == 0 || y == data->map_max_width - 1)
+    {
+        if (data->map_tmp[x][y] != '1')
+            data->map_error = 1;
+        return;
+    }
+	if (data->map_tmp[x][y] == ' '){
+		data->map_error = 1;
+		return ;
+	}
+	if (data->map_tmp[x][y] == '1' || data->map_tmp[x][y] == '2')
+		return ;
+	data->map_tmp[x][y] = '2';
+	ft_debug(data);
 	ft_flood_fill(data, x - 1, y);
 	ft_flood_fill(data, x + 1, y);
 	ft_flood_fill(data, x, y - 1);
@@ -65,11 +75,9 @@ int	ft_test_map(t_data *data)
 
 	i = -1;
 	if (!ft_fill_tmp_map(data))
-		return (1);
-	//ft_flood_fill(data, data->player->pos_x, data->player->pos_y);
-	// i = -1;
-	// while (++i < data->map_height)
-	// 	free(data->map_tmp[i]);
-	// free(data->map_tmp);
-	return (0);
+		return (0);
+	ft_flood_fill(data, data->player->pos_y, data->player->pos_x);
+	if (data->map_error)
+		return (0);
+	return (1);
 }
