@@ -44,24 +44,22 @@ static int	ft_fill_tmp_map(t_data *data)
 
 void	ft_flood_fill(t_data *data, int x, int y)
 {
+	char	c;
+
+	c = data->map_tmp[x][y];
 	if (x < 0 || x >= data->map_height || y < 0 || y >= data->map_max_width)
-	{
-		data->map_error = 1;
-		return ;
-	}
+		return (data->map_error = 1, (void)0);
+	if (c != '0' && c != '1' && c != 'N' && c != 'S' \
+		&& c != 'E' && c != 'W' && c != '2')
+		return (data->map_error = 1, (void)0);
 	if (x == 0 || x == data->map_height - 1 || y == 0 || \
 		y == data->map_max_width - 1)
 	{
-		if (data->map_tmp[x][y] != '1')
+		if (c != '1')
 			data->map_error = 1;
 		return ;
 	}
-	if (data->map_tmp[x][y] == ' ')
-	{
-		data->map_error = 1;
-		return ;
-	}
-	if (data->map_tmp[x][y] == '1' || data->map_tmp[x][y] == '2')
+	if (c == '1' || c == '2')
 		return ;
 	data->map_tmp[x][y] = '2';
 	ft_debug(data);
