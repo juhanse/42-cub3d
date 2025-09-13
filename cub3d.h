@@ -52,12 +52,9 @@
 # define ERR_MAP 			"Error\nInvalid map\n"
 # define ERR_EMPTY_MAP 		"Error\nEmpty map\n"
 # define ERR_ARGS 			"Error\nInvalid arguments\n"
-# define ERR_SQUARE 		"Error\nInvalid square map\n"
-# define ERR_WALLS 			"Error\nMissing walls map\n"
 # define ERR_CHAR_MAP		"Error\nInvalid characters map\n"
 # define ERR_PLY_NOT_FOUND	"Error\nPlayer not found\n"
 # define ERR_MALLOC			"Error\nMalloc failed\n"
-# define ERR_MLX			"Error\nMinilibx failed\n"
 
 // typedef enum	e_cardinals
 // {
