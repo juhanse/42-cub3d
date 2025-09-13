@@ -14,9 +14,11 @@ void	ft_free_map(t_data *data)
 	while (++i < data->map_height)
 	{
 		free(data->content[i]);
+		free(data->map_tmp[i]);
 		free(data->map[i]);
 	}
 	free(data->content);
+	free(data->map_tmp);
 	free(data->map);
 	free(data->player);
 }
@@ -40,11 +42,12 @@ void	ft_debug(t_data *data)
 	printf("MAP WIDTH: %d\n", data->map_max_width);
 	printf("MAP :\n");
 	while (++i < data->map_height)
-		printf("[%d] %s - %d\n", i, data->map[i], ft_strlen(data->map[i]));
+		printf("[%d] %s - %zu\n", i, data->map[i], ft_strlen(data->map[i]));
 	i = -1;
 	printf("\nTMP MAP :\n");
 	while (++i < data->map_height)
-		printf("[%d] %s - %d\n", i, data->map_tmp[i], ft_strlen(data->map_tmp[i]));
+		printf("[%d] %s - %zu\n", i, data->map_tmp[i], \
+	ft_strlen(data->map_tmp[i]));
 	printf("\nFLOOR: [%d]\nCEILING: [%d]\n", data->floor_color, \
 		data->ceiling_color);
 }

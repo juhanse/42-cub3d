@@ -49,13 +49,15 @@ void	ft_flood_fill(t_data *data, int x, int y)
 		data->map_error = 1;
 		return ;
 	}
-	if (x == 0 || x == data->map_height - 1 || y == 0 || y == data->map_max_width - 1)
-    {
-        if (data->map_tmp[x][y] != '1')
-            data->map_error = 1;
-        return;
-    }
-	if (data->map_tmp[x][y] == ' '){
+	if (x == 0 || x == data->map_height - 1 || y == 0 || \
+		y == data->map_max_width - 1)
+	{
+		if (data->map_tmp[x][y] != '1')
+			data->map_error = 1;
+		return ;
+	}
+	if (data->map_tmp[x][y] == ' ')
+	{
 		data->map_error = 1;
 		return ;
 	}

@@ -22,16 +22,16 @@ int	ft_initialize(t_data *data, char *path)
 	data->minimap = ft_calloc(1, sizeof(t_mini));
 	if (!data->minimap)
 		return (perror(ERR_MALLOC), 1);
-	if (!ft_fill_content(data)) // STEP #1
+	if (!ft_fill_content(data))
 		return (ft_free_map(data), 1);
-	ft_get_config_texture(data); // STEP #2
-	ft_get_config_color(data); // STEP #2
-	if (!ft_fill_map(data)) // STEP #3
-		return (perror(ERR_MAP), 1);
-	if (!ft_found_player(data)) // STEP #3
-		return (1);
-	if (!ft_test_map(data)) // STEP #4
-		return (perror(ERR_MAP), 1);
+	ft_get_config_texture(data);
+	ft_get_config_color(data);
+	if (!ft_fill_map(data))
+		return (ft_free_map(data), perror(ERR_MAP), 1);
+	if (!ft_found_player(data))
+		return (ft_free_map(data), perror(ERR_PLY_NOT_FOUND), 1);
+	if (!ft_test_map(data))
+		return (ft_free_map(data), perror(ERR_MAP), 1);
 	ft_debug(data);
 	return (0);
 }
