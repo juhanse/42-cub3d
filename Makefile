@@ -13,9 +13,9 @@ OBJDIR = objs/
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-INIT = init/init.c init/fill_map.c init/parse_config.c init/parse_map.c init/flood_fill.c init/utils.c
+PARSING = parsing/init.c parsing/fill_content.c parsing/fill_map.c parsing/parse_config.c parsing/parse_map.c parsing/flood_fill.c parsing/utils.c
 RAYCASTING = raycasting/play_game.c raycasting/render_loop.c raycasting/utils.c raycasting/render_screen.c raycasting/draw.c raycasting/mini_new.c
-SRC = main.c $(INIT) $(RAYCASTING)
+SRC = main.c $(PARSING) $(RAYCASTING)
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))
 OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
