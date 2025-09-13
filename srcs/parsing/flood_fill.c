@@ -1,6 +1,6 @@
 #include "../../cub3d.h"
 
-int	ft_get_tmp_map(t_data *data)
+static int	ft_get_tmp_map(t_data *data)
 {
 	int		i;
 	int		j;
@@ -21,7 +21,7 @@ int	ft_get_tmp_map(t_data *data)
 	return (1);
 }
 
-void	ft_fill_line(t_data *data)
+static void	ft_fill_line(t_data *data)
 {
 	int	i;
 	int	len;
