@@ -157,6 +157,7 @@ typedef struct s_data
 	int			content_height;
 	int			map_height;
 	int			map_max_width;
+	int			map_error;
 	int			floor_color;
 	int			ceiling_color;
 	t_img		mlx_img;
