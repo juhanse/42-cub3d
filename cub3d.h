@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "mlx/mlx.h"
+/* # include "mlx/mlx.h" */
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -187,6 +187,7 @@ int		ft_found_player(t_data *data);
 int		ft_check_walls(t_data *data);
 int		ft_check_char(t_data *data);
 void	ft_flood_fill(t_data *data, int x, int y);
+int		ft_test_map(t_data *data);
 
 // RAYCASTING
 int		get_color(int texture_id);

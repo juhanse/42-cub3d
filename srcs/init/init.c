@@ -29,11 +29,12 @@ int	ft_initialize(t_data *data, char *path)
 	if (!ft_get_map(data))
 		return (perror(ERR_MAP), 1);
 	ft_debug(data);
-	// if (!ft_check_char(data))
-	// 	return (1);
-	// if (!ft_found_player(data))
-	// 	return (1);
-	ft_flood_fill(data, 0, 0);
-	ft_debug(data);
+	/* if (!ft_check_char(data))
+		return (1); */
+	if (!ft_found_player(data))
+		return (1);
+	if (!ft_test_map(data))
+		return (perror(ERR_MAP), 1);
+	//ft_debug(data);
 	return (0);
 }

@@ -34,8 +34,8 @@ int	ft_found_player(t_data *data)
 				data->player->pos_y = i;
 				data->player->p_x = j + 0.5f;
 				data->player->p_y = i + 0.5f;
-				data->player->p_angle = find_angle(data->map[i][j]);
-				update_player_dir(data->player);
+				/* data->player->p_angle = find_angle(data->map[i][j]);
+				update_player_dir(data->player); */
 				return (1);
 			}
 		}
@@ -77,7 +77,7 @@ int	ft_check_char(t_data *data)
 			if (data->map[i][j] != '0' && data->map[i][j] != '1' \
 			&& data->map[i][j] != 'N' && data->map[i][j] != 'S' \
 			&& data->map[i][j] != 'E' && data->map[i][j] != 'W' \
-			&& data->map[i][j] != ' ' && data->map[i][j] != '\t')
+			&& data->map[i][j] != 32 && data->map[i][j] != 9)
 				return (perror(ERR_CHAR_MAP), 0);
 		}
 	}
