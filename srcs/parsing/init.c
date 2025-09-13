@@ -22,11 +22,11 @@ int	ft_initialize(t_data *data, char *path)
 	data->minimap = ft_calloc(1, sizeof(t_mini));
 	if (!data->minimap)
 		return (perror(ERR_MALLOC), 1);
-	if (!ft_fill_content(data))
+	if (!ft_fill_content(data)) // STEP #1
 		return (ft_free_map(data), 1);
-	ft_get_config_texture(data);
-	ft_get_config_color(data);
-	if (!ft_get_map(data))
+	ft_get_config_texture(data); // STEP #2
+	ft_get_config_color(data); // STEP #2
+	if (!ft_get_map(data)) // STEP #3
 		return (perror(ERR_MAP), 1);
 	ft_debug(data);
 	/* if (!ft_check_char(data))
