@@ -1,5 +1,15 @@
 #include "../../cub3d.h"
 
+static void	ft_free_tmp_map(t_data *data, int len)
+{
+	int	i;
+
+	i = -1;
+	while (++i < len - 1)
+		free(data->map_tmp[i]);
+	free(data->map_tmp);
+}
+
 static char	*ft_fill_line(char *s, int max_width)
 {
 	int		i;
@@ -36,7 +46,7 @@ static int	ft_fill_tmp_map(t_data *data)
 	{
 		data->map_tmp[i] = ft_fill_line(data->map[i], data->map_max_width);
 		if (!data->map_tmp[i])
-			return (0);
+			return (ft_free_tmp_map(data, i), 0);
 	}
 	data->map_tmp[i] = NULL;
 	return (1);
@@ -62,7 +72,6 @@ void	ft_flood_fill(t_data *data, int x, int y)
 	if (c == '1' || c == '2')
 		return ;
 	data->map_tmp[x][y] = '2';
-	ft_debug(data);
 	ft_flood_fill(data, x - 1, y);
 	ft_flood_fill(data, x + 1, y);
 	ft_flood_fill(data, x, y - 1);

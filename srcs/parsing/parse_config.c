@@ -1,5 +1,22 @@
 #include "../../cub3d.h"
 
+static char	*ft_malloc_textures(char *s)
+{
+	int		i;
+	int		len;
+	char	*buffer;
+
+	len = ft_strlen(s) - 1;
+	buffer = malloc((len + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	i = -1;
+	while (++i < len)
+		buffer[i] = s[i];
+	buffer[i] = '\0';
+	return (buffer);
+}
+
 static int	ft_parse_rgb(char *str)
 {
 	int		r;
@@ -11,6 +28,8 @@ static int	ft_parse_rgb(char *str)
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		return (-1);
 	return ((r << 16) | (g << 8) | b);
 }
 
@@ -58,12 +77,12 @@ void	ft_get_config_texture(t_data *data)
 	{
 		split = ft_split(data->content[i], ' ');
 		if (!ft_strncmp("NO", split[0], 2))
-			data->north.path = ft_strdup(split[1]);
+			data->north.path = ft_malloc_textures(split[1]);
 		else if (!ft_strncmp("SO", split[0], 2))
-			data->south.path = ft_strdup(split[1]);
+			data->south.path = ft_malloc_textures(split[1]);
 		else if (!ft_strncmp("WE", split[0], 2))
-			data->west.path = ft_strdup(split[1]);
+			data->west.path = ft_malloc_textures(split[1]);
 		else if (!ft_strncmp("EA", split[0], 2))
-			data->east.path = ft_strdup(split[1]);
+			data->east.path = ft_malloc_textures(split[1]);
 	}
 }
