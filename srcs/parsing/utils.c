@@ -55,7 +55,7 @@ void	ft_debug(t_data *data)
 	while (++i < data->map_height)
 		printf("[%d] %s - %zu\n", i, data->map[i], ft_strlen(data->map[i]));
 	i = -1;
-	printf("\nTMP MAP :\n");
+	printf("\nFLOOD MAP :\n");
 	while (++i < data->map_height)
 		printf("[%d] %s - %zu\n", i, data->map_tmp[i], \
 	ft_strlen(data->map_tmp[i]));
