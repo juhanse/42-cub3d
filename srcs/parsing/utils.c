@@ -15,19 +15,23 @@ void	ft_free_map(t_data *data)
 	{
 		if (data->content)
 			free(data->content[i]);
-		if (data->map_tmp)
-			free(data->map_tmp[i]);
 		if (data->map)
 			free(data->map[i]);
+		if (data->map_tmp)
+			free(data->map_tmp[i]);
 	}
 	if (data->content)
 		free(data->content);
-	if (data->map_tmp)
-		free(data->map_tmp);
 	if (data->map)
 		free(data->map);
+	if (data->map_tmp)
+		free(data->map_tmp);
 	free(data->player);
 	free(data->minimap);
+	free(data->north.path); // si pas encore init ?
+	free(data->south.path); // si pas encore init ?
+	free(data->west.path); // si pas encore init ?
+	free(data->east.path); // si pas encore init ?
 }
 
 void	ft_free_split(char **s)
