@@ -60,10 +60,10 @@ static void	set_hooks(t_data *data)
 
 int	handle_text(t_data *data, t_img *text, char *path)
 {
-	text->img = mlx_xpm_file_to_image(data->mlx, path, text->width, text->height);
+	text->img = mlx_xpm_file_to_image(data->mlx, path, &text->width, &text->height);
 	if (!text->img)
 		return (1);
-	text->data = mlx_get_data_addr(text->img, text->bpp, text->size_line, text->endian);
+	text->data = mlx_get_data_addr(text->img, &text->bpp, &text->size_line, &text->endian);
 	if (!text->data)
 		return (1);
 }
