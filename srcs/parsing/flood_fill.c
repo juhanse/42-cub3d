@@ -5,7 +5,7 @@ static void	ft_free_tmp_map(t_data *data, int len)
 	int	i;
 
 	i = -1;
-	while (++i < len)
+	while (++i < len - 1)
 		free(data->map_tmp[i]);
 	free(data->map_tmp);
 }
