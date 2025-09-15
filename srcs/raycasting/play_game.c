@@ -62,10 +62,18 @@ int	handle_text(t_data *data, t_img *text, char *path)
 {
 	text->img = mlx_xpm_file_to_image(data->mlx, path, &text->width, &text->height);
 	if (!text->img)
+	{
+		printf("Texture load failed\n");
+		printf("Texture received : %s - len %zu\n", path, ft_strlen(path));
 		return (1);
+	}
 	text->data = mlx_get_data_addr(text->img, &text->bpp, &text->size_line, &text->endian);
 	if (!text->data)
+	{
+		write(2, "Data addr failed\n", 17);
 		return (1);
+	}
+	return (0);
 }
 
 int	upload_textures(t_data *data)
