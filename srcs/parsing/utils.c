@@ -50,4 +50,6 @@ void	ft_debug(t_data *data)
 	ft_strlen(data->map_tmp[i]));
 	printf("\nFLOOR: [%d]\nCEILING: [%d]\n", data->floor_color, \
 		data->ceiling_color);
+	printf("\nN: [%s]\nS: [%s]\nW: [%s]\nE: [%s]\n", data->north.path, \
+		data->south.path, data->west.path, data->east.path);
 }
