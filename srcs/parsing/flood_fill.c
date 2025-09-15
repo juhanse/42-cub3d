@@ -62,7 +62,6 @@ void	ft_flood_fill(t_data *data, int x, int y)
 	if (c == '1' || c == '2')
 		return ;
 	data->map_tmp[x][y] = '2';
-	ft_debug(data);
 	ft_flood_fill(data, x - 1, y);
 	ft_flood_fill(data, x + 1, y);
 	ft_flood_fill(data, x, y - 1);
