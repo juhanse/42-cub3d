@@ -23,12 +23,12 @@ OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz
 	@echo "$(COLOUR_GREEN)Cub3d compiled ✅$(COLOUR_END)"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
 	@mkdir -p $(dir $@)
-	@$(CC) -I$(LIBFTDIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(LIBFTDIR) -c $< -o $@
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR)

@@ -111,6 +111,33 @@ t_ray	cast_ray(t_data *data, float ray_angle)
 	return (ray);
 }
 
+int	get_texture_color(t_img *texture, int tex_x, int tex_y)
+{
+	int	index;
+	int	color;
+
+	if (tex_x < 0 || tex_x >= texture->width || tex_y < 0 || tex_y >= texture->height)
+		return (0);
+	index = tex_y * texture->size_line + tex_x * (texture->bpp / 8);
+	color = (texture->data[index + 2] << 16) |
+			(texture->data[index + 1] << 8) |
+			(texture->data[index + 0]);
+	return (color);
+}
+
+t_img	*get_texture(t_data *data, int texture_id)
+{
+	if (texture_id == NORTH)
+		return (&data->north);
+	else if (texture_id == SOUTH)
+		return (&data->south);
+	else if (texture_id == WEST)
+		return (&data->west);
+	else if (texture_id == EAST)
+		return (&data->east);
+	return (&data->north);
+}
+
 void	draw_wall_col(t_data *data, t_ray *ray, int x)
 {
 	int	wall_start;
@@ -118,6 +145,11 @@ void	draw_wall_col(t_data *data, t_ray *ray, int x)
 	int wall_height;
 	int wall_color;
 	int	y;
+	int	text_x;
+	int	text_y;
+	float	text_step;
+	float	text_yf;
+	t_img	*text;
 
 	wall_height = (int)(SCREEN_HEIGHT / ray->wall.fixed_dist);
 	wall_start = SCREEN_CENTER - wall_height / 2;
@@ -126,14 +158,29 @@ void	draw_wall_col(t_data *data, t_ray *ray, int x)
 		wall_start = 0;
 	if (wall_end >= SCREEN_HEIGHT)
 		wall_end = SCREEN_HEIGHT - 1;
-	wall_color = get_color(ray->wall.texture_id);
+	//wall_color = get_color(ray->wall.texture_id);
+	text = get_texture(data, ray->wall.texture_id);
+	text_x = (int)(ray->wall.wall_col * text->width);
+	if (text_x >= text->width)
+		text_x = text->width - 1;
+	text_step = (float)text->height / wall_height;
+	text_yf = (wall_start - SCREEN_CENTER + wall_height / 2) * text_step;
 	y = -1;
 	while (++y < SCREEN_HEIGHT)
 	{
 		if (y < wall_start)
 			put_pixel(data, x, y, data->ceiling_color);
 		else if (y >= wall_start && y <= wall_end)
+		{
+			text_y = (int)text_yf;
+			if (text_y >= text->height)
+				text_y = text->height - 1;
+			if (text_y < 0)
+				text_y = 0;
+			wall_color = get_text_color(text, text_x, text_y);
 			put_pixel(data, x, y, wall_color);
+			text_yf += text_step;
+		}
 		else
 			put_pixel(data, x, y, data->floor_color);
 	}

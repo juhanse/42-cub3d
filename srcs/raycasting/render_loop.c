@@ -54,7 +54,6 @@ int	render_loop(t_data *data)
 		d_y += player->y_perp;
 	}
 	update_player(data, d_x, d_y);
-	//render_minimap(data);
 	render_screen(data);
 	return (0);
 }

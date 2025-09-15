@@ -58,6 +58,29 @@ static void	set_hooks(t_data *data)
 	mlx_loop_hook(data->mlx, &render_loop, data);
 }
 
+int	handle_text(t_data *data, t_img *text, char *path)
+{
+	text->img = mlx_xpm_file_to_image(data->mlx, path, text->width, text->height);
+	if (!text->img)
+		return (1);
+	text->data = mlx_get_data_addr(text->img, text->bpp, text->size_line, text->endian);
+	if (!text->data)
+		return (1);
+}
+
+int	upload_textures(t_data *data)
+{
+	if (handle_text(data, &data->north, data->north.path))
+		return (1);
+	if (handle_text(data, &data->south, data->south.path))
+		return (1);
+	if (handle_text(data, &data->west, data->west.path))
+		return (1);
+	if (handle_text(data, &data->east, data->east.path))
+		return (1);
+	return (0);
+}
+
 static void	init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -76,6 +99,8 @@ static void	init_mlx(t_data *data)
 void	play_game(t_data *data)
 {
 	init_mlx(data);
+	if (upload_textures(data))
+		quit_game(data); //TO DO 
 	set_hooks(data);
 	mlx_loop(data->mlx);
 }

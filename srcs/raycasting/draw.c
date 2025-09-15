@@ -12,7 +12,7 @@ int	get_color(int texture_id)
 	return (color);
 }
 
-void	reset_black(t_data *data)
+void	 reset_black(t_data *data)
 {
 	int	x;
 	int	y;

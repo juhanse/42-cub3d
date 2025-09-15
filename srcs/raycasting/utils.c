@@ -1,6 +1,6 @@
 #include "../../cub3d.h"
 
-/* enlever ou retirer des tours complets */
+/* add or substract full circles */
 void	normalize_angle(t_player *player)
 {
 	while (player->p_angle < 0)
