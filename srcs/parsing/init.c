@@ -26,6 +26,8 @@ int	ft_initialize(t_data *data, char *path)
 		return (ft_free_map(data), 1);
 	ft_get_config_texture(data);
 	ft_get_config_color(data);
+	if (data->floor_color == -1 || data->ceiling_color == -1)
+		return (ft_free_map(data), perror(ERR_CONFIG), 1);
 	if (!ft_fill_map(data))
 		return (ft_free_map(data), perror(ERR_MAP), 1);
 	if (!ft_found_player(data))
