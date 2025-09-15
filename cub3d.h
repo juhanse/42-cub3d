@@ -49,6 +49,7 @@
 # define P_SIZE 2
 
 # define ERR_BAD_PATH 		"Error\nBad path map\n"
+# define ERR_CONFIG 		"Error\nInvalid config\n"
 # define ERR_MAP 			"Error\nInvalid map\n"
 # define ERR_EMPTY_MAP 		"Error\nEmpty map\n"
 # define ERR_ARGS 			"Error\nInvalid arguments\n"
