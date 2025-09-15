@@ -177,7 +177,7 @@ void	draw_wall_col(t_data *data, t_ray *ray, int x)
 				text_y = text->height - 1;
 			if (text_y < 0)
 				text_y = 0;
-			wall_color = get_text_color(text, text_x, text_y);
+			wall_color = get_texture_color(text, text_x, text_y);
 			put_pixel(data, x, y, wall_color);
 			text_yf += text_step;
 		}
