@@ -1,5 +1,15 @@
 #include "../../cub3d.h"
 
+static void	ft_free_fill_map(t_data *data, int len)
+{
+	int	i;
+
+	i = -1;
+	while (++i < len)
+		free(data->map[i]);
+	free(data->map);
+}
+
 static char	*ft_malloc_line(char *s)
 {
 	int		i;
@@ -18,7 +28,7 @@ static char	*ft_malloc_line(char *s)
 		if (s[i] != '0' && s[i] != '1' && s[i] != 'N' \
 			&& s[i] != 'S' && s[i] != 'E' && s[i] != 'W' \
 			&& s[i] != 32 && s[i] != 9)
-			return (NULL);
+			return (free(buffer), NULL);
 		buffer[i] = s[i];
 	}
 	buffer[i] = '\0';
@@ -81,7 +91,7 @@ int	ft_fill_map(t_data *data)
 	{
 		data->map[i] = ft_malloc_line(data->content[start + i]);
 		if (!data->map[i])
-			return (0);
+			return (ft_free_fill_map(data, i), 0);
 	}
 	data->map[i] = NULL;
 	data->map_height = height;
