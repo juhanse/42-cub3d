@@ -13,14 +13,21 @@ void	ft_free_map(t_data *data)
 	i = -1;
 	while (++i < data->map_height)
 	{
-		free(data->content[i]);
-		free(data->map_tmp[i]);
-		free(data->map[i]);
+		if (data->content)
+			free(data->content[i]);
+		if (data->map_tmp)
+			free(data->map_tmp[i]);
+		if (data->map)
+			free(data->map[i]);
 	}
-	free(data->content);
-	free(data->map_tmp);
-	free(data->map);
+	if (data->content)
+		free(data->content);
+	if (data->map_tmp)
+		free(data->map_tmp);
+	if (data->map)
+		free(data->map);
 	free(data->player);
+	free(data->minimap);
 }
 
 void	ft_free_split(char **s)
