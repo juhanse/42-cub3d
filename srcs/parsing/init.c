@@ -24,8 +24,8 @@ int	ft_initialize(t_data *data, char *path)
 	data->minimap = ft_calloc(1, sizeof(t_mini));
 	if (!data->minimap)
 		return (perror(ERR_MALLOC), 1);
-	if (!ft_fill_content(data))
-		return (ft_free_map(data), 1);
+	if (!ft_fill_content(data)) // ICI
+		return (free(data->player), free(data->minimap), 1);
 	ft_get_config_texture(data);
 	ft_get_config_color(data);
 	if (data->floor_color == -1 || data->ceiling_color == -1)

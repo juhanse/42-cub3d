@@ -1,5 +1,15 @@
 #include "../../cub3d.h"
 
+static void	ft_free_content(t_data *data, int len)
+{
+	int	i;
+
+	i = -1;
+	while (++i < len)
+		free(data->content[i]);
+	free(data->content);
+}
+
 static int	ft_malloc_content(t_data *data)
 {
 	int		fd;
@@ -42,7 +52,8 @@ int	ft_fill_content(t_data *data)
 	{
 		data->content[++i] = ft_strdup(line);
 		if (!data->content[i])
-			return (free(line), close(fd), perror(ERR_MALLOC), 0);
+			return (free(line), ft_free_content(data, i), \
+		close(fd), perror(ERR_MALLOC), 0);
 		free(line);
 		line = get_next_line(fd);
 	}
