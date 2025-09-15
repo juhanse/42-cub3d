@@ -9,6 +9,8 @@ static char	*ft_malloc_line(char *s)
 	len = ft_strlen(s);
 	if (s[len] == '\n')
 		len -= 1;
+	if (s[len] == '\0')
+		len += 1;
 	buffer = malloc(sizeof(char) * len);
 	if (!buffer)
 		return (NULL);
