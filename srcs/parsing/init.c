@@ -5,6 +5,8 @@ static int	ft_check_path(char *path)
 	int	len;
 
 	len = ft_strlen(path);
+	if (access(path, R_OK))
+		return (1);
 	if (path[len - 1] != 'b' || path[len - 2] != 'u' || path[len - 3] != 'c' \
 		|| path[len - 4] != '.' || !ft_isalnum(path[len - 5]))
 		return (1);
