@@ -35,7 +35,7 @@ int	ft_initialize(t_data *data, char *path)
 	if (!ft_found_player(data))
 		return (ft_free_map(data, 3), perror(ERR_PLY_NOT_FOUND), 1);
 	if (!ft_test_map(data))
-		return (ft_free_map(data, 4), perror(ERR_MAP), 1);
+		return (ft_free_map(data, 3), perror(ERR_MAP), 1);
 	ft_debug(data);
 	return (0);
 }
