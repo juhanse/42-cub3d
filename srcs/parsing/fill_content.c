@@ -2,11 +2,8 @@
 
 static void	ft_free_content(t_data *data, int len)
 {
-	int	i;
-
-	i = -1;
-	while (++i < len - 1)
-		free(data->content[i]);
+	while (--len >= 0)
+		free(data->content[len]);
 	free(data->content);
 }
 

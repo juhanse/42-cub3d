@@ -2,11 +2,8 @@
 
 static void	ft_free_tmp_map(t_data *data, int len)
 {
-	int	i;
-
-	i = -1;
-	while (++i < len - 1)
-		free(data->map_tmp[i]);
+	while (--len >= 0)
+		free(data->map_tmp[len]);
 	free(data->map_tmp);
 }
 
@@ -84,6 +81,6 @@ int	ft_test_map(t_data *data)
 		return (0);
 	ft_flood_fill(data, data->player->pos_y, data->player->pos_x);
 	if (data->map_error)
-		return (0);
+		return (ft_free_tmp_map(data, data->map_height), 0);
 	return (1);
 }

@@ -6,32 +6,32 @@ void	ft_exit(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_free_map(t_data *data)
+void	ft_free_map(t_data *data, int type)
 {
 	int	i;
 
-	i = -1;
-	while (++i < data->map_height)
-	{
-		if (data->content)
-			free(data->content[i]);
-		if (data->map)
-			free(data->map[i]);
-		if (data->map_tmp)
-			free(data->map_tmp[i]);
-	}
-	if (data->content)
-		free(data->content);
-	if (data->map)
-		free(data->map);
-	if (data->map_tmp)
-		free(data->map_tmp);
 	free(data->player);
 	free(data->minimap);
-	free(data->north.path); // si pas encore init ?
-	free(data->south.path); // si pas encore init ?
-	free(data->west.path); // si pas encore init ?
-	free(data->east.path); // si pas encore init ?
+	free(data->north.path);
+	free(data->south.path);
+	free(data->west.path);
+	free(data->east.path);
+	i = -1;
+	while (data->content[++i])
+		free(data->content[i]);
+	free(data->content);
+	if (type == 1 || type == 2)
+		return ;
+	i = -1;
+	while (++i < data->map_height)
+		free(data->map[i]);
+	free(data->map);
+	if (type == 3)
+		return ;
+	i = -1;
+	while (++i < data->map_height)
+		free(data->map_tmp[i]);
+	free(data->map_tmp);
 }
 
 void	ft_free_split(char **s)
