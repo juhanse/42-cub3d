@@ -24,18 +24,18 @@ int	ft_initialize(t_data *data, char *path)
 	data->minimap = ft_calloc(1, sizeof(t_mini));
 	if (!data->minimap)
 		return (perror(ERR_MALLOC), 1);
-	if (!ft_fill_content(data)) // ICI
+	if (!ft_fill_content(data))
 		return (free(data->player), free(data->minimap), 1);
 	ft_get_config_texture(data);
 	ft_get_config_color(data);
 	if (data->floor_color == -1 || data->ceiling_color == -1)
-		return (ft_free_map(data), perror(ERR_CONFIG), 1);
+		return (ft_free_map(data, 1), perror(ERR_CONFIG), 1);
 	if (!ft_fill_map(data))
-		return (ft_free_map(data), perror(ERR_MAP), 1);
+		return (ft_free_map(data, 2), perror(ERR_MAP), 1);
 	if (!ft_found_player(data))
-		return (ft_free_map(data), perror(ERR_PLY_NOT_FOUND), 1);
+		return (ft_free_map(data, 3), perror(ERR_PLY_NOT_FOUND), 1);
 	if (!ft_test_map(data))
-		return (ft_free_map(data), perror(ERR_MAP), 1);
+		return (ft_free_map(data, 4), perror(ERR_MAP), 1);
 	ft_debug(data);
 	return (0);
 }
