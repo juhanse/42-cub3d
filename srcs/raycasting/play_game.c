@@ -5,6 +5,7 @@ int	quit_game(t_data *data)
 	//don't forget to destroy imgs + free maps copy, player malloc & co
 	mlx_destroy_window(data->mlx, data->wnd);
 	mlx_destroy_display(data->mlx);
+	ft_free_map(data, 4);
 	free(data->mlx);
 	printf("Leave game\n");
 	exit(EXIT_SUCCESS);
