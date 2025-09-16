@@ -47,7 +47,7 @@ static void	clean_img(t_data *data, t_img *img)
 	img->height = 0;
 }
 
-void	exit_game(t_data *data)
+int	exit_game(t_data *data)
 {
 	if (data->north.img)
 		clean_img(data, &data->north);
@@ -72,5 +72,6 @@ void	exit_game(t_data *data)
 	}
 	ft_free_map(data, 4);
 	printf("Leave game\n");
-	exit; //SUCCESS or FAILURE?
+	exit (1); //SUCCESS or FAILURE?
+	return (0);
 }
