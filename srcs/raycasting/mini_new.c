@@ -54,7 +54,7 @@ void	draw_cell(t_data *data, int m_x, int m_y)
 			y = mini->pxl_y + dy;
 			if (data->map[m_y][m_x] == '1')
 				put_mini_pixel(data, x, y, 0x8431D6);
-			else
+			else if (data->map[m_y][m_x] == '0')
 				put_mini_pixel(data, x, y, 0xD1C5D9);
 		}
 	}
