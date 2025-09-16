@@ -28,6 +28,7 @@ static int	ft_parse_rgb(char *str)
 	r = ft_atoi(split[0]);
 	g = ft_atoi(split[1]);
 	b = ft_atoi(split[2]);
+	ft_free_split(split);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (-1);
 	return ((r << 16) | (g << 8) | b);
@@ -64,6 +65,7 @@ void	ft_get_config_color(t_data *data)
 				split[1] = ft_join_color(split);
 			data->ceiling_color = ft_parse_rgb(split[1]);
 		}
+		ft_free_split(split);
 	}
 }
 
@@ -84,5 +86,6 @@ void	ft_get_config_texture(t_data *data)
 			data->west.path = ft_malloc_textures(split[1]);
 		else if (!ft_strncmp("EA", split[0], 2))
 			data->east.path = ft_malloc_textures(split[1]);
+		ft_free_split(split);
 	}
 }
