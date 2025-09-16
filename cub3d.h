@@ -170,7 +170,7 @@ typedef struct s_data
 // UTILS
 void	ft_debug(t_data *data);
 void	ft_exit(char *msg);
-void	ft_free_map(t_data *data);
+void	ft_free_map(t_data *data, int type);
 void	ft_free_split(char **s);
 
 // EXIT & FREE
