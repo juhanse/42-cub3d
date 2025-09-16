@@ -2,11 +2,8 @@
 
 static void	ft_free_fill_map(t_data *data, int len)
 {
-	int	i;
-
-	i = -1;
-	while (++i < len - 1)
-		free(data->map[i]);
+	while (--len >= 0)
+		free(data->map[len]);
 	free(data->map);
 }
 
