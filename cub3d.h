@@ -16,9 +16,9 @@
 # endif
 
 # define WND_NAME "Cub3d"
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 720
-# define SCREEN_CENTER (SCREEN_HEIGHT/2)
+# define SCRN_WIDTH 1280
+# define SCRN_HEIGHT 720
+# define SCRN_CENTER (SCRN_HEIGHT/2)
 # define SIZE 64
 # define FOV 60.0f
 # define RAD_FOV (FOV*M_PI/180.0f)
@@ -44,7 +44,7 @@
 
 # define MINI_SIZE 200
 # define MINI_MARGIN 10
-# define MINI_X (SCREEN_WIDTH - MINI_SIZE - MINI_MARGIN)
+# define MINI_X (SCRN_WIDTH - MINI_SIZE - MINI_MARGIN)
 # define MINI_Y MINI_MARGIN
 # define P_SIZE 2
 
@@ -84,6 +84,10 @@ typedef struct	s_wall
 	int		wall_map_x;
 	int		wall_map_y;
 	int		texture_id;
+	int		wall_start;
+	int		wall_end;
+	int		wall_height;
+	int		wall_color;
 	float	wall_dist;
 	float	fixed_dist; //anti fisheye
 	float	wall_col;
@@ -106,7 +110,6 @@ typedef struct s_ray
 	t_wall	wall;
 }	t_ray;
 
-
 typedef struct s_img
 {
 	char	*path;
@@ -115,7 +118,7 @@ typedef struct s_img
 	int		width;
 	int		height;
 	int		bpp;
-	int		size_line;
+	int		s_line;
 	int		endian;
 }	t_img;
 
@@ -174,7 +177,7 @@ void	ft_free_map(t_data *data, int type);
 void	ft_free_split(char **s);
 
 // EXIT & FREE
-int		quit_game(t_data *data);
+void		exit_game(t_data *data);
 
 // PARSING
 int		ft_initialize(t_data *data, char *path);
@@ -187,8 +190,12 @@ void	ft_flood_fill(t_data *data, int x, int y);
 int		ft_test_map(t_data *data);
 
 // RAYCASTING
+t_ray	cast_ray(t_data *data, float ray_angle);
 int		get_color(int texture_id);
-void	normalize_angle(t_player *player);
+t_img	*get_texture(t_data *data, int texture_id);
+int		get_texture_color(t_img *texture, int tex_x, int tex_y);
+int		get_texture_id(int wall_side, int axis_side);
+void	init_ray(t_ray *ray, t_player *player, float ray_angle);
 void	play_game(t_data *data);
 void	put_mini_pixel(t_data *data, int x, int y, int color);
 void	put_pixel(t_data *data, int x, int y, int color);
@@ -196,6 +203,7 @@ void	reset_black(t_data *data);
 int		render_loop(t_data *data);
 void	render_minimap(t_data *data);
 void	render_screen(t_data *data);
+void	set_hooks(t_data *data);
 void	update_player_dir(t_player *player);
 int		valid_move(t_data *data, float x, float y);
 

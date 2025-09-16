@@ -6,4 +6,4 @@ cub3d
 .vscode
 **/.DS_Store
 mlx/
-srcs/raycasting/draft.c
+drafts/
