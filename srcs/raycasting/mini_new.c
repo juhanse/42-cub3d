@@ -37,7 +37,7 @@ int	set_scale(t_data *data)
 
 int	is_player(char c)
 {
-	if (c == 'N' || c == 'S' || c == ' W' || c == 'E')
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (1);
 	return (0);
 }

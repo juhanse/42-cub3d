@@ -8,11 +8,10 @@ void	update_player(t_data *data, float dx, float dy)
 	new_x = data->player->p_x + (dx * SPEED);
 	new_y = data->player->p_y + (dy * SPEED);
 
-	if (valid_move(data, new_x, new_y))
-	{
+	if (valid_move(data, new_x, data->player->p_y))
 		data->player->p_x = new_x;
+	if (valid_move(data, data->player->p_x, new_y))
 		data->player->p_y = new_y;
-	}
 }
 
 int	render_loop(t_data *data)
