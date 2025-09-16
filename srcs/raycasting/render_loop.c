@@ -1,6 +1,6 @@
 #include "../../cub3d.h"
 
-static void	apply_movement(int *d_x, int *d_y, t_player *player)
+static void	apply_movement(float *d_x, float *d_y, t_player *player)
 {
 	if (player->moves.w_pressed)
 	{

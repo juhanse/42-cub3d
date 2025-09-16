@@ -57,14 +57,6 @@
 # define ERR_PLY_NOT_FOUND	"Error\nPlayer not found\n"
 # define ERR_MALLOC			"Error\nMalloc failed\n"
 
-// typedef enum	e_cardinals
-// {
-// 	NORTH,
-// 	SOUTH,
-// 	WEST,
-// 	EAST
-// }	t_cardinals;
-
 typedef struct s_mini
 {
 	int scale;
@@ -177,7 +169,7 @@ void	ft_free_map(t_data *data, int type);
 void	ft_free_split(char **s);
 
 // EXIT & FREE
-void		exit_game(t_data *data);
+int		exit_game(t_data *data);
 
 // PARSING
 int		ft_initialize(t_data *data, char *path);
