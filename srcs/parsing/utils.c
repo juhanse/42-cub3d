@@ -17,7 +17,7 @@ void	ft_free_map(t_data *data, int type)
 	free(data->west.path);
 	free(data->east.path);
 	i = -1;
-	while (++i < data->map_height)
+	while (data->content[++i])
 		free(data->content[i]);
 	free(data->content);
 	if (type == 1 || type == 2)
@@ -26,6 +26,12 @@ void	ft_free_map(t_data *data, int type)
 	while (++i < data->map_height)
 		free(data->map[i]);
 	free(data->map);
+	if (type == 3)
+		return ;
+	i = -1;
+	while (++i < data->map_height)
+		free(data->map_tmp[i]);
+	free(data->map_tmp);
 }
 
 void	ft_free_split(char **s)
