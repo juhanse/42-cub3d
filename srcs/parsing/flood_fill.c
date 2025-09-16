@@ -80,9 +80,6 @@ void	ft_flood_fill(t_data *data, int x, int y)
 
 int	ft_test_map(t_data *data)
 {
-	int	i;
-
-	i = -1;
 	if (!ft_fill_tmp_map(data))
 		return (0);
 	ft_flood_fill(data, data->player->pos_y, data->player->pos_x);
