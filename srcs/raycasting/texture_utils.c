@@ -1,6 +1,26 @@
 #include "../../cub3d.h"
 
-int	get_texture_color(t_img *texture, int tex_x, int tex_y)
+/* where are we on the texture x and y wise */
+void	prep_texture(t_img *text, t_ray *ray)
+{
+	text->text_x = (int)(ray->wall.wall_col * text->width);
+	if (text->text_x >= text->width)
+		text->text_x = text->width - 1;
+	text->text_step = (float)text->height / ray->wall.wall_height;
+	text->text_yf = (ray->wall.wall_start - SCRN_CENTER
+			+ ray->wall.wall_height / 2) * text->text_step;
+}
+
+void	update_text_y(t_img *text, t_ray *ray)
+{
+	text->text_y = (int)text->text_yf;
+	if (text->text_y >= text->height)
+		text->text_y = text->height - 1;
+	if (text->text_y < 0)
+		text->text_y = 0;
+}
+
+int	get_color(t_img *texture, int tex_x, int tex_y)
 {
 	int	index;
 	int	color;

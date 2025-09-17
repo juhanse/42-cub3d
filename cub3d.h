@@ -23,8 +23,6 @@
 # define FOV 60.0f
 # define SPEED 0.05f
 # define ROT_SPEED 0.05f
-//# define STEP 0.5f
-//# define MAX_DIST 600.0f
 
 # define NORTH 0
 # define SOUTH 1
@@ -101,14 +99,18 @@ typedef struct s_ray
 
 typedef struct s_img
 {
-	char	*path;
 	void	*img;
+	char	*path;
 	char	*data;
 	int		width;
 	int		height;
 	int		bpp;
 	int		s_line;
 	int		endian;
+	int		text_x;
+	int		text_y;
+	float	text_step;
+	float	text_yf;
 }	t_img;
 
 typedef struct s_keys
@@ -179,12 +181,12 @@ int		ft_test_map(t_data *data);
 
 // RAYCASTING
 t_ray	cast_ray(t_data *data, float ray_angle);
-int		get_color(int texture_id);
 t_img	*get_texture(t_data *data, int texture_id);
-int		get_texture_color(t_img *texture, int tex_x, int tex_y);
+int		get_color(t_img *texture, int tex_x, int tex_y);
 int		get_texture_id(int wall_side, int axis_side);
 void	init_ray(t_ray *ray, t_player *player, float ray_angle);
 void	play_game(t_data *data);
+void	prep_texture(t_img *text, t_ray *ray);
 void	put_mini_pixel(t_data *data, int x, int y, int color);
 void	put_pixel(t_data *data, int x, int y, int color);
 void	reset_black(t_data *data);
@@ -193,6 +195,7 @@ void	render_minimap(t_data *data);
 void	render_screen(t_data *data);
 void	set_hooks(t_data *data);
 void	update_player_dir(t_player *player);
+void	update_text_y(t_img *text, t_ray *ray);
 int		valid_move(t_data *data, float x, float y);
 
 #endif
