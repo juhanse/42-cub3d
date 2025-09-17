@@ -49,15 +49,22 @@ static void	render_3d(t_data *data)
 	while (++x < SCRN_WIDTH)
 	{
 		center_offset = 2 * x / (float)SCRN_WIDTH - 1;
-		ray_angle = data->player->p_angle + atan(center_offset * tan(rad_fov / 2));
+		ray_angle = data->player->p_angle
+			+ atan(center_offset * tan(rad_fov / 2));
 		ray = cast_ray(data, ray_angle);
-		ray.wall.fixed_dist = ray.wall.wall_dist * cos(ray_angle - data->player->p_angle);
+		ray.wall.fixed_dist = ray.wall.wall_dist
+			* cos(ray_angle - data->player->p_angle);
 		draw_wall_col(data, &ray, x);
 	}
 }
 
 void	render_screen(t_data *data)
 {
+	if (!data || !data->player || !data->mlx_img.data)
+{
+    printf("NULL pointer detected in render_screen\n");
+    return;
+}
 	reset_black(data);
 	render_3d(data);
 	render_minimap(data);
