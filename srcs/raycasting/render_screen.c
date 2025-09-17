@@ -26,7 +26,7 @@ static void	draw_wall_col(t_data *data, t_ray *ray, int x)
 			put_pixel(data, x, y, data->ceiling_color);
 		else if (y >= ray->wall.wall_start && y <= ray->wall.wall_end)
 		{
-			update_text_y(text, ray);
+			update_text_y(text);
 			ray->wall.wall_color = get_color(text, text->text_x, text->text_y);
 			put_pixel(data, x, y, ray->wall.wall_color);
 			text->text_yf += text->text_step;

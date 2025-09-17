@@ -195,7 +195,7 @@ void	render_minimap(t_data *data);
 void	render_screen(t_data *data);
 void	set_hooks(t_data *data);
 void	update_player_dir(t_player *player);
-void	update_text_y(t_img *text, t_ray *ray);
+void	update_text_y(t_img *text);
 int		valid_move(t_data *data, float x, float y);
 
 #endif

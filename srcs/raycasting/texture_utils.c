@@ -11,7 +11,7 @@ void	prep_texture(t_img *text, t_ray *ray)
 			+ ray->wall.wall_height / 2) * text->text_step;
 }
 
-void	update_text_y(t_img *text, t_ray *ray)
+void	update_text_y(t_img *text)
 {
 	text->text_y = (int)text->text_yf;
 	if (text->text_y >= text->height)
