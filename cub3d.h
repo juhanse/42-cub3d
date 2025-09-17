@@ -12,20 +12,19 @@
 # include "./libft/gnl/gnl.h"
 
 # ifndef M_PI
-  # define M_PI 3.14159265358979323846
+#  define M_PI 3.14159265358979323846
 # endif
 
 # define WND_NAME "Cub3d"
 # define SCRN_WIDTH 1280
 # define SCRN_HEIGHT 720
-# define SCRN_CENTER (SCRN_HEIGHT/2)
+# define SCRN_CENTER 360
 # define SIZE 64
 # define FOV 60.0f
-# define RAD_FOV (FOV*M_PI/180.0f)
 # define SPEED 0.05f
 # define ROT_SPEED 0.05f
-# define STEP 0.5f
-# define MAX_DIST 600.0f
+//# define STEP 0.5f
+//# define MAX_DIST 600.0f
 
 # define NORTH 0
 # define SOUTH 1
@@ -44,7 +43,6 @@
 
 # define MINI_SIZE 200
 # define MINI_MARGIN 10
-# define MINI_X (SCRN_WIDTH - MINI_SIZE - MINI_MARGIN)
 # define MINI_Y MINI_MARGIN
 # define P_SIZE 2
 
@@ -59,19 +57,18 @@
 
 typedef struct s_mini
 {
-	int scale;
+	int	scale;
 	int	width_pxl;
 	int	height_pxl;
-	int offset_x;
-	int offset_y;
+	int	offset_x;
+	int	offset_y;
 	int	pxl_x;
 	int	pxl_y;
 	int	px;
-	int py;
+	int	py;
 }	t_mini;
 
-
-typedef struct	s_wall
+typedef struct s_wall
 {
 	int		wall_map_x;
 	int		wall_map_y;
@@ -81,7 +78,7 @@ typedef struct	s_wall
 	int		wall_height;
 	int		wall_color;
 	float	wall_dist;
-	float	fixed_dist; //anti fisheye
+	float	fixed_dist;
 	float	wall_col;
 }	t_wall;
 
@@ -123,7 +120,6 @@ typedef struct s_keys
 	bool	left_rot;
 	bool	right_rot;
 }	t_keys;
-
 
 typedef struct s_player
 {

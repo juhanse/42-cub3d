@@ -37,8 +37,10 @@ void	put_pixel(t_data *data, int x, int y, int color)
 void	put_mini_pixel(t_data *data, int x, int y, int color)
 {
 	int	index;
+	int	mini_x;
 
-	if (x >= MINI_X && x < MINI_X + MINI_SIZE
+	mini_x = (SCRN_WIDTH - MINI_SIZE - MINI_MARGIN);
+	if (x >= mini_x && x < mini_x + MINI_SIZE
 		&& y >= MINI_Y && y < MINI_Y + MINI_SIZE
 		&& x >= 0 && x < SCRN_WIDTH && y >= 0 && y < SCRN_HEIGHT)
 	{

@@ -50,6 +50,7 @@ void	draw_wall_col(t_data *data, t_ray *ray, int x)
 static void	render_3d(t_data *data)
 {
 	int			x;
+	float		rad_fov;
 	float		center_offset;
 	float		ray_angle;
 	t_ray		ray;
@@ -57,10 +58,11 @@ static void	render_3d(t_data *data)
 
 	x = -1;
 	player = data->player;
+	rad_fov = (FOV*M_PI/180.0f);
 	while (++x < SCRN_WIDTH)
 	{
 		center_offset = 2 * x / (float)SCRN_WIDTH - 1;
-		ray_angle = player->p_angle + atan(center_offset * tan(RAD_FOV / 2));
+		ray_angle = player->p_angle + atan(center_offset * tan(rad_fov / 2));
 		ray = cast_ray(data, ray_angle);
 		ray.wall.fixed_dist = ray.wall.wall_dist * cos(ray_angle - player->p_angle);
 		draw_wall_col(data, &ray, x);

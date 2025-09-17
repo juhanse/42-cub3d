@@ -4,12 +4,14 @@ void	draw_background(t_data *data)
 {
 	int	x;
 	int	y;
+	int	mini_x;
 
 	y = MINI_Y;
+	mini_x = (SCRN_WIDTH - MINI_SIZE - MINI_MARGIN);
 	while (y < MINI_Y + MINI_SIZE)
 	{
-		x = MINI_X;
-		while (x < MINI_X + MINI_SIZE)
+		x = mini_x;
+		while (x < mini_x + MINI_SIZE)
 		{
 			put_pixel(data, x, y, 0x333333);
 			x++;
@@ -71,9 +73,11 @@ void	draw_map(t_data *data)
 {
 	int	x;
 	int	y;
+	int	mini_x;
 	t_mini	*mini;
 
 	mini = data->minimap;
+	mini_x = (SCRN_WIDTH - MINI_SIZE - MINI_MARGIN);
 	mini->scale = set_scale(data);
 	mini->width_pxl = data->map_max_width * mini->scale;
 	mini->height_pxl = data->map_height * mini->scale;
@@ -85,7 +89,7 @@ void	draw_map(t_data *data)
 		x = -1;
 		while (++x < data->map_max_width)
 		{
-			mini->pxl_x = MINI_X + mini->offset_x + x * mini->scale;
+			mini->pxl_x = mini_x + mini->offset_x + x * mini->scale;
             mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;
 			draw_cell(data, x, y);
 		}
@@ -121,10 +125,12 @@ void	draw_player(t_data *data)
 	int	y;
 	int	dx;
 	int	dy;
+	int	mini_x;
 	t_mini	*mini;
 
 	mini = data->minimap;
-	mini->px = MINI_X + mini->offset_x + (int)(data->player->p_x * mini->scale);
+	mini_x = (SCRN_WIDTH - MINI_SIZE - MINI_MARGIN);
+	mini->px = mini_x + mini->offset_x + (int)(data->player->p_x * mini->scale);
 	mini->py = MINI_Y + mini->offset_y + (int)(data->player->p_y * mini->scale);
 	dy = -P_SIZE;
 	while (dy <= P_SIZE)
