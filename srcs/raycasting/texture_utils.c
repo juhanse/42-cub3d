@@ -7,8 +7,7 @@ void	prep_texture(t_img *text, t_ray *ray)
 	if (text->text_x >= text->width)
 		text->text_x = text->width - 1;
 	text->text_step = (float)text->height / ray->wall.wall_height;
-	text->text_yf = (ray->wall.wall_start - SCRN_CENTER
-			+ ray->wall.wall_height / 2) * text->text_step;
+	text->text_yf = (ray->wall.wall_start - SCRN_CENTER + ray->wall.wall_height / 2) * text->text_step;
 }
 
 void	update_text_y(t_img *text)
