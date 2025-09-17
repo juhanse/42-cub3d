@@ -55,6 +55,7 @@
 
 typedef struct s_mini
 {
+	int	mini_x; //minimap area x start pos
 	int	scale;
 	int	width_pxl;
 	int	height_pxl;
@@ -62,8 +63,9 @@ typedef struct s_mini
 	int	offset_y;
 	int	pxl_x;
 	int	pxl_y;
-	int	px;
-	int	py;
+	int	px; //player_x
+	int	py; //player_y
+	int	vision_length;
 }	t_mini;
 
 typedef struct s_wall
@@ -197,5 +199,12 @@ void	set_hooks(t_data *data);
 void	update_player_dir(t_player *player);
 void	update_text_y(t_img *text);
 int		valid_move(t_data *data, float x, float y);
+
+// MINIMAP
+void	draw_cell(t_data *data, int m_x, int m_y);
+void	draw_vision_ray(t_data *data, t_mini *mini);
+int		is_player(char c);
+void	put_mini_pixel(t_data *data, int x, int y, int color);;
+int		set_scale(t_data *data);
 
 #endif

@@ -24,6 +24,7 @@ PARSING = 	parsing/fill_content.c	\
 RAYCASTING = 	raycasting/cast_ray.c		\
 				raycasting/draw.c			\
 				raycasting/mini_map.c		\
+				raycasting/mini_utils.c		\
 				raycasting/mlx_hooks.c		\
 				raycasting/play_game.c		\
 				raycasting/render_loop.c	\
