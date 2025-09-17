@@ -60,11 +60,6 @@ static void	render_3d(t_data *data)
 
 void	render_screen(t_data *data)
 {
-	if (!data || !data->player || !data->mlx_img.data)
-{
-    printf("NULL pointer detected in render_screen\n");
-    return;
-}
 	reset_black(data);
 	render_3d(data);
 	render_minimap(data);

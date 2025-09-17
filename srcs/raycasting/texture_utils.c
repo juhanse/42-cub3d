@@ -25,11 +25,6 @@ int	get_color(t_img *texture, int tex_x, int tex_y)
 	int	index;
 	int	color;
 
-	if (!texture || !texture->data)
-	{
-		printf("NULL texture data\n");
-		return 0;
-	}
 	if (tex_x < 0 || tex_x >= texture->width
 		|| tex_y < 0 || tex_y >= texture->height)
 		return (0);
