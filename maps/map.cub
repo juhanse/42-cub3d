@@ -1,15 +1,15 @@
-NO textures/player.xpm
+NO textures/bricks2.xpm
 SO textures/exit.xpm
 WE textures/tree.xpm
 EA textures/object.xpm
 
-F 220,100,0
-C 225,30,0
+F 97,95,99
+C 102,178,227
 
-    111111
-   1000001
-1  1000111
-011001100
+111111
+1000001
+11000111
+110011001
 100000101
 1010E0101
 100000001
