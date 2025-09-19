@@ -44,7 +44,7 @@ static char	*ft_join_color(char **split)
 	return (buffer);
 }
 
-void	ft_get_config_color(t_data *data)
+int	ft_get_config_color(t_data *data)
 {
 	int		i;
 	char	**split;
@@ -67,9 +67,12 @@ void	ft_get_config_color(t_data *data)
 		}
 		ft_free_split(split);
 	}
+	if (data->floor_color == -1 || data->ceiling_color == -1)
+		return (0);
+	return (1);
 }
 
-void	ft_get_config_texture(t_data *data)
+int	ft_get_config_texture(t_data *data)
 {
 	int		i;
 	char	**split;
@@ -88,4 +91,8 @@ void	ft_get_config_texture(t_data *data)
 			data->east.path = ft_malloc_textures(split[1]);
 		ft_free_split(split);
 	}
+	if (!data->north.path || !data->south.path || !data->west.path \
+		|| !data->east.path)
+		return (0);
+	return (1);
 }

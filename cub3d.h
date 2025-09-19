@@ -164,7 +164,6 @@ typedef struct s_data
 
 // UTILS
 void	ft_debug(t_data *data);
-void	ft_exit(char *msg);
 void	ft_free_map(t_data *data, int type);
 void	ft_free_split(char **s);
 
@@ -174,8 +173,8 @@ int		exit_game(t_data *data);
 // PARSING
 int		ft_initialize(t_data *data, char *path);
 int		ft_fill_content(t_data *data);
-void	ft_get_config_color(t_data *data);
-void	ft_get_config_texture(t_data *data);
+int		ft_get_config_color(t_data *data);
+int		ft_get_config_texture(t_data *data);
 int		ft_fill_map(t_data *data);
 int		ft_found_player(t_data *data);
 void	ft_flood_fill(t_data *data, int x, int y);
