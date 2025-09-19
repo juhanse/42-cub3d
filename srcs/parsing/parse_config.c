@@ -67,7 +67,7 @@ int	ft_get_config_color(t_data *data)
 		}
 		ft_free_split(split);
 	}
-	if (!data->floor_color || !data->ceiling_color)
+	if (data->floor_color == -1 || data->ceiling_color == -1)
 		return (0);
 	return (1);
 }
