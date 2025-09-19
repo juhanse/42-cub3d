@@ -1,9 +1,27 @@
 #include "../../cub3d.h"
 
-void	ft_exit(char *msg)
+static void	ft_free_config(t_data *data)
 {
-	perror(msg);
-	exit(EXIT_FAILURE);
+	if (data->north.path)
+	{
+		free(data->north.path);
+		data->north.path = NULL;
+	}
+	if (data->south.path)
+	{
+		free(data->south.path);
+		data->south.path = NULL;
+	}
+	if (data->west.path)
+	{
+		free(data->west.path);
+		data->west.path = NULL;
+	}
+	if (data->east.path)
+	{
+		free(data->east.path);
+		data->east.path = NULL;
+	}
 }
 
 void	ft_free_map(t_data *data, int type)
@@ -12,10 +30,7 @@ void	ft_free_map(t_data *data, int type)
 
 	free(data->player);
 	free(data->minimap);
-	free(data->north.path);
-	free(data->south.path);
-	free(data->west.path);
-	free(data->east.path);
+	ft_free_config(data);
 	i = -1;
 	while (data->content[++i])
 		free(data->content[i]);
