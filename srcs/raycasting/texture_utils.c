@@ -29,9 +29,9 @@ int	get_color(t_img *texture, int tex_x, int tex_y)
 		|| tex_y < 0 || tex_y >= texture->height)
 		return (0);
 	index = tex_y * texture->s_line + tex_x * (texture->bpp / 8);
-	color = (texture->data[index + 2] << 16)
-		| (texture->data[index + 1] << 8)
-		| (texture->data[index + 0]);
+	color = ((unsigned char)texture->data[index + 2] << 16)
+		| ((unsigned char)texture->data[index + 1] << 8)
+		| ((unsigned char)texture->data[index + 0]);
 	return (color);
 }
 

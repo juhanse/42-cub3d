@@ -1,7 +1,7 @@
 NO textures/bricks2.xpm
-SO textures/exit.xpm
-WE textures/tree.xpm
-EA textures/object.xpm
+SO textures/brick.xpm
+WE textures/bricks2.xpm
+EA textures/brick.xpm
 
 F 97,95,99
 C 102,178,227
