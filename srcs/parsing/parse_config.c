@@ -17,8 +17,8 @@ static char	*ft_malloc_textures(char *s)
 		return (NULL);
 	i = -1;
 	j = 0;
-	while (++i < (int)(ft_strlen(s) - 1))
-		if (s[i] != ' ' && s[i] != '\t')
+	while (s[++i])
+		if (s[i] != ' ' && s[i] != '\t' && s[i] != '\n' && s[i] != '\r')
 			buffer[j++] = s[i];
 	buffer[j] = '\0';
 	return (buffer);
@@ -60,13 +60,13 @@ int	ft_get_config_color(t_data *data)
 	while (++i < data->content_height)
 	{
 		split = ft_split(data->content[i], ' ');
-		if (!ft_strncmp("F", split[0], 1))
+		if (split[0] && !ft_strncmp("F", split[0], 1) && split[1])
 		{
 			if (split[2])
 				split[1] = ft_join_color(split);
 			data->floor_color = ft_parse_rgb(split[1]);
 		}
-		else if (!ft_strncmp("C", split[0], 1))
+		else if (split[0] && !ft_strncmp("C", split[0], 1) && split[1])
 		{
 			if (split[2])
 				split[1] = ft_join_color(split);
@@ -88,13 +88,13 @@ int	ft_get_config_texture(t_data *data)
 	while (++i < data->content_height)
 	{
 		split = ft_split(data->content[i], ' ');
-		if (!ft_strncmp("NO", split[0], 2))
+		if (split[0] && !ft_strncmp("NO", split[0], 2) && split[1])
 			data->north.path = ft_malloc_textures(split[1]);
-		else if (!ft_strncmp("SO", split[0], 2))
+		else if (split[0] && !ft_strncmp("SO", split[0], 2) && split[1])
 			data->south.path = ft_malloc_textures(split[1]);
-		else if (!ft_strncmp("WE", split[0], 2))
+		else if (split[0] && !ft_strncmp("WE", split[0], 2) && split[1])
 			data->west.path = ft_malloc_textures(split[1]);
-		else if (!ft_strncmp("EA", split[0], 2))
+		else if (split[0] && !ft_strncmp("EA", split[0], 2) && split[1])
 			data->east.path = ft_malloc_textures(split[1]);
 		ft_free_split(split);
 	}
