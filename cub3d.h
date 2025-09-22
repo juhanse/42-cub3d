@@ -84,8 +84,8 @@ typedef struct s_wall
 
 typedef struct s_ray
 {
-	int		x_side; // -1 a gauche || 1 a droite
-	int		y_side; // -1 vers le haut || 1 vers le bas
+	int		x_side; //-1 to the left & 1 to the right
+	int		y_side;
 	int		map_x;
 	int		map_y;
 	int		hit;
@@ -93,7 +93,7 @@ typedef struct s_ray
 	float	start_y;
 	float	dir_x;
 	float	dir_y;
-	float	delta_x; //distance constante pour traverser 1 case
+	float	delta_x; //const dist to cross one cell
 	float	delta_y;
 	int		wall_side;
 	t_wall	wall;
@@ -188,7 +188,6 @@ int		get_texture_id(int wall_side, int axis_side);
 void	init_ray(t_ray *ray, t_player *player, float ray_angle);
 void	play_game(t_data *data);
 void	prep_texture(t_img *text, t_ray *ray);
-void	put_mini_pixel(t_data *data, int x, int y, int color);
 void	put_pixel(t_data *data, int x, int y, int color);
 void	reset_black(t_data *data);
 int		render_loop(t_data *data);

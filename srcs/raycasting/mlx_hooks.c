@@ -38,7 +38,7 @@ static int	key_release(int keycode, t_player *player)
 		player->moves.right_rot = false;
 	return (0);
 }
-
+/*mlx_loop_hook continuous call through the mlx_loop vs mlx_hook triggers on events*/
 void	set_hooks(t_data *data)
 {
 	mlx_hook(data->wnd, 2, 1L << 0, &key_press, data);

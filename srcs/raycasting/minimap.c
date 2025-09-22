@@ -17,7 +17,8 @@ void	draw_background(t_data *data, t_mini *mini)
 		y++;
 	}
 }
-
+/*set the real size of the map with the scale of the mini
+then the empty spaces to center the map*/
 void	draw_map(t_data *data, t_mini *mini)
 {
 	int		x;
