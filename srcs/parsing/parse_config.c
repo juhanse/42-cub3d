@@ -3,17 +3,24 @@
 static char	*ft_malloc_textures(char *s)
 {
 	int		i;
-	int		len;
+	int		j;
+	int		space;
 	char	*buffer;
 
-	len = ft_strlen(s) - 1;
-	buffer = malloc((len + 1) * sizeof(char));
+	i = -1;
+	space = 0;
+	while (s[++i])
+		if (s[i] == ' ' || s[i] == '\t')
+			space++;
+	buffer = malloc((ft_strlen(s) - space) * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	i = -1;
-	while (++i < len)
-		buffer[i] = s[i];
-	buffer[i] = '\0';
+	j = 0;
+	while (++i < (int)(ft_strlen(s) - 1))
+		if (s[i] != ' ' && s[i] != '\t')
+			buffer[j++] = s[i];
+	buffer[j] = '\0';
 	return (buffer);
 }
 
