@@ -48,38 +48,62 @@ static void	ft_get_max_width(t_data *data)
 	}
 }
 
+static int	is_map_line(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] == ' ' || s[i] == '\t')
+		i++;
+	if (s[i] == '\0' || s[i] == '\n')
+		return (0);
+	while (s[i] && s[i] != '\n')
+	{
+		if (s[i] != '0' && s[i] != '1' && s[i] != 'N'
+			&& s[i] != 'S' && s[i] != 'E' && s[i] != 'W'
+			&& s[i] != ' ' && s[i] != '\t')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static int	ft_find_start(char **content, int end)
 {
-	int		start;
-	int		k;
+	int	last_map;
 
-	start = end;
-	while (start >= 0)
+	last_map = -1;
+	while (end >= 0)
 	{
-		k = 0;
-		while (content[start][k] == ' ' || content[start][k] == '\t')
-			k++;
-		if (content[start][k] == '\0' || content[start][k] == '\n')
-			start--;
-		else if (ft_strchr("01NSEW", content[start][k]))
-			start--;
-		else
+		if (is_map_line(content[end]))
+		{
+			last_map = end;
+			end--;
+		}
+		else if (last_map != -1)
 			break ;
+		else
+			end--;
 	}
-	return (start + 2);
+	if (last_map == -1)
+		return (-1);
+	return (end + 1);
 }
 
 int	ft_fill_map(t_data *data)
 {
-	int		i;
-	int		start;
-	int		height;
+	int	i;
+	int	start;
+	int	end;
+	int	height;
 
-	i = data->content_height - 1;
-	while (i >= 0 && data->content[i][0] == '\n')
-		i--;
-	start = ft_find_start(data->content, i);
-	height = i - start + 1;
+	end = data->content_height - 1;
+	while (end >= 0 && (data->content[end][0] == '\n' || data->content[end][0] == '\0'))
+		end--;
+	start = ft_find_start(data->content, end);
+	if (start < 0)
+		return (0);
+	height = end - start + 1;
 	data->map = malloc(sizeof(char *) * (height + 1));
 	if (!data->map)
 		return (0);
