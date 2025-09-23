@@ -60,7 +60,7 @@ static void	render_3d(t_data *data)
 
 void	render_screen(t_data *data)
 {
-	reset_black(data);
+	//reset_black(data);
 	render_3d(data);
 	render_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);

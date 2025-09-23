@@ -1,43 +1,5 @@
 #include "../cub3d.h"
 
-// void	free_data(t_data *data, int type) //TBD - voir fct init
-// {
-// 	int	i;
-
-// 	free(data->player);
-// 	free(data->minimap);
-// 	free(data->north.path);
-// 	free(data->south.path);
-// 	free(data->west.path);
-// 	free(data->east.path);
-// 	i = -1;
-// 	while (data->content[++i])
-// 		free(data->content[i]);
-// 	free(data->content);
-// 	if (type == 1 || type == 2)
-// 		return ;
-// 	i = -1;
-// 	while (++i < data->map_height)
-// 		free(data->map[i]);
-// 	free(data->map);
-// 	if (type == 3)
-// 		return ;
-// 	i = -1;
-// 	while (++i < data->map_height)
-// 		free(data->map_tmp[i]);
-// 	free(data->map_tmp);
-// }
-
-// void	free_split(char **s)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (s[++i])
-// 		free(s[i]);
-// 	free(s);
-// }
-
 static void	clean_img(t_data *data, t_img *img)
 {
 	mlx_destroy_image(data->mlx, img->img);
