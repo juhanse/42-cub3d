@@ -170,12 +170,16 @@ typedef struct s_data
 void	ft_debug(t_data *data);
 void	ft_free_map(t_data *data, int type);
 void	ft_free_split(char **s);
+void	ft_free_fill_map(t_data *data, int len);
 
 // EXIT & FREE
 int		exit_game(t_data *data);
 
 // PARSING
 int		ft_initialize(t_data *data, char *path);
+int		ft_check_textures(t_data *data, char *s);
+int		ft_check_colors(t_data *data, char *s);
+int		ft_parse_rgb(char *str);
 int		ft_fill_content(t_data *data);
 int		ft_get_config_color(t_data *data);
 int		ft_get_config_texture(t_data *data);
