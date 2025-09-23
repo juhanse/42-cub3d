@@ -17,6 +17,7 @@ PARSING = 	parsing/fill_content.c	\
 			parsing/fill_map.c 		\
 			parsing/flood_fill.c 	\
 			parsing/init.c			\
+			parsing/parse_checker.c \
 			parsing/parse_config.c 	\
 			parsing/parse_map.c 	\
 			parsing/utils.c			\
