@@ -59,6 +59,13 @@ void	ft_free_split(char **s)
 	free(s);
 }
 
+void	ft_free_fill_map(t_data *data, int len)
+{
+	while (--len >= 0)
+		free(data->map[len]);
+	free(data->map);
+}
+
 void	ft_debug(t_data *data)
 {
 	int	i;
