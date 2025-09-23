@@ -29,6 +29,15 @@ static int	upload_textures(t_data *data)
 	return (0);
 }
 
+static int	init_mouse(t_data *data)
+{
+	if (mlx_mouse_get_pos(data->mlx, data->wnd,
+			&data->player->moves.mouse_x, &data->player->moves.mouse_y) == -1)
+		return (1);
+	data->player->moves.last_mouse_x = data->player->moves.mouse_x;
+	return (0);
+}
+
 static int	init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -44,6 +53,8 @@ static int	init_mlx(t_data *data)
 			&data->mlx_img.bpp, &data->mlx_img.s_line, &data->mlx_img.endian);
 	if (!data->mlx_img.data)
 		return (1);
+	if (init_mouse(data))
+		return (1);
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
 	return (0);
 }
@@ -51,7 +62,10 @@ static int	init_mlx(t_data *data)
 void	play_game(t_data *data)
 {
 	if (init_mlx(data) || upload_textures(data))
+	{
+		data->exit_code = 1;
 		exit_game(data);
+	}
 	set_hooks(data);
 	mlx_loop(data->mlx);
 }

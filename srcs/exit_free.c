@@ -72,6 +72,6 @@ int	exit_game(t_data *data)
 	}
 	ft_free_map(data, 4);
 	printf("Leave game\n");
-	exit (1); //SUCCESS or FAILURE?
+	exit (data->exit_code);
 	return (0);
 }

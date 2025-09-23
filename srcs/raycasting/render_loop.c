@@ -44,7 +44,7 @@ static void	update_player(t_data *data, float dx, float dy)
 }
 
 /* add or substract full circles */
-static void	normalize_angle(t_player *player)
+void	normalize_angle(t_player *player)
 {
 	while (player->p_angle < 0)
 		player->p_angle += 2 * M_PI;

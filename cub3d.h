@@ -123,6 +123,9 @@ typedef struct s_keys
 	bool	d_pressed;
 	bool	left_rot;
 	bool	right_rot;
+	int		mouse_x;
+	int		mouse_y;
+	int		last_mouse_x;
 }	t_keys;
 
 typedef struct s_player
@@ -153,6 +156,7 @@ typedef struct s_data
 	int			map_error;
 	int			floor_color;
 	int			ceiling_color;
+	int			exit_code;
 	t_img		mlx_img;
 	t_img		north;
 	t_img		south;
@@ -189,6 +193,7 @@ void	init_ray(t_ray *ray, t_player *player, float ray_angle);
 void	play_game(t_data *data);
 void	prep_texture(t_img *text, t_ray *ray);
 void	put_pixel(t_data *data, int x, int y, int color);
+void	normalize_angle(t_player *player);
 void	reset_black(t_data *data);
 int		render_loop(t_data *data);
 void	render_minimap(t_data *data);
