@@ -37,7 +37,8 @@ void	draw_map(t_data *data, t_mini *mini)
 		{
 			mini->pxl_x = mini->mini_x + mini->offset_x + x * mini->scale;
 			mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;
-			draw_cell(data, x, y);
+			if(x <= (int)ft_strlen(data->map[y]))
+				draw_cell(data, x, y);
 		}
 	}
 }
