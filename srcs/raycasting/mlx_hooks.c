@@ -46,9 +46,6 @@ static int	mouse_rot(int x, int y, t_data *data)
 
 	(void)y;
 	d_x = x - data->player->moves.last_mouse_x;
-	// // Limiter les mouvements trop brusques
-	// if (abs(delta_x) > 50)
-	// 	return (0);
 	if (d_x != 0)
 	{
 		rot_angle = d_x * ROT_SPEED;

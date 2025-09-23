@@ -17,6 +17,7 @@ void	draw_background(t_data *data, t_mini *mini)
 		y++;
 	}
 }
+
 /*set the real size of the map with the scale of the mini
 then the empty spaces to center the map*/
 void	draw_map(t_data *data, t_mini *mini)
@@ -37,7 +38,7 @@ void	draw_map(t_data *data, t_mini *mini)
 		{
 			mini->pxl_x = mini->mini_x + mini->offset_x + x * mini->scale;
 			mini->pxl_y = MINI_Y + mini->offset_y + y * mini->scale;
-			if(x <= (int)ft_strlen(data->map[y]))
+			if (x <= (int)ft_strlen(data->map[y]))
 				draw_cell(data, x, y);
 		}
 	}
