@@ -23,7 +23,7 @@ PARSING = 	parsing/fill_content.c	\
 
 RAYCASTING = 	raycasting/cast_ray.c		\
 				raycasting/draw.c			\
-				raycasting/mini_map.c		\
+				raycasting/minimap.c		\
 				raycasting/mini_utils.c		\
 				raycasting/mlx_hooks.c		\
 				raycasting/play_game.c		\
@@ -40,7 +40,7 @@ OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFTDIR) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz
+	@$(CC) $(CFLAGS) $(OBJS) -g -o $(NAME) -L$(LIBFTDIR) -lft -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz
 	@echo "$(COLOUR_GREEN)Cub3d compiled ✅$(COLOUR_END)"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
