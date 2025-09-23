@@ -1,12 +1,5 @@
 #include "../../cub3d.h"
 
-static void	ft_free_fill_map(t_data *data, int len)
-{
-	while (--len >= 0)
-		free(data->map[len]);
-	free(data->map);
-}
-
 static char	*ft_malloc_line(char *s)
 {
 	int		i;
@@ -30,22 +23,6 @@ static char	*ft_malloc_line(char *s)
 	}
 	buffer[i] = '\0';
 	return (buffer);
-}
-
-static void	ft_get_max_width(t_data *data)
-{
-	int	i;
-	int	len;
-
-	i = -1;
-	len = 0;
-	data->map_max_width = (int)ft_strlen(data->map[0]);
-	while (data->map[++i])
-	{
-		len = (int)ft_strlen(data->map[i]);
-		if (len > data->map_max_width)
-			data->map_max_width = len;
-	}
 }
 
 static int	is_map_line(const char *s)
@@ -90,15 +67,33 @@ static int	ft_find_start(char **content, int end)
 	return (end + 1);
 }
 
-int	ft_fill_map(t_data *data)
+static int	ft_copy_map_lines(t_data *data, int start, int height)
 {
 	int	i;
+
+	i = -1;
+	while (++i < height)
+	{
+		data->map[i] = ft_malloc_line(data->content[start + i]);
+		if (!data->map[i])
+		{
+			ft_free_fill_map(data, i);
+			return (0);
+		}
+	}
+	data->map[i] = NULL;
+	return (1);
+}
+
+int	ft_fill_map(t_data *data)
+{
 	int	start;
 	int	end;
 	int	height;
 
 	end = data->content_height - 1;
-	while (end >= 0 && (data->content[end][0] == '\n' || data->content[end][0] == '\0'))
+	while (end >= 0 && (data->content[end][0] == '\n' \
+		|| data->content[end][0] == '\0'))
 		end--;
 	start = ft_find_start(data->content, end);
 	if (start < 0)
@@ -107,15 +102,8 @@ int	ft_fill_map(t_data *data)
 	data->map = malloc(sizeof(char *) * (height + 1));
 	if (!data->map)
 		return (0);
-	i = -1;
-	while (++i < height)
-	{
-		data->map[i] = ft_malloc_line(data->content[start + i]);
-		if (!data->map[i])
-			return (ft_free_fill_map(data, i), 0);
-	}
-	data->map[i] = NULL;
+	if (!ft_copy_map_lines(data, start, height))
+		return (0);
 	data->map_height = height;
-	ft_get_max_width(data);
 	return (1);
 }
