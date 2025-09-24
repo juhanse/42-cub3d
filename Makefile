@@ -24,6 +24,7 @@ PARSING = 	parsing/fill_content.c	\
 
 RAYCASTING = 	raycasting/cast_ray.c		\
 				raycasting/draw.c			\
+				raycasting/exit_free.c		\
 				raycasting/minimap.c		\
 				raycasting/mini_utils.c		\
 				raycasting/mlx_hooks.c		\
@@ -33,7 +34,7 @@ RAYCASTING = 	raycasting/cast_ray.c		\
 				raycasting/texture_utils.c	\
 				raycasting/utils.c			\
 
-SRC = main.c exit_free.c $(PARSING) $(RAYCASTING)
+SRC = main.c $(PARSING) $(RAYCASTING)
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))
 OBJS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
