@@ -6,12 +6,14 @@
 /*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:02:40 by ade-woel          #+#    #+#             */
-/*   Updated: 2025/09/24 14:02:41 by ade-woel         ###   ########.fr       */
+/*   Updated: 2025/09/24 16:01:22 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
+/* wall_col gives the exact x or y impact point on the wall to define
+the relative position on the texture (floor) */
 static void	get_wall_data(t_ray *ray, t_wall *wall)
 {
 	if (ray->wall_side == 0)
