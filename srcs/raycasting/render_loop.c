@@ -87,15 +87,3 @@ int	render_loop(t_data *data)
 	render_screen(data);
 	return (0);
 }
-
-/* STRAFING */
-/* Mouvement lateral sans tourner */
-/* Permet mouvements plus libres en gardant l'orientation visuelle */
-/* Axes de direction relatifs au joueur au lieu de rester fixes */
-/* On dessine un rayon perpendiculaire a la direction 
-pour definir la D et la G */
-/* EXEMPLE */
-/* dir_x = 1, dir_y = 0 (EST) 
-perp_x = -dir_y = 0 perp_y = dir_x = 1 // (0, 1) = SUD
-A (gauche) : delta -= (0, 1) = (0, -1) = NORD
-D (droite) : delta += (0, 1) = (0, 1) = SUD */
