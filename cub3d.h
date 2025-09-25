@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhanse <juhanse@student.s19.be>           +#+  +:+       +#+        */
+/*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:29 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/24 14:06:32 by juhanse          ###   ########.fr       */
+/*   Updated: 2025/09/25 11:49:45 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@
 # define ERR_CHAR_MAP		"Error\nInvalid characters map\n"
 # define ERR_PLY_NOT_FOUND	"Error\nPlayer not found\n"
 # define ERR_MALLOC			"Error\nMalloc failed\n"
+# define ERR_DUP			"Error\nDuplicate found\n"
+# define ERR_MISSING_TEXT	"Error\nMissing texture\n"
 
 typedef struct s_mini
 {

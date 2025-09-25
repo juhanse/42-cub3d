@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhanse <juhanse@student.s19.be>           +#+  +:+       +#+        */
+/*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:18 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/24 14:06:18 by juhanse          ###   ########.fr       */
+/*   Updated: 2025/09/25 11:49:40 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_get_config_color(t_data *data)
 	{
 		split = ft_split(data->content[i], ' ');
 		if (!ft_check_colors(data, split[0]))
-			return (ft_free_split(split), 0);
+			return (perror(ERR_DUP), ft_free_split(split), 0);
 		if (split[0] && !ft_strncmp("F", split[0], 1) && split[1])
 		{
 			if (split[2])
@@ -91,7 +91,7 @@ int	ft_get_config_texture(t_data *data)
 	{
 		split = ft_split(data->content[i], ' ');
 		if (!ft_check_textures(data, split[0]))
-			return (ft_free_split(split), 0);
+			return (perror(ERR_DUP), ft_free_split(split), 0);
 		if (split[0] && !ft_strncmp("NO", split[0], 2) && split[1])
 			data->north.path = ft_malloc_textures(split[1]);
 		else if (split[0] && !ft_strncmp("SO", split[0], 2) && split[1])
@@ -104,6 +104,6 @@ int	ft_get_config_texture(t_data *data)
 	}
 	if (!data->north.path || !data->south.path || !data->west.path \
 		|| !data->east.path)
-		return (0);
+		return (perror(ERR_MISSING_TEXT), 0);
 	return (1);
 }
