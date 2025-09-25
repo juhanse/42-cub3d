@@ -1,16 +1,17 @@
 NO textures/bricks2.xpm
-SO textures/brick.xpm
-WE textures/bricks2.xpm
+SO textures/bricks2.xpm
+WE textures/brick.xpm
 EA textures/brick.xpm
 
 F 97,95,99
 C 102,178,227
 
-111111
+
+ 111111
 1000001
 11000111
 110011001
-100000101
-1010E0101
+1000S101
+10100101
 100000001
-111111111
+11111111
