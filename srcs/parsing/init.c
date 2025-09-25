@@ -6,7 +6,7 @@
 /*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:11 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/25 11:49:03 by ade-woel         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:52:45 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_initialize(t_data *data, char *path)
 		return (ft_free_map(data, 2), perror(ERR_MAP), 1);
 	ft_get_max_width(data);
 	if (!ft_found_player(data))
-		return (ft_free_map(data, 3), perror(ERR_PLY_NOT_FOUND), 1);
+		return (ft_free_map(data, 3), 1);
 	if (!ft_test_map(data))
 		return (ft_free_map(data, 3), perror(ERR_MAP), 1);
 	return (0);

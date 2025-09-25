@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhanse <juhanse@student.s19.be>           +#+  +:+       +#+        */
+/*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:20 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/24 14:06:21 by juhanse          ###   ########.fr       */
+/*   Updated: 2025/09/25 11:52:22 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int	ft_found_player(t_data *data)
 			}
 		}
 	}
-	if (size != 1)
-		return (0);
+	if (size == 0)
+		return (perror(ERR_PLY_NOT_FOUND), 0);
+	else if (size > 1)
+		return (perror(ERR_MULT_PLY), 0);
 	return (1);
 }

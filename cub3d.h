@@ -6,7 +6,7 @@
 /*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:29 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/25 11:49:45 by ade-woel         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:53:20 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@
 # define ERR_MALLOC			"Error\nMalloc failed\n"
 # define ERR_DUP			"Error\nDuplicate found\n"
 # define ERR_MISSING_TEXT	"Error\nMissing texture\n"
+# define ERR_MISSING_MAP	"Error\nMissing map\n"
+# define ERR_MULT_PLY		"Error\nMultiple player\n"
 
 typedef struct s_mini
 {
