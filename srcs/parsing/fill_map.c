@@ -6,7 +6,7 @@
 /*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:04 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/25 11:51:14 by ade-woel         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:57:07 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	ft_fill_map(t_data *data)
 		end--;
 	start = ft_find_start(data->content, end);
 	if (start < 0)
-		return (perror(ERR_MISSING_MAP), 0);
+		return (0);
 	height = end - start + 1;
 	data->map = malloc(sizeof(char *) * (height + 1));
 	if (!data->map)

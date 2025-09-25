@@ -6,7 +6,7 @@
 /*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:18 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/25 11:49:40 by ade-woel         ###   ########.fr       */
+/*   Updated: 2025/09/25 11:59:57 by ade-woel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,6 @@ int	ft_get_config_texture(t_data *data)
 	}
 	if (!data->north.path || !data->south.path || !data->west.path \
 		|| !data->east.path)
-		return (perror(ERR_MISSING_TEXT), 0);
+		return (0);
 	return (1);
 }
