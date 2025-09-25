@@ -81,15 +81,3 @@ void	play_game(t_data *data)
 	set_hooks(data);
 	mlx_loop(data->mlx);
 }
-
-/* MLX_NEW_IMAGE*/
-/* Alloue un tampon pour peindre une image */
-/* Possible de creer des couches d'images */
-
-/* MLX_GET_DATA_ADDR */
-/* rend un ptr vers le debut d'un buffer de donnees brutes 
-en memoire pour stocker l'image */
-/* tableau d'octets contigus en memoire */
-/* bpp = bits per pixel ; bits pour stocker un pixel (32 RGBA) */
-/* s_line ; octets pour stocker une ligne de l'image ; largeur × (bpp ÷ 8) */
-/* endian ; ordre des octets en memoire */
