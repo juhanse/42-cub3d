@@ -6,7 +6,7 @@
 /*   By: juhanse <juhanse@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:06:11 by juhanse           #+#    #+#             */
-/*   Updated: 2025/09/24 14:06:13 by juhanse          ###   ########.fr       */
+/*   Updated: 2025/09/25 10:46:03 by juhanse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,5 @@ int	ft_initialize(t_data *data, char *path)
 		return (ft_free_map(data, 3), perror(ERR_PLY_NOT_FOUND), 1);
 	if (!ft_test_map(data))
 		return (ft_free_map(data, 3), perror(ERR_MAP), 1);
-	ft_debug(data);
 	return (0);
 }

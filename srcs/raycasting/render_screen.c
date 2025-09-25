@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_screen.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-woel <ade-woel@student.s19.be>         +#+  +:+       +#+        */
+/*   By: juhanse <juhanse@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 14:03:09 by ade-woel          #+#    #+#             */
-/*   Updated: 2025/09/24 14:03:10 by ade-woel         ###   ########.fr       */
+/*   Updated: 2025/09/25 10:45:43 by juhanse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ static void	render_3d(t_data *data)
 
 void	render_screen(t_data *data)
 {
-	//reset_black(data);
 	render_3d(data);
 	render_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->wnd, data->mlx_img.img, 0, 0);
