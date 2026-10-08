@@ -1,45 +1,47 @@
 # 🕹️ Cub3D
 
-Cub3D est un projet **42** inspiré du célèbre jeu *Wolfenstein 3D*.  
-L’objectif est d’implémenter un moteur graphique en **raycasting** qui affiche une vue 3D à partir d’une **carte 2D**, le tout en **C**.
+> A 3D FPS game created in C, powered by a custom raycasting engine inspired by the classic Wolfenstein 3D.
 
----
+## 📖 Description
 
-## 🚀 Fonctionnalités
-- Moteur de rendu 3D minimaliste avec **raycasting**.
-- Gestion des textures pour murs, sol et plafond.
-- Déplacements fluides (avant, arrière, strafe, rotation).
-- Parsing robuste des fichiers `.cub` (textures, couleurs, carte).
+**Cub3D** is a graphics programming project from the **42 School** curriculum.
 
----
+The primary goal of this project is to build a minimal 3D game engine using **raycasting**. Written entirely in **C**, the program reads a simple 2D map from a file and renders a navigable, first-person 3D perspective. This project serves as a hands-on introduction to mathematics in computer graphics, window management, and algorithmic optimization.
 
-## 🖼️ Lien avec la MiniLibX
+### ✨ Technical Overview & Core Features
 
-Le rendu graphique s’appuie sur **MiniLibX (mlx)**, une petite bibliothèque graphique fournie par 42.  
-Elle permet de :
-- Créer une fenêtre et gérer les événements clavier/souris.
-- Afficher des images (textures, murs, sol/plafond).
-- Manipuler les pixels pour le raycasting en temps réel.
+* **Raycasting Engine**: Calculates the distance between the player and walls to project a pseudo-3D environment from a 2D grid in real-time.
+* **Texture Mapping**: Dynamically applies distinct textures to North, South, East, and West facing walls, alongside customizable floor and ceiling colors.
+* **Fluid Mechanics**: Smooth camera and player movements (forward, backward, strafing, and rotation).
+* **Robust Parsing**: Strictly validates `.cub` configuration files to ensure the map is perfectly closed, characters are valid, and texture paths are correct.
+* **MiniLibX Stack**: Built using *MiniLibX* (a basic graphics library provided by 42) to manually handle window creation, pixel drawing, and keyboard/mouse events.
 
-> **Remarque** : la `mlx` est déjà incluse/configurée dans le Makefile.
+### 🌟 Bonus Features
 
----
+* **Wall Collisions**: Precise collision detection ensuring the player glides smoothly against surfaces without clipping through walls.
+* **Minimap System**: A dynamic, on-screen 2D minimap that tracks the player's exact position and line of sight in real-time.
 
-## 🛠️ Lancement
 
-Assurez-vous d’avoir **make** et un environnement compatible avec **MiniLibX** (macOS ou Linux avec X11).
+## 🚀 Instructions
+
+### Prerequisites
+
+To compile and run this project, you will need `make`, a C compiler (`gcc` or `clang`), and an environment compatible with **MiniLibX** (macOS, or Linux with X11 dependencies). The MiniLibX library is already included and configured within the project.
+
+### Compilation
+
+Open your terminal, navigate to the project folder, and compile the source code using `make`:
 
 ```bash
-# Compiler
+# Compile the project
 make
-
-# Lancer avec une carte .cub
-./cub3d maps/map.cub
 ```
 
----
+### Execution
 
-## ⚠️ Avis important
+Once compiled, you can launch the game by passing a valid `.cub` map configuration file as an argument:
 
-Ce projet est mis en ligne uniquement à des fins de portfolio et de démonstration personnelle.
-Il n’a pas vocation à être copié ou utilisé comme solution.
+```bash
+# Run the game with a sample map
+./cub3d maps/map.cub
+```
